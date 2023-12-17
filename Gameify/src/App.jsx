@@ -5,7 +5,9 @@ import './App.css'
 function App() {
     return (
         <div>
-            <h1>Hello from the main page of the app!</h1>
+            <h1 className="text-red-800">
+                Hello from the main page of the app!
+            </h1>
             <p>Here are some examples of links to other pages</p>
             <nav>
                 <ul>
