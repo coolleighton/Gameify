@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App'
+import App from './App.jsx'
 import Home from './Components/Home.jsx'
 import Library from './Components/Library.jsx'
 import ErrorPage from './Components/ErrorPage.jsx'
