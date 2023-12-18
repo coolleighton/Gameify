@@ -1,22 +1,23 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
-import Profile from './Components/Profile.jsx'
-import NotFound from './Components/NotFound.jsx'
+import Home from './Components/Home.jsx'
+import Library from './Components/Library.jsx'
+import ErrorPage from './Components/ErrorPage.jsx'
 
 const Router = () => {
     const router = createBrowserRouter([
         {
             path: '/',
             element: <App />,
-            errorElement: <NotFound />,
+            errorElement: <ErrorPage />,
         },
         {
-            path: 'profile/:name',
-            element: <Profile />,
+            path: 'Home',
+            element: <Home />,
         },
         {
-            path: 'profile/:name',
-            element: <Profile />,
+            path: 'Library',
+            element: <Library />,
         },
     ])
 

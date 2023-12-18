@@ -1,23 +1,21 @@
-import { Link } from 'react-router-dom'
-
+import { useParams } from 'react-router-dom'
+import Library from './Components/Library'
+import Home from './Components/Home'
+import ErrorPage from './Components/ErrorPage'
 import './App.css'
 
 function App() {
+    const { name } = useParams()
+
     return (
         <div>
-            <h1 className="text-red-800">
-                Hello from the main page of the app!
-            </h1>
-            <p>Here are some examples of links to other pages</p>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="Profile" className="text-red-800">
-                            Profile page
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            {name === 'library' ? (
+                <Library />
+            ) : name === 'home' ? (
+                <Home />
+            ) : (
+                <ErrorPage />
+            )}
         </div>
     )
 }
