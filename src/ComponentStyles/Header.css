@@ -1,0 +1,16 @@
+@media (min-width: 764px) {
+    .searchBar {
+        width: initial;
+    }
+
+    .searchBar input {
+        width: 20rem;
+        transition: 400ms ease-in-out;
+    }
+}
+
+@media (min-width: 1024px) {
+    .searchBar input:focus {
+        width: 38rem;
+    }
+}

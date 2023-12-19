@@ -4,10 +4,10 @@ const ErrorPage = () => {
     return (
         <div>
             <h1>Oh no, this route doesn't exist!</h1>
-            <Link to="/home">
+            <Link to="/">
                 You can go back to the home page by clicking here, though!
             </Link>
-            <Link to="/home">Or go to the library by clicking here.</Link>
+            <Link to="/library">Or go to the library by clicking here.</Link>
         </div>
     )
 }

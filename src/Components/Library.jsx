@@ -5,7 +5,7 @@ const Library = () => {
     return (
         <div>
             <Header></Header>
-            <Link to="/home">Click here to go to the home page</Link>
+            <Link to="/">Click here to go to the home page</Link>
         </div>
     )
 }
