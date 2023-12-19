@@ -18,7 +18,7 @@ const Header = () => {
                 </div>
             </Link>
 
-            <div className="searchBar flex flex-row text-sm items-center bg-white rounded-md px-1 mx-2 w-5/12">
+            <div className="searchBar flex flex-row text-sm items-center bg-white rounded-md px-1 mx-2">
                 <input
                     className="h-8 w-full outline-none text-black text-bold px-2"
                     placeholder="Search games..."
