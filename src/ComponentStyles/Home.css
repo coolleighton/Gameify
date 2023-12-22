@@ -13,3 +13,30 @@
     height: 100%;
     object-fit: cover;
 }
+
+.mainDiv {
+    height: 80vh;
+}
+
+@media all and (max-width: 360px) {
+    .portfolioLinks {
+        flex-direction: column;
+    }
+
+    .portfolioLinks a {
+        margin-bottom: 1rem;
+    }
+
+    .portfolioLinks .bottomPortfolioLink {
+        margin-bottom: 0;
+    }
+
+    .portfolioLinks a div {
+        width: 100%;
+    }
+    .portfolioLinks a {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
