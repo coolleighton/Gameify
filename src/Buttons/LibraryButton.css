@@ -1,0 +1,11 @@
+.categoryButton {
+    position: relative;
+}
+
+.categoryButtonImg {
+    position: absolute;
+}
+
+.categoryButton:hover .categoryButtonImg {
+    background-color: white;
+}
