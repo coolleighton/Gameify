@@ -10,10 +10,10 @@ const Home = () => {
         <div>
             <Header></Header>
 
-            <div className="mainDiv flex flex-col mx-auto max-w-lg sm:flex-row sm:max-w-full sm:justify-between sm:items-center">
+            <div className="mainDiv flex flex-col mx-auto max-w-lg sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
                 <div className="sm:max-w-lg sm:ml-5">
-                    <div className="p-8 mb-4 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
-                        <h1 className="text-7xl font-extrabold pb-5">
+                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
+                        <h1 className="break-words text-5xl sm:text-7xl font-extrabold pb-5">
                             Gameify
                         </h1>
                         <p className="leading-5 font-semibold">
@@ -51,9 +51,9 @@ const Home = () => {
                         </a>
                     </div>
                 </div>
-                <div className="sm:max-w-sm sm:ml-0 sm:mr-6">
-                    <div className="flex flex-col justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center w-11/12 mx-auto rounded-lg backdrop-blur">
-                        <h2 className="text-3xl font-bold pb-5 sm:w-sm">
+                <div className="sm:ml-0 sm:mr-6">
+                    <div className="flex flex-col justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12">
+                        <h2 className="text-3xl font-bold pb-5">
                             Quick Navigation
                         </h2>
 

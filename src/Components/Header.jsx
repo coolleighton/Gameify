@@ -50,6 +50,4 @@ const Header = () => {
     )
 }
 
-// w-60 focus:w-[32rem] transition-all duration-500 ease-in-out
-
 export default Header
