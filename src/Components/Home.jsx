@@ -1,4 +1,5 @@
 import '../ComponentStyles/Home.css'
+import GetRawgData from './GetRawgData.jsx'
 import Background from '../assets/Background.mp4'
 import Header from './Header.jsx'
 import GithubImg from '../assets/GithubImg.png'
@@ -6,6 +7,8 @@ import PortfolioImg from '../assets/PortfolioImg.png'
 import LibraryImg from '../assets/DarkLibraryImg.png'
 
 const Home = () => {
+    GetRawgData()
+
     return (
         <div>
             <Header></Header>
