@@ -1,6 +1,6 @@
-import './LibraryButton.css'
+import './StandardLinkButton.css'
 
-const LibraryButton = ({ whiteIcon, blackIcon, text }) => {
+const LibraryButton = ({ whiteIcon, blackIcon, text, style, textStyle }) => {
     // handles when the mouse enters the button
     const HandleCategoryMouseEnter = (target) => {
         // hides white image
@@ -24,13 +24,17 @@ const LibraryButton = ({ whiteIcon, blackIcon, text }) => {
         >
             <img
                 className="categoryButtonImg w-10 p-2 bg-gray-500 bg-opacity-30 rounded-md duration-500"
+                style={style}
                 src={whiteIcon}
             ></img>
             <img
                 className="categoryButtonImg opacity-0 w-10 p-2 bg-gray-500 bg-opacity-30 rounded-md duration-500"
+                style={style}
                 src={blackIcon}
             ></img>
-            <p className="pl-12 font-semibold">{text}</p>
+            <p className="pl-12 font-semibold" style={textStyle}>
+                {text}
+            </p>
         </button>
     )
 }

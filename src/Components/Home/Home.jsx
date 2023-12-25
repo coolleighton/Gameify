@@ -1,22 +1,21 @@
 import '../Home/Home.css'
-import GetRawgData from '../GetRawgData.jsx'
-import Background from '../../assets/Background.mp4'
 import Header from '../Header/Header.jsx'
+import MobileMenu from '../MobileMenu/MobileMenu.jsx'
+
+import Background from '../../assets/Background.mp4'
 import GithubImg from '../../assets/GithubImg.png'
 import PortfolioImg from '../../assets/PortfolioImg.png'
 import LibraryImg from '../../assets/DarkLibraryImg.png'
 
 const Home = () => {
-    GetRawgData()
-
     return (
         <div>
             <Header headerBgColour={'#FF'}></Header>
 
             <div className="flex flex-col mx-auto max-w-lg h-[100vh] sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
-                <div className="sm:max-w-lg sm:ml-5">
+                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5">
                     <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
-                        <h1 className="break-words text-5xl sm:text-7xl font-extrabold pb-5">
+                        <h1 className="title break-words sm:text-7xl font-extrabold pb-5">
                             Gameify
                         </h1>
                         <p className="leading-5 font-semibold">
@@ -104,6 +103,7 @@ const Home = () => {
                     <source src={Background} type="video/mp4"></source>
                 </video>
             </div>
+            <MobileMenu></MobileMenu>
         </div>
     )
 }

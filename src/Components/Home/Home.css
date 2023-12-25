@@ -14,6 +14,16 @@
     object-fit: cover;
 }
 
+.title {
+    font-size: 2.5rem;
+}
+
+@media (min-width: 350px) {
+    .title {
+        font-size: 3rem;
+    }
+}
+
 @media all and (max-width: 360px) {
     .portfolioLinks {
         flex-direction: column;

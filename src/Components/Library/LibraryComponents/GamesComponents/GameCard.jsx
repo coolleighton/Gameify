@@ -1,10 +1,10 @@
-import Skyrim from '../../assets/skyrim.jpg'
-import WindowsWhiteImg from '../../assets/WindowsWhiteImg.png'
-import XboxWhiteImg from '../../assets/XboxWhiteImg.png'
+import Skyrim from '../../../../assets/skyrim.jpg'
+import WindowsWhiteImg from '../../../../assets/WindowsWhiteImg.png'
+import XboxWhiteImg from '../../../../assets/XboxWhiteImg.png'
 
 const GameCard = () => {
     return (
-        <div className="max-w-sm rounded-2xl bg-gray-500 bg-opacity-10">
+        <div className="max-w-2xl rounded-2xl bg-gray-500 bg-opacity-10 cursor-pointer hover:scale-105 duration-300">
             <img className="rounded-t-2xl" src={Skyrim}></img>
             <div className="p-4">
                 <div className="flex justify-between">

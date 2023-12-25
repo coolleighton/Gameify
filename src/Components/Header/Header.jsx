@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
+import MobileMenu from '../MobileMenu/MobileMenu'
 import Logo from '../../assets/GameifyLogo.png'
 import SearchImg from '../../assets/SearchImg.png'
 import CartImg from '../../assets/CartImg.png'
 import LibraryImg from '../../assets/LibraryImg.png'
 import HomeImg from '../../assets/HomeImg.png'
+import HamburgerMenuImg from '../../assets/HamburgerMenuImg.png'
 
 const Header = ({ headerBgColour }) => {
     const doc = document.documentElement
@@ -30,8 +32,6 @@ const Header = ({ headerBgColour }) => {
         prevScroll = curScroll
     }
 
-    console.log(headerBgColour)
-
     const toggleHeader = function (direction, curScroll) {
         if (direction === 2 && curScroll > 50) {
             document.querySelector('#header').classList.add('hide')
@@ -45,6 +45,15 @@ const Header = ({ headerBgColour }) => {
             document.querySelector('#categoryButtons').style.height = '87vh'
             prevDirection = direction
         }
+    }
+
+    const toggleHamburgerMenuOn = async () => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        document.querySelector('#hamburgerMenu').style.display = 'block'
+
+        await delay(0)
+        document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
     window.addEventListener('scroll', checkScroll)
@@ -73,13 +82,13 @@ const Header = ({ headerBgColour }) => {
             </div>
 
             <div className="flex flex-row justify-between items-center ml-1">
-                <Link to="/">
+                <Link to="/" className="hidden sm:block">
                     <img
                         className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
                         src={HomeImg}
                     ></img>
                 </Link>
-                <Link to="/library">
+                <Link to="/library" className="hidden sm:block">
                     <img
                         className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
                         src={LibraryImg}
@@ -91,6 +100,16 @@ const Header = ({ headerBgColour }) => {
                         src={CartImg}
                     ></img>
                 </Link>
+                <button
+                    onClick={() => {
+                        toggleHamburgerMenuOn()
+                    }}
+                >
+                    <img
+                        className="w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                        src={HamburgerMenuImg}
+                    ></img>
+                </button>
             </div>
         </div>
     )
