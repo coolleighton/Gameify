@@ -14,10 +14,6 @@
     object-fit: cover;
 }
 
-.mainDiv {
-    height: 80vh;
-}
-
 @media all and (max-width: 360px) {
     .portfolioLinks {
         flex-direction: column;

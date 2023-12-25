@@ -1,4 +1,4 @@
-import '../Buttons/LibraryButton.css'
+import './LibraryButton.css'
 
 const LibraryButton = ({ whiteIcon, blackIcon, text }) => {
     // handles when the mouse enters the button

@@ -1,6 +1,6 @@
-import Skyrim from '../assets/skyrim.jpg'
-import WindowsWhiteImg from '../assets/WindowsWhiteImg.png'
-import XboxWhiteImg from '../assets/XboxWhiteImg.png'
+import Skyrim from '../../assets/skyrim.jpg'
+import WindowsWhiteImg from '../../assets/WindowsWhiteImg.png'
+import XboxWhiteImg from '../../assets/XboxWhiteImg.png'
 
 const GameCard = () => {
     return (

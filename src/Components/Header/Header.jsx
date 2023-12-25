@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import '../ComponentStyles/Header.css'
-import Logo from '../assets/GameifyLogo.png'
-import SearchImg from '../assets/SearchImg.png'
-import CartImg from '../assets/CartImg.png'
-import LibraryImg from '../assets/LibraryImg.png'
-import HomeImg from '../assets/HomeImg.png'
+import './Header.css'
+import Logo from '../../assets/GameifyLogo.png'
+import SearchImg from '../../assets/SearchImg.png'
+import CartImg from '../../assets/CartImg.png'
+import LibraryImg from '../../assets/LibraryImg.png'
+import HomeImg from '../../assets/HomeImg.png'
 
 const Header = ({ headerBgColour }) => {
     const doc = document.documentElement

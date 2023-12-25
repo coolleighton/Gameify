@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './Components/Home.jsx'
-import Library from './Components/Library.jsx'
+import Home from './Components/Home/Home.jsx'
+import Library from './Components/Library/LibraryPage/Library.jsx'
 import ErrorPage from './Components/ErrorPage.jsx'
 
 const Router = () => {

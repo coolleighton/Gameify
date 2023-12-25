@@ -1,10 +1,10 @@
-import '../ComponentStyles/Home.css'
-import GetRawgData from './GetRawgData.jsx'
-import Background from '../assets/Background.mp4'
-import Header from './Header.jsx'
-import GithubImg from '../assets/GithubImg.png'
-import PortfolioImg from '../assets/PortfolioImg.png'
-import LibraryImg from '../assets/DarkLibraryImg.png'
+import '../Home/Home.css'
+import GetRawgData from '../GetRawgData.jsx'
+import Background from '../../assets/Background.mp4'
+import Header from '../Header/Header.jsx'
+import GithubImg from '../../assets/GithubImg.png'
+import PortfolioImg from '../../assets/PortfolioImg.png'
+import LibraryImg from '../../assets/DarkLibraryImg.png'
 
 const Home = () => {
     GetRawgData()
@@ -13,7 +13,7 @@ const Home = () => {
         <div>
             <Header headerBgColour={'#FF'}></Header>
 
-            <div className="mainDiv flex flex-col mx-auto max-w-lg sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
+            <div className="flex flex-col mx-auto max-w-lg h-[100vh] sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
                 <div className="sm:max-w-lg sm:ml-5">
                     <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
                         <h1 className="break-words text-5xl sm:text-7xl font-extrabold pb-5">
