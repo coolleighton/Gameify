@@ -9,8 +9,7 @@ const GetRawgData = () => {
 
     useEffect(() => {
         // declare API URL
-        const ApiUrl =
-            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf'
+        const ApiUrl = 'https://api.rawg.io/api/games?key=XXXXX'
 
         try {
             // function that will fetch data and set 'ApiData' with that data
