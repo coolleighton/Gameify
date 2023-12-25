@@ -6,9 +6,55 @@ import CartImg from '../assets/CartImg.png'
 import LibraryImg from '../assets/LibraryImg.png'
 import HomeImg from '../assets/HomeImg.png'
 
-const Header = () => {
+const Header = ({ headerBgColour }) => {
+    const doc = document.documentElement
+    const w = window
+
+    let prevScroll = w.scrollY || doc.scrollTop
+    let curScroll
+    let direction = 0
+    let prevDirection = 0
+
+    const checkScroll = function () {
+        curScroll = w.scrollY || doc.scrollTop
+        if (curScroll > prevScroll) {
+            direction = 2
+        } else if (curScroll < prevScroll) {
+            direction = 1
+        }
+
+        if (direction !== prevDirection) {
+            toggleHeader(direction, curScroll)
+        }
+
+        prevScroll = curScroll
+    }
+
+    console.log(headerBgColour)
+
+    const toggleHeader = function (direction, curScroll) {
+        if (direction === 2 && curScroll > 50) {
+            document.querySelector('#header').classList.add('hide')
+            document.querySelector('#categoryButtons').style.marginTop =
+                '1.7rem'
+            document.querySelector('#categoryButtons').style.height = '94vh'
+            prevDirection = direction
+        } else if (direction === 1) {
+            document.querySelector('#header').classList.remove('hide')
+            document.querySelector('#categoryButtons').style.marginTop = '6rem'
+            document.querySelector('#categoryButtons').style.height = '87vh'
+            prevDirection = direction
+        }
+    }
+
+    window.addEventListener('scroll', checkScroll)
+
     return (
-        <div className="px-5 py-5 flex flex-row items-center justify-between sm:px-7">
+        <div
+            id="header"
+            className="px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full"
+            style={{ backgroundColor: headerBgColour }}
+        >
             <Link to="/">
                 <div className="mr-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
                     <img className="w-12 sm:mr-4" src={Logo}></img>

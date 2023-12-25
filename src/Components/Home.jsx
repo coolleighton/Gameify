@@ -11,7 +11,7 @@ const Home = () => {
 
     return (
         <div>
-            <Header></Header>
+            <Header headerBgColour={'#FF'}></Header>
 
             <div className="mainDiv flex flex-col mx-auto max-w-lg sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
                 <div className="sm:max-w-lg sm:ml-5">

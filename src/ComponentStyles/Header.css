@@ -1,5 +1,15 @@
+#header {
+    z-index: 100;
+    transition: 0.5s;
+}
+
 .searchBar {
     width: 40%;
+}
+
+.hide {
+    transform: translateY(-100px);
+    transition: 0.5s;
 }
 
 @media (min-width: 764px) {

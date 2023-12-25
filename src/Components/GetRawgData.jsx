@@ -1,4 +1,4 @@
-// API URL 561d4b7435f64843bd5c65f0b931d7bf
+// API URL
 
 import { useState } from 'react'
 import { useEffect } from 'react'
