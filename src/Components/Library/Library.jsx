@@ -2,6 +2,9 @@ import Header from '../Header/Header.jsx'
 import GamesSection from './LibraryComponents/GamesSection.jsx'
 import CategoryButtonsSection from './LibraryComponents/CategoryButtonsSection.jsx'
 import MobileMenu from '../MobileMenu/MobileMenu.jsx'
+import GetRawgData from '../../Components/GetRawgData.jsx'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const Library = () => {
     return (
@@ -16,5 +19,4 @@ const Library = () => {
         </div>
     )
 }
-// grid grid-cols-2 gap-8 grid-cols-[auto_auto]
 export default Library

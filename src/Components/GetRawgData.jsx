@@ -9,14 +9,30 @@ const GetRawgData = () => {
 
     useEffect(() => {
         // declare API URL
-        const ApiUrl = 'https://api.rawg.io/api/games?key=XXXXX'
+        const ApiUrl =
+            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf'
 
         try {
-            // function that will fetch data and set 'ApiData' with that data
+            // function that will fetch data, change it abit and set 'ApiData' with that data
             const fetchData = async () => {
+                // wait for fetch of data
                 const response = await fetch(ApiUrl)
+
+                // wait for data then turn into JSON
                 const data = await response.json()
-                setApiData(data)
+
+                // create a new array with only the data we need
+                let displayData = []
+                const dataResult = data.results
+                displayData = dataResult.map((item) => {
+                    return {
+                        name: item.name,
+                        image: item.background_image,
+                        platforms: item.platforms,
+                    }
+                })
+
+                setApiData(displayData)
             }
 
             // calls fetchData Function
