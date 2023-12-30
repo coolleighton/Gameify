@@ -17,10 +17,11 @@ const GameCard = ({ cardData }) => {
                     </p>
                 </div>
 
-                <div className="flex my-3">
+                <div className="flex mt-4 mb-3">
                     {cardData.platforms.map((item) => {
                         return (
                             <PlatformImg
+                                key={item.platform.slug}
                                 platform={item.platform.slug}
                             ></PlatformImg>
                         )
