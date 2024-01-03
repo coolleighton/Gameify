@@ -8,6 +8,7 @@ import { useState } from 'react'
 const Library = () => {
     const [ApiData, setApiData] = useState([])
     const [gameGenre, setGameGenre] = useState('')
+    const [gamePlatform, setGamePlatform] = useState('')
     const [searchAmount, setSearchAmount] = useState(12)
     const [heading, setHeading] = useState('All games')
 
@@ -19,12 +20,28 @@ const Library = () => {
         setSearchAmount(newSearchAmount)
     }
 
-    // handle what games we want to display from the API
+    // handle what games we want to display from the API (used for genre search)
     const handleGameGenreChange = (genre, text) => {
         // scroll to the top
         window.scrollTo({ top: 0, behavior: 'smooth' })
         // append the new API url
         setGameGenre('&genres=' + genre)
+        // clear platform search
+        setGamePlatform('')
+        // reset search amount
+        setSearchAmount(12)
+        // append title
+        setHeading(text)
+    }
+
+    // handle what games we want to display from the API (used for platform search)
+    const handleGamePlatformChange = (genre, text) => {
+        // scroll to the top
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        // append the new API url
+        setGamePlatform('&platforms=' + genre)
+        // clear genre search
+        setGameGenre('')
         // reset search amount
         setSearchAmount(12)
         // append title
@@ -37,6 +54,7 @@ const Library = () => {
         let ApiUrl =
             'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf' +
             gameGenre +
+            gamePlatform +
             '&page_size=' +
             searchAmount
 
@@ -69,7 +87,9 @@ const Library = () => {
             // logs error message if error
             console.error('Error fetching data from Rawg:', error)
         }
-    }, [gameGenre, searchAmount])
+
+        console.log(ApiUrl)
+    }, [gameGenre, gamePlatform, searchAmount])
 
     return (
         <div className="relative w-full">
@@ -77,6 +97,7 @@ const Library = () => {
             <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[auto_auto] sm:w-full">
                 <div className="hidden w-64 sm:mr-2 sm:block"></div>
                 <CategoryButtonsSection
+                    handlePlatformClick={handleGamePlatformChange}
                     handleCategoryClick={handleGameGenreChange}
                 ></CategoryButtonsSection>
                 <GamesSection

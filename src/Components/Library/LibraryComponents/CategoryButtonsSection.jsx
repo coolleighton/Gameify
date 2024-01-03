@@ -81,7 +81,10 @@ import SimBlackImg from '../../../assets/GenreImages/SimBlackImg.png'
 import StrategyWhiteImg from '../../../assets/GenreImages/StrategyWhiteImg.png'
 import StrategyBlackImg from '../../../assets/GenreImages/StrategyBlackImg.png'
 
-const CategoryButtonsSection = ({ handleCategoryClick }) => {
+const CategoryButtonsSection = ({
+    handleCategoryClick,
+    handlePlatformClick,
+}) => {
     return (
         <div
             id="categoryButtons"
@@ -99,60 +102,45 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
             <StandardLinkButton
                 whiteIcon={WindowsWhiteImg}
                 blackIcon={WindowsBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Windows"
-                genre="Windows"
+                genre="1"
             ></StandardLinkButton>
             <StandardLinkButton
                 whiteIcon={LinuxWhiteImg}
                 blackIcon={LinuxBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Linux"
-                genre="linux"
+                genre="6"
             ></StandardLinkButton>
             <StandardLinkButton
                 whiteIcon={MacWhiteImg}
                 blackIcon={MacBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Mac OS"
-                genre="macos"
+                genre="5"
             ></StandardLinkButton>
             <StandardLinkButton
                 whiteIcon={PlaystationWhiteImg}
                 blackIcon={PlaystationBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Playstation"
-                genre="playstation"
+                genre="2"
             ></StandardLinkButton>
             <StandardLinkButton
                 whiteIcon={XboxWhiteImg}
                 blackIcon={XboxBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Xbox"
-                genre="xbox"
+                genre="3"
             ></StandardLinkButton>
             <StandardLinkButton
                 whiteIcon={NintendoWhiteImg}
                 blackIcon={NintendoBlackImg}
-                handleClick={handleCategoryClick}
+                handleClick={handlePlatformClick}
                 text="Nintendo"
-                genre="nintendo"
+                genre="7"
             ></StandardLinkButton>
-            <StandardLinkButton
-                whiteIcon={AndroidWhiteImg}
-                blackIcon={AndroidBlackImg}
-                handleClick={handleCategoryClick}
-                text="Android"
-                genre="android"
-            ></StandardLinkButton>
-            <StandardLinkButton
-                whiteIcon={IosWhiteImg}
-                blackIcon={IosBlackImg}
-                handleClick={handleCategoryClick}
-                text="IOS"
-                genre="ios"
-            ></StandardLinkButton>
-
             <h1 className="text-3xl font-bold mt-6 mb-2">Genres</h1>
             <StandardLinkButton
                 whiteIcon={ActionWhiteImg}
