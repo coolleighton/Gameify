@@ -1,6 +1,7 @@
 import GameCard from './GamesComponents/GameCard'
+import Loading from './GamesComponents/Loading/Loading'
 
-const GamesSection = ({ gamesData, heading }) => {
+const GamesSection = ({ gamesData, heading, handleLoadMore, searchAmount }) => {
     return (
         <div className="rounded-2xl mt-24 sm:mr-7">
             <h1 className="font-extrabold text-7xl mb-8">{heading}</h1>
@@ -9,6 +10,10 @@ const GamesSection = ({ gamesData, heading }) => {
                     return <GameCard key={item.name} cardData={item}></GameCard>
                 })}
             </div>
+            <Loading
+                searchAmount={searchAmount}
+                handleLoadMore={handleLoadMore}
+            ></Loading>
         </div>
     )
 }

@@ -32,7 +32,7 @@ const StandardLinkButton = ({
             onClick={() => handleClick(genre, text)}
         >
             <img
-                className="categoryButtonImg w-11 p-2 bg-gray-500 bg-opacity-30 rounded-md duration-500"
+                className="categoryButtonImg w-11 p-2 bg-gray-500 bg-opacity-40 rounded-md duration-500"
                 style={style}
                 src={whiteIcon}
             ></img>

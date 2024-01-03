@@ -2,31 +2,43 @@ import Header from '../Header/Header.jsx'
 import GamesSection from './LibraryComponents/GamesSection.jsx'
 import CategoryButtonsSection from './LibraryComponents/CategoryButtonsSection.jsx'
 import MobileMenu from '../MobileMenu/MobileMenu.jsx'
-import GetRawgData from '../../Components/GetRawgData.jsx'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Library = () => {
     const [ApiData, setApiData] = useState([])
     const [gameGenre, setGameGenre] = useState('')
+    const [searchAmount, setSearchAmount] = useState(12)
     const [heading, setHeading] = useState('All games')
+
+    // handle when user has scrolled to bottom of the games section and increase search amount
+    const increaseSearchAmount = (amount) => {
+        // add 20 to current search amount
+        let newSearchAmount = amount + 4
+        // set search amount state to the new amount
+        setSearchAmount(newSearchAmount)
+    }
 
     // handle what games we want to display from the API
     const handleGameGenreChange = (genre, text) => {
+        // scroll to the top
+        window.scrollTo({ top: 0, behavior: 'smooth' })
         // append the new API url
         setGameGenre('&genres=' + genre)
-
+        // reset search amount
+        setSearchAmount(12)
         // append title
         setHeading(text)
-
-        console.log('genre set to ' + text)
     }
 
     useEffect(() => {
         // declare API URL
+
         let ApiUrl =
             'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf' +
-            gameGenre
+            gameGenre +
+            '&page_size=' +
+            searchAmount
 
         try {
             // function that will fetch data, change it abit and set 'ApiData' with that data
@@ -57,7 +69,7 @@ const Library = () => {
             // logs error message if error
             console.error('Error fetching data from Rawg:', error)
         }
-    }, [gameGenre])
+    }, [gameGenre, searchAmount])
 
     return (
         <div className="relative w-full">
@@ -68,6 +80,8 @@ const Library = () => {
                     handleCategoryClick={handleGameGenreChange}
                 ></CategoryButtonsSection>
                 <GamesSection
+                    handleLoadMore={increaseSearchAmount}
+                    searchAmount={searchAmount}
                     heading={heading}
                     gamesData={ApiData}
                 ></GamesSection>

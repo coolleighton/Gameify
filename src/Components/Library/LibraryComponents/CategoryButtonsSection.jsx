@@ -2,10 +2,30 @@ import StandardLinkButton from '../../StandardLinkButton/StandardLinkButton'
 
 import GridWhiteImg from '../../../assets/GridWhiteImg.png'
 import GridBlackImg from '../../../assets/GridBlackImg.png'
-import WindowsWhiteImg from '../../../assets/WindowsWhiteImg.png'
-import WindowsBlackImg from '../../../assets/WindowsBlackImg.png'
-import XboxWhiteImg from '../../../assets/XboxWhiteImg.png'
-import XboxBlackImg from '../../../assets/XboxBlackImg.png'
+
+import WindowsWhiteImg from '../../../assets/PlatformImages/WindowsWhiteImg.png'
+import WindowsBlackImg from '../../../assets/PlatformImages/WindowsBlackImg.png'
+
+import LinuxWhiteImg from '../../../assets/PlatformImages/LinuxWhiteImg.png'
+import LinuxBlackImg from '../../../assets/PlatformImages/LinuxBlackImg.png'
+
+import MacWhiteImg from '../../../assets/PlatformImages/MacWhiteImg.png'
+import MacBlackImg from '../../../assets/PlatformImages/MacBlackImg.png'
+
+import PlaystationWhiteImg from '../../../assets/PlatformImages/PlaystationWhiteImg.png'
+import PlaystationBlackImg from '../../../assets/PlatformImages/PlaystationBlackImg.png'
+
+import XboxWhiteImg from '../../../assets/PlatformImages/XboxWhiteImg.png'
+import XboxBlackImg from '../../../assets/PlatformImages/XboxBlackImg.png'
+
+import NintendoWhiteImg from '../../../assets/PlatformImages/NintendoWhiteImg.png'
+import NintendoBlackImg from '../../../assets/PlatformImages/NintendoBlackImg.png'
+
+import AndroidWhiteImg from '../../../assets/PlatformImages/AndroidWhiteImg.png'
+import AndroidBlackImg from '../../../assets/PlatformImages/AndroidBlackImg.png'
+
+import IosWhiteImg from '../../../assets/PlatformImages/IosWhiteImg.png'
+import IosBlackImg from '../../../assets/PlatformImages/IosBlackImg.png'
 
 import ActionWhiteImg from '../../../assets/GenreImages/ActionWhiteImg.png'
 import ActionBlackImg from '../../../assets/GenreImages/ActionBlackImg.png'
@@ -65,7 +85,7 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
     return (
         <div
             id="categoryButtons"
-            className="hidden sm:block bg-gray-500 bg-opacity-10 w-52 px-4 py-2 rounded-2xl h-[87vh] overflow-auto no-scrollbar fixed mt-24 duration-500 ml-7"
+            className="hidden sm:block bg-gray-500 bg-opacity-20 w-52 px-4 py-2 rounded-2xl h-[87vh] overflow-auto no-scrollbar fixed mt-24 duration-500 ml-7"
         >
             <h1 className="text-3xl font-bold mb-2">Your Games</h1>
             <StandardLinkButton
@@ -77,28 +97,60 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
 
             <h1 className="text-3xl font-bold mt-6 mb-2">Platforms</h1>
             <StandardLinkButton
-                whiteIcon={GridWhiteImg}
-                blackIcon={GridBlackImg}
-                text="Added Games"
+                whiteIcon={WindowsWhiteImg}
+                blackIcon={WindowsBlackImg}
                 handleClick={handleCategoryClick}
+                text="Windows"
+                genre="Windows"
             ></StandardLinkButton>
             <StandardLinkButton
-                whiteIcon={GridWhiteImg}
-                blackIcon={GridBlackImg}
-                text="Added Games"
+                whiteIcon={LinuxWhiteImg}
+                blackIcon={LinuxBlackImg}
                 handleClick={handleCategoryClick}
+                text="Linux"
+                genre="linux"
             ></StandardLinkButton>
             <StandardLinkButton
-                whiteIcon={GridWhiteImg}
-                blackIcon={GridBlackImg}
-                text="Added Games"
+                whiteIcon={MacWhiteImg}
+                blackIcon={MacBlackImg}
                 handleClick={handleCategoryClick}
+                text="Mac OS"
+                genre="macos"
             ></StandardLinkButton>
             <StandardLinkButton
-                whiteIcon={GridWhiteImg}
-                blackIcon={GridBlackImg}
-                text="Added Games"
+                whiteIcon={PlaystationWhiteImg}
+                blackIcon={PlaystationBlackImg}
                 handleClick={handleCategoryClick}
+                text="Playstation"
+                genre="playstation"
+            ></StandardLinkButton>
+            <StandardLinkButton
+                whiteIcon={XboxWhiteImg}
+                blackIcon={XboxBlackImg}
+                handleClick={handleCategoryClick}
+                text="Xbox"
+                genre="xbox"
+            ></StandardLinkButton>
+            <StandardLinkButton
+                whiteIcon={NintendoWhiteImg}
+                blackIcon={NintendoBlackImg}
+                handleClick={handleCategoryClick}
+                text="Nintendo"
+                genre="nintendo"
+            ></StandardLinkButton>
+            <StandardLinkButton
+                whiteIcon={AndroidWhiteImg}
+                blackIcon={AndroidBlackImg}
+                handleClick={handleCategoryClick}
+                text="Android"
+                genre="android"
+            ></StandardLinkButton>
+            <StandardLinkButton
+                whiteIcon={IosWhiteImg}
+                blackIcon={IosBlackImg}
+                handleClick={handleCategoryClick}
+                text="IOS"
+                genre="ios"
             ></StandardLinkButton>
 
             <h1 className="text-3xl font-bold mt-6 mb-2">Genres</h1>

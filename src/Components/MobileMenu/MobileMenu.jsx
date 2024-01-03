@@ -1,12 +1,12 @@
 import LibraryButton from '../StandardLinkButton/StandardLinkButton'
 import './MobileMenu.css'
 
-import WindowsWhiteImg from '../../assets/WindowsWhiteImg.png'
-import WindowsBlackImg from '../../assets/WindowsBlackImg.png'
+import WindowsWhiteImg from '../../assets/PlatformImages/WindowsWhiteImg.png'
+import WindowsBlackImg from '../../assets/PlatformImages/WindowsBlackImg.png'
 import GridWhiteImg from '../../assets/GridWhiteImg.png'
 import GridBlackImg from '../../assets/GridBlackImg.png'
-import XboxWhiteImg from '../../assets/XboxWhiteImg.png'
-import XboxBlackImg from '../../assets/XboxBlackImg.png'
+import XboxWhiteImg from '../../assets/PlatformImages/XboxWhiteImg.png'
+import XboxBlackImg from '../../assets/PlatformImages/XboxBlackImg.png'
 import ActionWhiteImg from '../../assets/GenreImages/ActionWhiteImg.png'
 import ActionBlackImg from '../../assets/GenreImages/ActionBlackImg.png'
 
