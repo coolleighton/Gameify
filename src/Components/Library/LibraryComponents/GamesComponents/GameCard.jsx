@@ -21,7 +21,7 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
                     <button
                         onClick={() => handleAddToCart(cardData.name)}
                         className="px-2 py-1 w-36 rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200"
-                        style={{ color: active ? 'orange' : 'white' }}
+                        style={{ color: active ? '#FF8B1B' : 'white' }}
                     >
                         {active ? 'Added' : 'Add to cart +'}
                     </button>
@@ -40,7 +40,9 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
                         )
                     })}
                 </div>
-                <h2 className="text-xl font-bold">{cardData.name}</h2>
+                <h2 className="leading-none text-2xl font-bold">
+                    {cardData.name}
+                </h2>
             </div>
         </div>
     )

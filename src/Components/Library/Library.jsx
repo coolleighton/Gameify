@@ -2,6 +2,7 @@ import Header from '../Header/Header.jsx'
 import GamesSection from './LibraryComponents/GamesSection.jsx'
 import CategoryButtonsSection from './LibraryComponents/CategoryButtonsSection.jsx'
 import MobileMenu from '../MobileMenu/MobileMenu.jsx'
+import Cart from './LibraryComponents/Cart.jsx'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
@@ -31,6 +32,13 @@ const Library = () => {
         window.localStorage.setItem('storedCart', JSON.stringify(newCart))
     }
 
+    // handle when a user wants to clear the cart
+    const clearCart = () => {
+        const clearedCart = []
+        setCart(clearedCart)
+        window.localStorage.setItem('storedCart', JSON.stringify(clearedCart))
+    }
+
     // handle when user has scrolled to bottom of the games section and increase search amount
     const increaseSearchAmount = (amount) => {
         let newSearchAmount = amount + 4
@@ -56,7 +64,7 @@ const Library = () => {
         // scroll to the top
         window.scrollTo({ top: 0, behavior: 'smooth' })
         // append the new API url
-        setGamePlatform('&platforms=' + genre)
+        setGamePlatform('&parent_platforms=' + genre)
         // clear genre search
         setGameGenre('')
         // reset search amount
@@ -76,16 +84,14 @@ const Library = () => {
             searchAmount
 
         try {
-            // function that will fetch data, change it abit and set 'ApiData' with that data
+            // function that will fetch data, keep what we need and set 'ApiData' with that data
             const fetchData = async () => {
-                // wait for fetch of data
                 const response = await fetch(ApiUrl)
-
-                // wait for data then turn into JSON
                 const data = await response.json()
+                const dataResult = data.results
+
                 // create a new array with only the data we need
                 let displayData = []
-                const dataResult = data.results
                 displayData = dataResult.map((item) => {
                     return {
                         name: item.name,
@@ -96,11 +102,8 @@ const Library = () => {
 
                 setApiData(displayData)
             }
-
-            // calls fetchData Function
             fetchData()
         } catch (error) {
-            // logs error message if error
             console.error('Error fetching data from Rawg:', error)
         }
     }, [gameGenre, gamePlatform, searchAmount])
@@ -124,6 +127,7 @@ const Library = () => {
                 ></GamesSection>
             </div>
             <MobileMenu></MobileMenu>
+            <Cart cart={cart} clearCart={clearCart}></Cart>
         </div>
     )
 }

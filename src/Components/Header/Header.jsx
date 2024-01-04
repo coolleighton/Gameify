@@ -56,6 +56,19 @@ const Header = ({ headerBgColour }) => {
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
+    const toggleCartOn = async () => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        document.querySelector('#Cart').style.display = 'block'
+
+        await delay(0)
+        document.querySelector('#Cart').style.opacity = '1'
+
+        // stop user from scrolling the body
+        document.querySelector('body').style.position = 'fixed'
+        document.querySelector('body').style.overflowY = 'scroll'
+    }
+
     window.addEventListener('scroll', checkScroll)
 
     return (
@@ -94,7 +107,7 @@ const Header = ({ headerBgColour }) => {
                         src={LibraryImg}
                     ></img>
                 </Link>
-                <Link to="/library">
+                <Link onClick={() => toggleCartOn()} to="/library">
                     <img
                         className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
                         src={CartImg}
