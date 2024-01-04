@@ -21,12 +21,6 @@ import XboxBlackImg from '../../../assets/PlatformImages/XboxBlackImg.png'
 import NintendoWhiteImg from '../../../assets/PlatformImages/NintendoWhiteImg.png'
 import NintendoBlackImg from '../../../assets/PlatformImages/NintendoBlackImg.png'
 
-import AndroidWhiteImg from '../../../assets/PlatformImages/AndroidWhiteImg.png'
-import AndroidBlackImg from '../../../assets/PlatformImages/AndroidBlackImg.png'
-
-import IosWhiteImg from '../../../assets/PlatformImages/IosWhiteImg.png'
-import IosBlackImg from '../../../assets/PlatformImages/IosBlackImg.png'
-
 import ActionWhiteImg from '../../../assets/GenreImages/ActionWhiteImg.png'
 import ActionBlackImg from '../../../assets/GenreImages/ActionBlackImg.png'
 

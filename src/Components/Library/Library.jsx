@@ -11,12 +11,29 @@ const Library = () => {
     const [gamePlatform, setGamePlatform] = useState('')
     const [searchAmount, setSearchAmount] = useState(12)
     const [heading, setHeading] = useState('All games')
+    const [cart, setCart] = useState([])
+
+    // load cart data from local storage
+    useEffect(() => {
+        let storedData = JSON.parse(localStorage.getItem('storedCart'))
+        // if null set to '[]'
+        if (!storedData) {
+            storedData = []
+        }
+        setCart(storedData)
+    }, [])
+
+    // handle when a user adds an item to the cart
+    const handleAddToCart = (id) => {
+        const object = ApiData.find((obj) => obj.name === id)
+        const newCart = [...cart, object]
+        setCart(newCart)
+        window.localStorage.setItem('storedCart', JSON.stringify(newCart))
+    }
 
     // handle when user has scrolled to bottom of the games section and increase search amount
     const increaseSearchAmount = (amount) => {
-        // add 20 to current search amount
         let newSearchAmount = amount + 4
-        // set search amount state to the new amount
         setSearchAmount(newSearchAmount)
     }
 
@@ -66,7 +83,6 @@ const Library = () => {
 
                 // wait for data then turn into JSON
                 const data = await response.json()
-
                 // create a new array with only the data we need
                 let displayData = []
                 const dataResult = data.results
@@ -87,24 +103,24 @@ const Library = () => {
             // logs error message if error
             console.error('Error fetching data from Rawg:', error)
         }
-
-        console.log(ApiUrl)
     }, [gameGenre, gamePlatform, searchAmount])
 
     return (
         <div className="relative w-full">
             <Header headerBgColour={'#04020b'}></Header>
-            <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[auto_auto] sm:w-full">
+            <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-64 sm:mr-2 sm:block"></div>
                 <CategoryButtonsSection
                     handlePlatformClick={handleGamePlatformChange}
                     handleCategoryClick={handleGameGenreChange}
                 ></CategoryButtonsSection>
                 <GamesSection
+                    handleAddToCart={handleAddToCart}
                     handleLoadMore={increaseSearchAmount}
                     searchAmount={searchAmount}
                     heading={heading}
                     gamesData={ApiData}
+                    cart={cart}
                 ></GamesSection>
             </div>
             <MobileMenu></MobileMenu>
