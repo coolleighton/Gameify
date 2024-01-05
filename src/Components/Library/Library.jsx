@@ -110,7 +110,7 @@ const Library = () => {
 
     return (
         <div className="relative w-full">
-            <Header headerBgColour={'#04020b'}></Header>
+            <Header headerBgColour={'#04020b'} cart={cart}></Header>
             <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-64 sm:mr-2 sm:block"></div>
                 <CategoryButtonsSection

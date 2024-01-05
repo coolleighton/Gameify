@@ -1,14 +1,25 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './Header.css'
-import MobileMenu from '../MobileMenu/MobileMenu'
 import Logo from '../../assets/GameifyLogo.png'
 import SearchImg from '../../assets/SearchImg.png'
 import CartImg from '../../assets/CartImg.png'
 import LibraryImg from '../../assets/LibraryImg.png'
 import HomeImg from '../../assets/HomeImg.png'
 import HamburgerMenuImg from '../../assets/HamburgerMenuImg.png'
+import CartActiveImg from '../../assets/CartActiveImg.png'
 
-const Header = ({ headerBgColour }) => {
+const Header = ({ headerBgColour, cart }) => {
+    const [cartActive, setCartActive] = useState(false)
+
+    useEffect(() => {
+        if (cart.length > 0) {
+            setCartActive(true)
+        } else {
+            setCartActive(false)
+        }
+    }, [cart])
+
     const doc = document.documentElement
     const w = window
 
@@ -107,10 +118,19 @@ const Header = ({ headerBgColour }) => {
                         src={LibraryImg}
                     ></img>
                 </Link>
-                <Link onClick={() => toggleCartOn()} to="/library">
+                <Link
+                    className="relative hover:scale-125 duration-200"
+                    onClick={() => toggleCartOn()}
+                    to="/library"
+                >
                     <img
-                        className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                        className=" w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
                         src={CartImg}
+                    ></img>
+                    <img
+                        className="opacity-0 absolute top-0 right-0 w-3 h-3 duration-200"
+                        src={CartActiveImg}
+                        style={{ opacity: cartActive ? '1' : '0' }}
                     ></img>
                 </Link>
                 <button

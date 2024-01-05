@@ -21,7 +21,9 @@ const Cart = ({ cart, clearCart }) => {
             <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-2/12 z-50">
                 <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-2/12">
                     <div className="flex justify-between pt-8 pb-4 px-8">
-                        <h2 className="text-2xl font-bold">4 Games</h2>
+                        <h2 className="text-2xl font-bold">
+                            {cart.length} Games
+                        </h2>
                         <button onClick={() => toggleCartOff()}>
                             <img className="w-8" src={CloseImgWhite}></img>
                         </button>
@@ -29,20 +31,42 @@ const Cart = ({ cart, clearCart }) => {
                     <div className="h-[80vh] top-20 absolute overflow-y-scroll no-scrollbar mx-8">
                         {cart.map((item) => {
                             return (
-                                <div className="bg-gray-500 bg-opacity-20 my-5 rounded-xl ">
+                                <div
+                                    key={item.name}
+                                    className="bg-gray-500 bg-opacity-20 my-5 rounded-xl "
+                                >
                                     <img
                                         className="rounded-t-xl"
                                         src={item.image}
                                     ></img>
-                                    <div className="p-2">
+                                    <div className="p-4">
                                         <p>{item.name}</p>
+                                        <div className="flex justify-between mt-2">
+                                            <p className="">£12.99</p>
+                                            <button>
+                                                <img
+                                                    className="w-5 h-5"
+                                                    src={CloseImgWhite}
+                                                ></img>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                         })}
                     </div>
                     <div>
-                        <button onClick={() => clearCart()}>Clear</button>
+                        <div className="flex justify-between pb-8 pb-t px-8">
+                            <p className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl">
+                                £199.98
+                            </p>
+                            <button
+                                className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
+                                onClick={() => clearCart()}
+                            >
+                                Clear
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
