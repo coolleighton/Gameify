@@ -118,10 +118,9 @@ const Header = ({ headerBgColour, cart }) => {
                         src={LibraryImg}
                     ></img>
                 </Link>
-                <Link
+                <button
                     className="relative hover:scale-125 duration-200"
                     onClick={() => toggleCartOn()}
-                    to="/library"
                 >
                     <img
                         className=" w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
@@ -132,7 +131,7 @@ const Header = ({ headerBgColour, cart }) => {
                         src={CartActiveImg}
                         style={{ opacity: cartActive ? '1' : '0' }}
                     ></img>
-                </Link>
+                </button>
                 <button
                     onClick={() => {
                         toggleHamburgerMenuOn()

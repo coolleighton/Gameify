@@ -19,14 +19,14 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
             <div className="p-4">
                 <div className="flex justify-between">
                     <button
-                        onClick={() => handleAddToCart(cardData.name)}
+                        onClick={() => handleAddToCart(cardData.name, active)}
                         className="px-2 py-1 w-36 rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200"
                         style={{ color: active ? '#FF8B1B' : 'white' }}
                     >
                         {active ? 'Added' : 'Add to cart +'}
                     </button>
-                    <p className="text-center px-2 py-1 w-24 rounded-lg bg-gray-500 bg-opacity-30">
-                        £9.99
+                    <p className="text-center px-2 py-1 ml-2 w-24 rounded-lg bg-gray-500 bg-opacity-30">
+                        £{cardData.price}
                     </p>
                 </div>
 

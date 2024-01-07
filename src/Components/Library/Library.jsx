@@ -6,37 +6,73 @@ import Cart from './LibraryComponents/Cart.jsx'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const Library = () => {
-    const [ApiData, setApiData] = useState([])
+const Library = ({
+    cart,
+    clearCart,
+    setApiData,
+    setCart,
+    ApiData,
+    removeItemFromCart,
+}) => {
     const [gameGenre, setGameGenre] = useState('')
     const [gamePlatform, setGamePlatform] = useState('')
     const [searchAmount, setSearchAmount] = useState(12)
     const [heading, setHeading] = useState('All games')
-    const [cart, setCart] = useState([])
 
-    // load cart data from local storage
-    useEffect(() => {
-        let storedData = JSON.parse(localStorage.getItem('storedCart'))
-        // if null set to '[]'
-        if (!storedData) {
-            storedData = []
+    // return a price based on what the first letter of game name (doing random prices each time changes price on re render)
+    const generateRandomPrice = (name) => {
+        const myArray = [
+            '4.99',
+            '9.99',
+            '14.99',
+            '19.98',
+            '24.50',
+            '29.97',
+            '35',
+            '40',
+            '45',
+            '59.99',
+        ]
+
+        const firstLetter = name.charAt(0).toLowerCase()
+
+        if (['a', 'b', 'c'].includes(firstLetter)) {
+            return myArray[0]
         }
-        setCart(storedData)
-    }, [])
 
-    // handle when a user adds an item to the cart
-    const handleAddToCart = (id) => {
-        const object = ApiData.find((obj) => obj.name === id)
-        const newCart = [...cart, object]
-        setCart(newCart)
-        window.localStorage.setItem('storedCart', JSON.stringify(newCart))
-    }
+        if (['d', 'e', 'f'].includes(firstLetter)) {
+            return myArray[1]
+        }
 
-    // handle when a user wants to clear the cart
-    const clearCart = () => {
-        const clearedCart = []
-        setCart(clearedCart)
-        window.localStorage.setItem('storedCart', JSON.stringify(clearedCart))
+        if (['g', 'h', 'i'].includes(firstLetter)) {
+            return myArray[2]
+        }
+
+        if (['j', 'k', 'l'].includes(firstLetter)) {
+            return myArray[3]
+        }
+
+        if (['m', 'n', 'o'].includes(firstLetter)) {
+            return myArray[4]
+        }
+
+        if (['p', 'q', 'r'].includes(firstLetter)) {
+            return myArray[5]
+        }
+
+        if (['s', 't', 'u'].includes(firstLetter)) {
+            return myArray[6]
+        }
+
+        if (['v', 'w', 'x'].includes(firstLetter)) {
+            return myArray[7]
+        }
+
+        if (['y', 'z'].includes(firstLetter)) {
+            return myArray[8]
+        } else {
+            return myArray[9]
+        }
     }
 
     // handle when user has scrolled to bottom of the games section and increase search amount
@@ -73,6 +109,16 @@ const Library = () => {
         setHeading(text)
     }
 
+    // handle when a user adds an item to the cart
+    const handleAddToCart = (id, active) => {
+        if (!active) {
+            const object = ApiData.find((obj) => obj.name === id)
+            const newCart = [...cart, object]
+            setCart(newCart)
+            window.localStorage.setItem('storedCart', JSON.stringify(newCart))
+        }
+    }
+
     useEffect(() => {
         // declare API URL
 
@@ -97,6 +143,7 @@ const Library = () => {
                         name: item.name,
                         image: item.background_image,
                         platforms: item.parent_platforms,
+                        price: generateRandomPrice(item.name),
                     }
                 })
 
@@ -127,7 +174,11 @@ const Library = () => {
                 ></GamesSection>
             </div>
             <MobileMenu></MobileMenu>
-            <Cart cart={cart} clearCart={clearCart}></Cart>
+            <Cart
+                cart={cart}
+                clearCart={clearCart}
+                removeItemFromCart={removeItemFromCart}
+            ></Cart>
         </div>
     )
 }

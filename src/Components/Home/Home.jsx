@@ -1,16 +1,17 @@
 import '../Home/Home.css'
 import Header from '../Header/Header.jsx'
 import MobileMenu from '../MobileMenu/MobileMenu.jsx'
+import Cart from '../Library/LibraryComponents/Cart.jsx'
 
 import Background from '../../assets/Background.mp4'
 import GithubImg from '../../assets/GithubImg.png'
 import PortfolioImg from '../../assets/PortfolioImg.png'
 import LibraryImg from '../../assets/DarkLibraryImg.png'
 
-const Home = () => {
+const Home = ({ cart, clearCart }) => {
     return (
-        <div>
-            <Header headerBgColour={'#FF'}></Header>
+        <div className="fixed inset-0">
+            <Header headerBgColour={'#FF'} cart={cart}></Header>
 
             <div className="flex flex-col mx-auto max-w-lg h-[100vh] sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
                 <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5">
@@ -104,6 +105,7 @@ const Home = () => {
                 </video>
             </div>
             <MobileMenu></MobileMenu>
+            <Cart cart={cart} clearCart={clearCart}></Cart>
         </div>
     )
 }

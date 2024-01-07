@@ -1,6 +1,6 @@
 import CloseImgWhite from '../../../assets/CloseImgWhite.png'
 
-const Cart = ({ cart, clearCart }) => {
+const Cart = ({ cart, clearCart, removeItemFromCart }) => {
     const toggleCartOff = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -13,13 +13,20 @@ const Cart = ({ cart, clearCart }) => {
         document.querySelector('#Cart').style.display = 'none'
     }
 
+    const CalculateTotal = (cart) => {
+        let sum = 0
+        cart.forEach((el) => (sum += Number(el.price)))
+
+        return sum
+    }
+
     return (
         <div
             id="Cart"
             className="hidden opacity-0 fixed w-screen h-screen backdrop-brightness-50 z-50 top-0 right-0 duration-300"
         >
-            <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-2/12 z-50">
-                <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-2/12">
+            <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-10/12 z-50 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
+                <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-10/12 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
                     <div className="flex justify-between pt-8 pb-4 px-8">
                         <h2 className="text-2xl font-bold">
                             {cart.length} Games
@@ -28,7 +35,7 @@ const Cart = ({ cart, clearCart }) => {
                             <img className="w-8" src={CloseImgWhite}></img>
                         </button>
                     </div>
-                    <div className="h-[80vh] top-20 absolute overflow-y-scroll no-scrollbar mx-8">
+                    <div className="h-[76vh] top-20 absolute overflow-y-scroll no-scrollbar mx-8">
                         {cart.map((item) => {
                             return (
                                 <div
@@ -42,11 +49,16 @@ const Cart = ({ cart, clearCart }) => {
                                     <div className="p-4">
                                         <p>{item.name}</p>
                                         <div className="flex justify-between mt-2">
-                                            <p className="">£12.99</p>
+                                            <p className="">£{item.price}</p>
                                             <button>
                                                 <img
                                                     className="w-5 h-5"
                                                     src={CloseImgWhite}
+                                                    onClick={() =>
+                                                        removeItemFromCart(
+                                                            item.name
+                                                        )
+                                                    }
                                                 ></img>
                                             </button>
                                         </div>
@@ -56,12 +68,12 @@ const Cart = ({ cart, clearCart }) => {
                         })}
                     </div>
                     <div>
-                        <div className="flex justify-between pb-8 pb-t px-8">
+                        <div className="flex justify-between pb-8 pb-t px-8 z-50">
                             <p className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl">
-                                £199.98
+                                Total: £{CalculateTotal(cart)}
                             </p>
                             <button
-                                className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
+                                className="bg-gray-500 bg-opacity-40 ml-2 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
                                 onClick={() => clearCart()}
                             >
                                 Clear
