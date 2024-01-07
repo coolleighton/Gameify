@@ -17,7 +17,7 @@ const Cart = ({ cart, clearCart, removeItemFromCart }) => {
         let sum = 0
         cart.forEach((el) => (sum += Number(el.price)))
 
-        return sum
+        return parseFloat(sum).toFixed(2)
     }
 
     return (
