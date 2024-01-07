@@ -43,11 +43,13 @@ const Cart = ({ cart, clearCart, removeItemFromCart }) => {
                                     className="bg-gray-500 bg-opacity-20 my-5 rounded-xl "
                                 >
                                     <img
-                                        className="rounded-t-xl"
+                                        className="rounded-t-xl h-32 w-full object-cover"
                                         src={item.image}
                                     ></img>
                                     <div className="p-4">
-                                        <p>{item.name}</p>
+                                        <p className="font-bold text-lg">
+                                            {item.name}
+                                        </p>
                                         <div className="flex justify-between mt-2">
                                             <p className="">£{item.price}</p>
                                             <button>
