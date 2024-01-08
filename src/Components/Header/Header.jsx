@@ -14,13 +14,13 @@ const Header = ({ headerBgColour, cart }) => {
     const navigate = useNavigate()
 
     const navigateToWithDelay = (location) => {
-        document.querySelector('body').style.transitionDuration = '0.5s'
+        document.querySelector('body').style.transitionDuration = '0.8s'
         document.querySelector('body').style.opacity = '0'
         setTimeout(() => {
             navigate(location)
             document.querySelector('body').style.opacity = '1'
             document.querySelector('body').style.transitionDuration = '0'
-        }, 300)
+        }, 800)
     }
 
     useEffect(() => {
