@@ -46,11 +46,11 @@ const Cart = ({ cart, clearCart, removeItemFromCart }) => {
                                         className="rounded-t-xl h-32 w-full object-cover"
                                         src={item.image}
                                     ></img>
-                                    <div className="p-4">
+                                    <div className="px-4 py-3">
                                         <p className="font-bold text-lg">
                                             {item.name}
                                         </p>
-                                        <div className="flex justify-between mt-2">
+                                        <div className="flex justify-between">
                                             <p className="">£{item.price}</p>
                                             <button>
                                                 <img

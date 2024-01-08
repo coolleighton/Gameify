@@ -2,7 +2,6 @@ import '../Home/Home.css'
 import Header from '../Header/Header.jsx'
 import MobileMenu from '../MobileMenu/MobileMenu.jsx'
 import Cart from '../Library/LibraryComponents/Cart.jsx'
-
 import Background from '../../assets/Background.mp4'
 import GithubImg from '../../assets/GithubImg.png'
 import PortfolioImg from '../../assets/PortfolioImg.png'
