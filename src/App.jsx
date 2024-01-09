@@ -8,6 +8,7 @@ import ErrorPage from './Components/ErrorPage.jsx'
 const App = () => {
     const [cart, setCart] = useState([])
     const [ApiData, setApiData] = useState([])
+    const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
 
     // load cart data from local storage
     useEffect(() => {
@@ -30,6 +31,7 @@ const App = () => {
     const removeItemFromCart = (name) => {
         console.log(name)
         const newArray = cart.filter((item) => item.name !== name)
+        window.localStorage.setItem('storedCart', JSON.stringify(newArray))
         setCart(newArray)
     }
 
@@ -42,11 +44,17 @@ const App = () => {
         authenticate().then(() => {
             const ele = document.querySelector('.pageLoader')
             if (ele) {
+                // tell app loading screen has played and stop the delay
+                setLoadingScreenPlayed(true)
                 // fade out
                 setTimeout(() => {
-                    // remove from DOM
+                    // hide from DOM
                     ele.style.transition = '0.5s'
                     ele.style.opacity = '0'
+                    if (document.querySelector('#backgroundVideo')) {
+                        document.querySelector('#backgroundVideo').play()
+                    }
+
                     setTimeout(() => {
                         // remove from DOM
 
@@ -57,21 +65,14 @@ const App = () => {
         })
     }, [])
 
-    /*window.addEventListener('load', () => {
-        const ele = document.querySelector('.pageLoader')
-        setTimeout(() => {
-            // remove from DOM
-            console.log('loaded')
-            //  ele.style.display = 'none'
-        }, 2000)
-    })*/
-
     const router = createBrowserRouter([
         {
             path: '/',
             element: (
                 <Home
                     cart={cart}
+                    loadingScreenPlayed={loadingScreenPlayed}
+                    setLoadingScreenPlayed={setLoadingScreenPlayed}
                     clearCart={clearCart}
                     removeItemFromCart={removeItemFromCart}
                 />

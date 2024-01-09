@@ -6,8 +6,15 @@ import Background from '../../assets/Background.mp4'
 import GithubImg from '../../assets/GithubImg.png'
 import PortfolioImg from '../../assets/PortfolioImg.png'
 import LibraryImg from '../../assets/DarkLibraryImg.png'
+import { useEffect } from 'react'
 
-const Home = ({ cart, clearCart }) => {
+const Home = ({ cart, clearCart, removeItemFromCart, loadingScreenPlayed }) => {
+    useEffect(() => {
+        if (loadingScreenPlayed) {
+            document.querySelector('#backgroundVideo').play()
+        }
+    }, [])
+
     return (
         <div className="fixed inset-0">
             <Header headerBgColour={'#FF'} cart={cart}></Header>
@@ -99,12 +106,16 @@ const Home = ({ cart, clearCart }) => {
             </div>
 
             <div className="videoContainer">
-                <video autoPlay loop muted>
+                <video id="backgroundVideo" loop muted>
                     <source src={Background} type="video/mp4"></source>
                 </video>
             </div>
             <MobileMenu></MobileMenu>
-            <Cart cart={cart} clearCart={clearCart}></Cart>
+            <Cart
+                cart={cart}
+                clearCart={clearCart}
+                removeItemFromCart={removeItemFromCart}
+            ></Cart>
         </div>
     )
 }
