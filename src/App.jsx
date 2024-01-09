@@ -29,7 +29,6 @@ const App = () => {
 
     // handle removing an item from the cart
     const removeItemFromCart = (name) => {
-        console.log(name)
         const newArray = cart.filter((item) => item.name !== name)
         window.localStorage.setItem('storedCart', JSON.stringify(newArray))
         setCart(newArray)

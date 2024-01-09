@@ -93,6 +93,18 @@ const Library = ({
         setSearchAmount(12)
         // append title
         setHeading(text)
+
+        // replicated in Standard Link Buttons please fix!!!!!!!
+        const toggleHamburgerMenuOff = async () => {
+            const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+            document.querySelector('#hamburgerMenu').style.opacity = '0'
+
+            await delay(500)
+            document.querySelector('#hamburgerMenu').style.display = 'none'
+        }
+
+        toggleHamburgerMenuOff()
     }
 
     // handle what games we want to display from the API (used for platform search)
@@ -107,6 +119,18 @@ const Library = ({
         setSearchAmount(12)
         // append title
         setHeading(text)
+
+        // replicated in Standard Link Buttons please fix!!!!!!!
+        const toggleHamburgerMenuOff = async () => {
+            const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+            document.querySelector('#hamburgerMenu').style.opacity = '0'
+
+            await delay(500)
+            document.querySelector('#hamburgerMenu').style.display = 'none'
+        }
+
+        toggleHamburgerMenuOff()
     }
 
     // handle when a user adds an item to the cart
@@ -173,7 +197,10 @@ const Library = ({
                     cart={cart}
                 ></GamesSection>
             </div>
-            <MobileMenu></MobileMenu>
+            <MobileMenu
+                handlePlatformClick={handleGamePlatformChange}
+                handleCategoryClick={handleGameGenreChange}
+            ></MobileMenu>
             <Cart
                 cart={cart}
                 clearCart={clearCart}
