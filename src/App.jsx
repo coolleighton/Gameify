@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 import Home from './Components/Home/Home.jsx'
 import Library from './Components/Library/Library.jsx'
@@ -34,6 +33,39 @@ const App = () => {
         setCart(newArray)
     }
 
+    // loading animation while wait for page to load
+
+    const authenticate = () =>
+        new Promise((resolve) => setTimeout(resolve, 1000)) // 2 seconds
+
+    useEffect(() => {
+        authenticate().then(() => {
+            const ele = document.querySelector('.pageLoader')
+            if (ele) {
+                // fade out
+                setTimeout(() => {
+                    // remove from DOM
+                    ele.style.transition = '0.5s'
+                    ele.style.opacity = '0'
+                    setTimeout(() => {
+                        // remove from DOM
+
+                        ele.style.display = 'none'
+                    }, 500)
+                }, 1000)
+            }
+        })
+    }, [])
+
+    /*window.addEventListener('load', () => {
+        const ele = document.querySelector('.pageLoader')
+        setTimeout(() => {
+            // remove from DOM
+            console.log('loaded')
+            //  ele.style.display = 'none'
+        }, 2000)
+    })*/
+
     const router = createBrowserRouter([
         {
             path: '/',
@@ -62,11 +94,7 @@ const App = () => {
         },
     ])
 
-    return (
-        <AnimatePresence>
-            <RouterProvider router={router}></RouterProvider>
-        </AnimatePresence>
-    )
+    return <RouterProvider router={router}></RouterProvider>
 }
 
 export default App

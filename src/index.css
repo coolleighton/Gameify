@@ -18,9 +18,3 @@
         scrollbar-width: none; /* Firefox */
     }
 }
-
-body {
-    margin: 0;
-    background-color: #04020b;
-    overflow-x: hidden;
-}

@@ -4,9 +4,51 @@
         <meta charset="UTF-8" />
         <link rel="icon" href="src/assets/GameifyLogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css">
+            body {
+                position: relative;
+                margin: 0;
+                background-color: #04020b;
+                overflow-x: hidden;
+                height: 100vh;
+                width: 100vw;
+            }
+            .pageLoader {
+                position: absolute;
+                background-color: #04020b;
+                width: 100vw;
+                height: 100vh;
+                z-index: 999;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .loadBar {
+                width: 100px;
+                animation: l2-1 2s infinite linear;
+            }
+            @keyframes l2-1 {
+                0% {
+                    transform: perspective(150px) rotateX(0deg);
+                }
+                100% {
+                    transform: perspective(150px) rotateX(360deg);
+                }
+            }
+        </style>
         <title>Gameify</title>
     </head>
+
     <body>
+        <div class="pageLoader">
+            <div class="loadBar">
+                <img
+                    width="100px"
+                    height="100px"
+                    src="src/assets/GameifyLogo.png"
+                />
+            </div>
+        </div>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>
     </body>
