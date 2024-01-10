@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import PlatformImg from './PlatformImg'
+import PlatformImg from './PlatformImg/PlatformImg'
 
 const GameCard = ({ cardData, handleAddToCart, cart }) => {
     const [active, setActive] = useState(false)

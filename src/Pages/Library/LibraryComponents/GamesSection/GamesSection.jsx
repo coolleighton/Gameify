@@ -1,5 +1,5 @@
-import GameCard from './GamesComponents/GameCard'
-import Loading from './GamesComponents/Loading/Loading'
+import GameCard from './GameCard/GameCard'
+import Loading from './Loading/Loading'
 
 const GamesSection = ({
     gamesData,

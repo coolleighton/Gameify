@@ -1,16 +1,16 @@
-import Header from '../Header/Header.jsx'
-import GamesSection from './LibraryComponents/GamesSection.jsx'
-import CategoryButtonsSection from './LibraryComponents/CategoryButtonsSection.jsx'
-import MobileMenu from '../MobileMenu/MobileMenu.jsx'
-import Cart from './LibraryComponents/Cart.jsx'
+import Header from '../../GlobalComponents/Header/Header.jsx'
+import GamesSection from './LibraryComponents/GamesSection/GamesSection.jsx'
+import CategoryButtonsSection from './LibraryComponents/CategoryButtonsComponents/CategoryButtonsSection.jsx'
+import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
+import Cart from '../../GlobalComponents/Cart/Cart.jsx'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Library = ({
     cart,
     clearCart,
-    setApiData,
     setCart,
+    setApiData,
     ApiData,
     removeItemFromCart,
 }) => {
@@ -203,6 +203,7 @@ const Library = ({
             ></MobileMenu>
             <Cart
                 cart={cart}
+                setCart={setCart}
                 clearCart={clearCart}
                 removeItemFromCart={removeItemFromCart}
             ></Cart>

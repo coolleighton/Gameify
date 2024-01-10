@@ -1,14 +1,22 @@
-import '../Home/Home.css'
-import Header from '../Header/Header.jsx'
-import MobileMenu from '../MobileMenu/MobileMenu.jsx'
-import Cart from '../Library/LibraryComponents/Cart.jsx'
-import Background from '../../assets/Background.mp4'
-import GithubImg from '../../assets/GithubImg.png'
-import PortfolioImg from '../../assets/PortfolioImg.png'
-import LibraryImg from '../../assets/DarkLibraryImg.png'
+import Header from '../../GlobalComponents/Header/Header.jsx'
+import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
+import Cart from '../../GlobalComponents/Cart/Cart.jsx'
+
+import Background from '../../Assets/Background.mp4'
+import GithubImg from '../../Assets/GlobalImages/GithubImg.png'
+import PortfolioImg from '../../Assets/GlobalImages/PortfolioImg.png'
+import LibraryImg from '../../Assets/GlobalImages/DarkLibraryImg.png'
+import './Home.css'
+
 import { useEffect } from 'react'
 
-const Home = ({ cart, clearCart, removeItemFromCart, loadingScreenPlayed }) => {
+const Home = ({
+    cart,
+    clearCart,
+    setCart,
+    removeItemFromCart,
+    loadingScreenPlayed,
+}) => {
     useEffect(() => {
         if (loadingScreenPlayed) {
             document.querySelector('#backgroundVideo').play()
@@ -113,6 +121,7 @@ const Home = ({ cart, clearCart, removeItemFromCart, loadingScreenPlayed }) => {
             <MobileMenu></MobileMenu>
             <Cart
                 cart={cart}
+                setCart={setCart}
                 clearCart={clearCart}
                 removeItemFromCart={removeItemFromCart}
             ></Cart>

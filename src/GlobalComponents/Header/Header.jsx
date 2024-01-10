@@ -1,13 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './Header.css'
-import Logo from '../../assets/GameifyLogo.png'
-import SearchImg from '../../assets/SearchImg.png'
-import CartImg from '../../assets/CartImg.png'
-import LibraryImg from '../../assets/LibraryImg.png'
-import HomeImg from '../../assets/HomeImg.png'
-import HamburgerMenuImg from '../../assets/HamburgerMenuImg.png'
-import CartActiveImg from '../../assets/CartActiveImg.png'
+import Logo from '../../Assets/GlobalImages/GameifyLogo.png'
+import SearchImg from '../../Assets/GlobalImages/SearchImg.png'
+import CartImg from '../../Assets/GlobalImages/CartImg.png'
+import LibraryImg from '../../Assets/GlobalImages/LibraryImg.png'
+import HomeImg from '../../Assets/GlobalImages/HomeImg.png'
+import HamburgerMenuImg from '../../Assets/GlobalImages/HamburgerMenuImg.png'
+import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
 const Header = ({ headerBgColour, cart }) => {
     const [cartActive, setCartActive] = useState(false)

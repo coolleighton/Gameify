@@ -1,79 +1,79 @@
-import StandardLinkButton from '../../StandardLinkButton/StandardLinkButton'
+import StandardLinkButton from '../../../../GlobalComponents/StandardLinkButton/StandardLinkButton'
 
-import GridWhiteImg from '../../../assets/GridWhiteImg.png'
-import GridBlackImg from '../../../assets/GridBlackImg.png'
+import GridWhiteImg from '../../../../Assets/GlobalImages/GridWhiteImg.png'
+import GridBlackImg from '../../../../Assets/GlobalImages/GridBlackImg.png'
 
-import WindowsWhiteImg from '../../../assets/PlatformImages/WindowsWhiteImg.png'
-import WindowsBlackImg from '../../../assets/PlatformImages/WindowsBlackImg.png'
+import WindowsWhiteImg from '../../../../Assets/PlatformImages/WindowsWhiteImg.png'
+import WindowsBlackImg from '../../../../Assets/PlatformImages/WindowsBlackImg.png'
 
-import LinuxWhiteImg from '../../../assets/PlatformImages/LinuxWhiteImg.png'
-import LinuxBlackImg from '../../../assets/PlatformImages/LinuxBlackImg.png'
+import LinuxWhiteImg from '../../../../Assets/PlatformImages/LinuxWhiteImg.png'
+import LinuxBlackImg from '../../../../Assets/PlatformImages/LinuxBlackImg.png'
 
-import MacWhiteImg from '../../../assets/PlatformImages/MacWhiteImg.png'
-import MacBlackImg from '../../../assets/PlatformImages/MacBlackImg.png'
+import MacWhiteImg from '../../../../Assets/PlatformImages/MacWhiteImg.png'
+import MacBlackImg from '../../../../Assets/PlatformImages/MacBlackImg.png'
 
-import PlaystationWhiteImg from '../../../assets/PlatformImages/PlaystationWhiteImg.png'
-import PlaystationBlackImg from '../../../assets/PlatformImages/PlaystationBlackImg.png'
+import PlaystationWhiteImg from '../../../../Assets/PlatformImages/PlaystationWhiteImg.png'
+import PlaystationBlackImg from '../../../../Assets/PlatformImages/PlaystationBlackImg.png'
 
-import XboxWhiteImg from '../../../assets/PlatformImages/XboxWhiteImg.png'
-import XboxBlackImg from '../../../assets/PlatformImages/XboxBlackImg.png'
+import XboxWhiteImg from '../../../../Assets/PlatformImages/XboxWhiteImg.png'
+import XboxBlackImg from '../../../../Assets/PlatformImages/XboxBlackImg.png'
 
-import NintendoWhiteImg from '../../../assets/PlatformImages/NintendoWhiteImg.png'
-import NintendoBlackImg from '../../../assets/PlatformImages/NintendoBlackImg.png'
+import NintendoWhiteImg from '../../../../Assets/PlatformImages/NintendoWhiteImg.png'
+import NintendoBlackImg from '../../../../Assets/PlatformImages/NintendoBlackImg.png'
 
-import ActionWhiteImg from '../../../assets/GenreImages/ActionWhiteImg.png'
-import ActionBlackImg from '../../../assets/GenreImages/ActionBlackImg.png'
+import ActionWhiteImg from '../../../../Assets/GenreImages/ActionWhiteImg.png'
+import ActionBlackImg from '../../../../Assets/GenreImages/ActionBlackImg.png'
 
-import AdventureWhiteImg from '../../../assets/GenreImages/AdventureWhiteImg.png'
-import AdventureBlackImg from '../../../assets/GenreImages/AdventureBlackImg.png'
+import AdventureWhiteImg from '../../../../Assets/GenreImages/AdventureWhiteImg.png'
+import AdventureBlackImg from '../../../../Assets/GenreImages/AdventureBlackImg.png'
 
-import ShooterWhiteImg from '../../../assets/GenreImages/ShooterWhiteImg.png'
-import ShooterBlackImg from '../../../assets/GenreImages/ShooterBlackImg.png'
+import ShooterWhiteImg from '../../../../Assets/GenreImages/ShooterWhiteImg.png'
+import ShooterBlackImg from '../../../../Assets/GenreImages/ShooterBlackImg.png'
 
-import SportsWhiteImg from '../../../assets/GenreImages/SportsWhiteImg.png'
-import SportsBlackImg from '../../../assets/GenreImages/SportsBlackImg.png'
+import SportsWhiteImg from '../../../../Assets/GenreImages/SportsWhiteImg.png'
+import SportsBlackImg from '../../../../Assets/GenreImages/SportsBlackImg.png'
 
-import ArcadeWhiteImg from '../../../assets/GenreImages/ArcadeWhiteImg.png'
-import ArcadeBlackImg from '../../../assets/GenreImages/ArcadeBlackImg.png'
+import ArcadeWhiteImg from '../../../../Assets/GenreImages/ArcadeWhiteImg.png'
+import ArcadeBlackImg from '../../../../Assets/GenreImages/ArcadeBlackImg.png'
 
-import BoardGameWhiteImg from '../../../assets/GenreImages/BoardGameWhiteImg.png'
-import BoardGameBlackImg from '../../../assets/GenreImages/BoardGameBlackImg.png'
+import BoardGameWhiteImg from '../../../../Assets/GenreImages/BoardGameWhiteImg.png'
+import BoardGameBlackImg from '../../../../Assets/GenreImages/BoardGameBlackImg.png'
 
-import CardGameWhiteImg from '../../../assets/GenreImages/CardGameWhiteImg.png'
-import CardGameBlackImg from '../../../assets/GenreImages/CardGameBlackImg.png'
+import CardGameWhiteImg from '../../../../Assets/GenreImages/CardGameWhiteImg.png'
+import CardGameBlackImg from '../../../../Assets/GenreImages/CardGameBlackImg.png'
 
-import CasualWhiteImg from '../../../assets/GenreImages/CasualWhiteImg.png'
-import CasualBlackImg from '../../../assets/GenreImages/CasualBlackImg.png'
+import CasualWhiteImg from '../../../../Assets/GenreImages/CasualWhiteImg.png'
+import CasualBlackImg from '../../../../Assets/GenreImages/CasualBlackImg.png'
 
-import EducationalWhiteImg from '../../../assets/GenreImages/EducationalWhiteImg.png'
-import EducationalBlackImg from '../../../assets/GenreImages/EducationalBlackImg.png'
+import EducationalWhiteImg from '../../../../Assets/GenreImages/EducationalWhiteImg.png'
+import EducationalBlackImg from '../../../../Assets/GenreImages/EducationalBlackImg.png'
 
-import FightingWhiteImg from '../../../assets/GenreImages/FightingWhiteImg.png'
-import FightingBlackImg from '../../../assets/GenreImages/FightingBlackImg.png'
+import FightingWhiteImg from '../../../../Assets/GenreImages/FightingWhiteImg.png'
+import FightingBlackImg from '../../../../Assets/GenreImages/FightingBlackImg.png'
 
-import IndieWhiteImg from '../../../assets/GenreImages/IndieWhiteImg.png'
-import IndieBlackImg from '../../../assets/GenreImages/IndieBlackImg.png'
+import IndieWhiteImg from '../../../../Assets/GenreImages/IndieWhiteImg.png'
+import IndieBlackImg from '../../../../Assets/GenreImages/IndieBlackImg.png'
 
-import MmoWhiteImg from '../../../assets/GenreImages/MmoWhiteImg.png'
-import MmoBlackImg from '../../../assets/GenreImages/MmoBlackImg.png'
+import MmoWhiteImg from '../../../../Assets/GenreImages/MmoWhiteImg.png'
+import MmoBlackImg from '../../../../Assets/GenreImages/MmoBlackImg.png'
 
-import PlatformerWhiteImg from '../../../assets/GenreImages/PlatformerWhiteImg.png'
-import PlatformerBlackImg from '../../../assets/GenreImages/PlatformerBlackImg.png'
+import PlatformerWhiteImg from '../../../../Assets/GenreImages/PlatformerWhiteImg.png'
+import PlatformerBlackImg from '../../../../Assets/GenreImages/PlatformerBlackImg.png'
 
-import PuzzleWhiteImg from '../../../assets/GenreImages/PuzzleWhiteImg.png'
-import PuzzleBlackImg from '../../../assets/GenreImages/PuzzleBlackImg.png'
+import PuzzleWhiteImg from '../../../../Assets/GenreImages/PuzzleWhiteImg.png'
+import PuzzleBlackImg from '../../../../Assets/GenreImages/PuzzleBlackImg.png'
 
-import RacingWhiteImg from '../../../assets/GenreImages/RacingWhiteImg.png'
-import RacingBlackImg from '../../../assets/GenreImages/RacingBlackImg.png'
+import RacingWhiteImg from '../../../../Assets/GenreImages/RacingWhiteImg.png'
+import RacingBlackImg from '../../../../Assets/GenreImages/RacingBlackImg.png'
 
-import RpgWhiteImg from '../../../assets/GenreImages/RpgWhiteImg.png'
-import RpgBlackImg from '../../../assets/GenreImages/RpgBlackImg.png'
+import RpgWhiteImg from '../../../../Assets/GenreImages/RpgWhiteImg.png'
+import RpgBlackImg from '../../../../Assets/GenreImages/RpgBlackImg.png'
 
-import SimWhiteImg from '../../../assets/GenreImages/SimWhiteImg.png'
-import SimBlackImg from '../../../assets/GenreImages/SimBlackImg.png'
+import SimWhiteImg from '../../../../Assets/GenreImages/SimWhiteImg.png'
+import SimBlackImg from '../../../../Assets/GenreImages/SimBlackImg.png'
 
-import StrategyWhiteImg from '../../../assets/GenreImages/StrategyWhiteImg.png'
-import StrategyBlackImg from '../../../assets/GenreImages/StrategyBlackImg.png'
+import StrategyWhiteImg from '../../../../Assets/GenreImages/StrategyWhiteImg.png'
+import StrategyBlackImg from '../../../../Assets/GenreImages/StrategyBlackImg.png'
 
 const CategoryButtonsSection = ({
     handleCategoryClick,

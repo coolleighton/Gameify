@@ -1,6 +1,6 @@
-import CloseImgWhite from '../../../assets/CloseImgWhite.png'
+import CloseImgWhite from '../../Assets/GlobalImages/CloseImgWhite.png'
 
-const Cart = ({ cart, clearCart, removeItemFromCart }) => {
+const Cart = ({ cart, clearCart, setCart, removeItemFromCart }) => {
     const toggleCartOff = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -76,7 +76,7 @@ const Cart = ({ cart, clearCart, removeItemFromCart }) => {
                             </p>
                             <button
                                 className="bg-gray-500 bg-opacity-40 ml-2 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
-                                onClick={() => clearCart()}
+                                onClick={() => clearCart({ setCart })}
                             >
                                 Clear
                             </button>

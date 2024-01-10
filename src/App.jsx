@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-import Home from './Components/Home/Home.jsx'
-import Library from './Components/Library/Library.jsx'
-import ErrorPage from './Components/ErrorPage.jsx'
+import clearCart from './Functions/CartFunctions.jsx'
+import Home from './Pages/Home/Home.jsx'
+import Library from './Pages/Library/Library.jsx'
+import ErrorPage from './GlobalComponents/ErrorPage/ErrorPage.jsx'
 
 const App = () => {
     const [cart, setCart] = useState([])
@@ -21,11 +22,11 @@ const App = () => {
     }, [])
 
     // handle when a user wants to clear the cart
-    const clearCart = () => {
+    /*const clearCart = () => {
         const clearedCart = []
         setCart(clearedCart)
         window.localStorage.setItem('storedCart', JSON.stringify(clearedCart))
-    }
+    }*/
 
     // handle removing an item from the cart
     const removeItemFromCart = (name) => {
@@ -43,20 +44,18 @@ const App = () => {
         authenticate().then(() => {
             const ele = document.querySelector('.pageLoader')
             if (ele) {
-                // tell app loading screen has played and stop the delay
+                // tell app loading screen has played and play background video if on the home page
                 setLoadingScreenPlayed(true)
-                // fade out
+
                 setTimeout(() => {
-                    // hide from DOM
+                    // hide from DOM and play video
                     ele.style.transition = '0.5s'
                     ele.style.opacity = '0'
                     if (document.querySelector('#backgroundVideo')) {
                         document.querySelector('#backgroundVideo').play()
                     }
-
                     setTimeout(() => {
                         // remove from DOM
-
                         ele.style.display = 'none'
                     }, 500)
                 }, 1000)
@@ -70,9 +69,10 @@ const App = () => {
             element: (
                 <Home
                     cart={cart}
+                    setCart={setCart}
+                    clearCart={clearCart}
                     loadingScreenPlayed={loadingScreenPlayed}
                     setLoadingScreenPlayed={setLoadingScreenPlayed}
-                    clearCart={clearCart}
                     removeItemFromCart={removeItemFromCart}
                 />
             ),
@@ -83,10 +83,10 @@ const App = () => {
             element: (
                 <Library
                     cart={cart}
+                    setCart={setCart}
                     clearCart={clearCart}
                     removeItemFromCart={removeItemFromCart}
                     ApiData={ApiData}
-                    setCart={setCart}
                     setApiData={setApiData}
                 />
             ),
