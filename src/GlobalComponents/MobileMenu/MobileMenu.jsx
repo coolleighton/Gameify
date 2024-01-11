@@ -1,92 +1,95 @@
-import StandardLinkButton from '../StandardLinkButton/StandardLinkButton'
-import './MobileMenu.css'
-
 import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
 import GridBlackImg from '../../Assets/GlobalImages/GridBlackImg.png'
-
 import WindowsWhiteImg from '../../Assets/PlatformImages/WindowsWhiteImg.png'
 import WindowsBlackImg from '../../Assets/PlatformImages/WindowsBlackImg.png'
-
 import LinuxWhiteImg from '../../Assets/PlatformImages/LinuxWhiteImg.png'
 import LinuxBlackImg from '../../Assets/PlatformImages/LinuxBlackImg.png'
-
 import MacWhiteImg from '../../Assets/PlatformImages/MacWhiteImg.png'
 import MacBlackImg from '../../Assets/PlatformImages/MacBlackImg.png'
-
 import PlaystationWhiteImg from '../../Assets/PlatformImages/PlaystationWhiteImg.png'
 import PlaystationBlackImg from '../../Assets/PlatformImages/PlaystationBlackImg.png'
-
 import XboxWhiteImg from '../../Assets/PlatformImages/XboxWhiteImg.png'
 import XboxBlackImg from '../../Assets/PlatformImages/XboxBlackImg.png'
-
 import NintendoWhiteImg from '../../Assets/PlatformImages/NintendoWhiteImg.png'
 import NintendoBlackImg from '../../Assets/PlatformImages/NintendoBlackImg.png'
-
 import ActionWhiteImg from '../../Assets/GenreImages/ActionWhiteImg.png'
 import ActionBlackImg from '../../Assets/GenreImages/ActionBlackImg.png'
-
 import AdventureWhiteImg from '../../Assets/GenreImages/AdventureWhiteImg.png'
 import AdventureBlackImg from '../../Assets/GenreImages/AdventureBlackImg.png'
-
 import ShooterWhiteImg from '../../Assets/GenreImages/ShooterWhiteImg.png'
 import ShooterBlackImg from '../../Assets/GenreImages/ShooterBlackImg.png'
-
 import SportsWhiteImg from '../../Assets/GenreImages/SportsWhiteImg.png'
 import SportsBlackImg from '../../Assets/GenreImages/SportsBlackImg.png'
-
 import ArcadeWhiteImg from '../../Assets/GenreImages/ArcadeWhiteImg.png'
 import ArcadeBlackImg from '../../Assets/GenreImages/ArcadeBlackImg.png'
-
 import BoardGameWhiteImg from '../../Assets/GenreImages/BoardGameWhiteImg.png'
 import BoardGameBlackImg from '../../Assets/GenreImages/BoardGameBlackImg.png'
-
 import CardGameWhiteImg from '../../Assets/GenreImages/CardGameWhiteImg.png'
 import CardGameBlackImg from '../../Assets/GenreImages/CardGameBlackImg.png'
-
 import CasualWhiteImg from '../../Assets/GenreImages/CasualWhiteImg.png'
 import CasualBlackImg from '../../Assets/GenreImages/CasualBlackImg.png'
-
 import EducationalWhiteImg from '../../Assets/GenreImages/EducationalWhiteImg.png'
 import EducationalBlackImg from '../../Assets/GenreImages/EducationalBlackImg.png'
-
 import FightingWhiteImg from '../../Assets/GenreImages/FightingWhiteImg.png'
 import FightingBlackImg from '../../Assets/GenreImages/FightingBlackImg.png'
-
 import IndieWhiteImg from '../../Assets/GenreImages/IndieWhiteImg.png'
 import IndieBlackImg from '../../Assets/GenreImages/IndieBlackImg.png'
-
 import MmoWhiteImg from '../../Assets/GenreImages/MmoWhiteImg.png'
 import MmoBlackImg from '../../Assets/GenreImages/MmoBlackImg.png'
-
 import PlatformerWhiteImg from '../../Assets/GenreImages/PlatformerWhiteImg.png'
 import PlatformerBlackImg from '../../Assets/GenreImages/PlatformerBlackImg.png'
-
 import PuzzleWhiteImg from '../../Assets/GenreImages/PuzzleWhiteImg.png'
 import PuzzleBlackImg from '../../Assets/GenreImages/PuzzleBlackImg.png'
-
 import RacingWhiteImg from '../../Assets/GenreImages/RacingWhiteImg.png'
 import RacingBlackImg from '../../Assets/GenreImages/RacingBlackImg.png'
-
 import RpgWhiteImg from '../../Assets/GenreImages/RpgWhiteImg.png'
 import RpgBlackImg from '../../Assets/GenreImages/RpgBlackImg.png'
-
 import SimWhiteImg from '../../Assets/GenreImages/SimWhiteImg.png'
 import SimBlackImg from '../../Assets/GenreImages/SimBlackImg.png'
-
 import StrategyWhiteImg from '../../Assets/GenreImages/StrategyWhiteImg.png'
 import StrategyBlackImg from '../../Assets/GenreImages/StrategyBlackImg.png'
-
 import CloseImg from '../../Assets/GlobalImages/CloseImg.png'
-import { Link } from 'react-router-dom'
 
-const MobileMenu = ({ handlePlatformClick, handleCategoryClick }) => {
+import StandardLinkButton from '../StandardLinkButton/StandardLinkButton.jsx'
+import './MobileMenu.css'
+import { useNavigate } from 'react-router-dom'
+
+const MobileMenu = ({ handleCategoryClick }) => {
+    // Navigate to a new page with a transition
+    const navigate = useNavigate()
+    const navigateToWithDelay = (location) => {
+        // hide page with a transition
+        document.querySelector('body').style.transitionDuration = '0.8s'
+        document.querySelector('body').style.opacity = '0'
+
+        // navigate to page after 0.8s, show page then remove transition effects.
+        setTimeout(() => {
+            navigate(location)
+            document.querySelector('body').style.opacity = '1'
+            document.querySelector('body').style.transitionDuration = '0'
+        }, 800)
+    }
+
+    // close hamburger menu with transition
     const toggleHamburgerMenuOff = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
         document.querySelector('#hamburgerMenu').style.opacity = '0'
-
         await delay(500)
         document.querySelector('#hamburgerMenu').style.display = 'none'
+    }
+
+    // set new api info, close menu
+    const handleClick = (text, categoryInfo, category) => {
+        handleCategoryClick(text, categoryInfo, category)
+        toggleHamburgerMenuOff()
+        navigateToWithDelay('/Library')
+        navigateToWithDelay('/Library')
+    }
+
+    // close menu then go to page
+    const handleNavigate = (location) => {
+        toggleHamburgerMenuOff()
+        navigateToWithDelay(location)
     }
 
     return (
@@ -99,34 +102,23 @@ const MobileMenu = ({ handlePlatformClick, handleCategoryClick }) => {
                     <h1 className="text-3xl text-black font-bold mb-2">
                         Quick Links
                     </h1>
-                    <Link
-                        to="/"
-                        onClick={() => {
-                            toggleHamburgerMenuOff()
-                        }}
-                    >
-                        <StandardLinkButton
-                            whiteIcon={WindowsWhiteImg}
-                            blackIcon={WindowsBlackImg}
-                            text="Home"
-                            style={{ backgroundColor: 'black' }}
-                            textStyle={{ color: 'black' }}
-                        ></StandardLinkButton>
-                    </Link>
-                    <Link
-                        to="/library"
-                        onClick={() => {
-                            toggleHamburgerMenuOff()
-                        }}
-                    >
-                        <StandardLinkButton
-                            whiteIcon={WindowsWhiteImg}
-                            blackIcon={WindowsBlackImg}
-                            text="Library"
-                            style={{ backgroundColor: 'black' }}
-                            textStyle={{ color: 'black' }}
-                        ></StandardLinkButton>
-                    </Link>
+                    <StandardLinkButton
+                        whiteIcon={WindowsWhiteImg}
+                        blackIcon={WindowsBlackImg}
+                        text="Home"
+                        handleCategoryClick={() => handleNavigate('/')}
+                        style={{ backgroundColor: 'black' }}
+                        textStyle={{ color: 'black' }}
+                    ></StandardLinkButton>
+
+                    <StandardLinkButton
+                        whiteIcon={WindowsWhiteImg}
+                        blackIcon={WindowsBlackImg}
+                        text="Library"
+                        handleCategoryClick={() => handleNavigate('/Library')}
+                        style={{ backgroundColor: 'black' }}
+                        textStyle={{ color: 'black' }}
+                    ></StandardLinkButton>
 
                     <h1 className="text-3xl text-black font-bold mt-6 mb-2">
                         Your Games
@@ -145,221 +137,245 @@ const MobileMenu = ({ handlePlatformClick, handleCategoryClick }) => {
                     <StandardLinkButton
                         whiteIcon={WindowsWhiteImg}
                         blackIcon={WindowsBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Windows"
-                        genre="1"
+                        categoryInfo="1"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={LinuxWhiteImg}
                         blackIcon={LinuxBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Linux"
-                        genre="6"
+                        categoryInfo="6"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={MacWhiteImg}
                         blackIcon={MacBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Mac OS"
-                        genre="5"
+                        categoryInfo="5"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={PlaystationWhiteImg}
                         blackIcon={PlaystationBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Playstation"
-                        genre="2"
+                        categoryInfo="2"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={XboxWhiteImg}
                         blackIcon={XboxBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Xbox"
-                        genre="3"
+                        categoryInfo="3"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={NintendoWhiteImg}
                         blackIcon={NintendoBlackImg}
-                        handleClick={handlePlatformClick}
+                        handleCategoryClick={handleClick}
                         text="Nintendo"
-                        genre="7"
+                        categoryInfo="7"
+                        category="platform"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                 </div>
                 <div className="hamburgerMenuCol2">
                     <h1 className="text-3xl text-black font-bold mb-2">
-                        Genres
+                        Genre
                     </h1>
                     <StandardLinkButton
                         whiteIcon={ActionWhiteImg}
                         blackIcon={ActionBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Action"
-                        genre="action"
+                        categoryInfo="action"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={AdventureWhiteImg}
                         blackIcon={AdventureBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Adventure"
-                        genre="adventure"
+                        categoryInfo="adventure"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={ShooterWhiteImg}
                         blackIcon={ShooterBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Shooter"
-                        genre="shooter"
+                        categoryInfo="shooter"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={RpgWhiteImg}
                         blackIcon={RpgBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="RPG"
-                        genre="role-playing-games-rpg"
+                        categoryInfo="role-playing-games-rpg"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={SportsWhiteImg}
                         blackIcon={SportsBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Sports"
-                        genre="sports"
+                        categoryInfo="sports"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={StrategyWhiteImg}
                         blackIcon={StrategyBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Strategy"
-                        genre="strategy"
+                        categoryInfo="strategy"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={SimWhiteImg}
                         blackIcon={SimBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Simulation"
-                        genre="simulation"
+                        categoryInfo="simulation"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={FightingWhiteImg}
                         blackIcon={FightingBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Fighting"
-                        genre="fighting"
+                        categoryInfo="fighting"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={IndieWhiteImg}
                         blackIcon={IndieBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Indie"
-                        genre="indie"
+                        categoryInfo="indie"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={CasualWhiteImg}
                         blackIcon={CasualBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Casual"
-                        genre="casual"
+                        categoryInfo="casual"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={PuzzleWhiteImg}
                         blackIcon={PuzzleBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Puzzle"
-                        genre="puzzle"
+                        categoryInfo="puzzle"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={ArcadeWhiteImg}
                         blackIcon={ArcadeBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Arcade"
-                        genre="arcade"
+                        categoryInfo="arcade"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={PlatformerWhiteImg}
                         blackIcon={PlatformerBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Platformer"
-                        genre="platformer"
+                        categoryInfo="platformer"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={MmoWhiteImg}
                         blackIcon={MmoBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="MMO"
-                        genre="massively-multiplayer"
+                        categoryInfo="massively-multiplayer"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={RacingWhiteImg}
                         blackIcon={RacingBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Racing"
-                        genre="racing"
+                        categoryInfo="racing"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={EducationalWhiteImg}
                         blackIcon={EducationalBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Educational"
-                        genre="educational"
+                        categoryInfo="educational"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={CardGameWhiteImg}
                         blackIcon={CardGameBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Card Games"
-                        genre="card"
+                        categoryInfo="card"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>
                     <StandardLinkButton
                         whiteIcon={BoardGameWhiteImg}
                         blackIcon={BoardGameBlackImg}
-                        handleClick={handleCategoryClick}
+                        handleCategoryClick={handleClick}
                         text="Board Games"
-                        genre="board-games"
+                        categoryInfo="board-games"
+                        category="genre"
                         style={{ backgroundColor: 'black' }}
                         textStyle={{ color: 'black' }}
                     ></StandardLinkButton>

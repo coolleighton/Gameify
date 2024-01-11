@@ -1,6 +1,6 @@
 import './Loading.css'
 
-const Loading = ({ handleLoadMore, searchAmount }) => {
+const Loading = ({ increaseSearchAmount, searchAmount }) => {
     function isInViewport(element) {
         const rect = element.getBoundingClientRect()
         return (
@@ -17,7 +17,7 @@ const Loading = ({ handleLoadMore, searchAmount }) => {
 
     document.addEventListener('scroll', function () {
         if (isInViewport(box) === true) {
-            handleLoadMore(searchAmount)
+            increaseSearchAmount(searchAmount)
         }
     })
 

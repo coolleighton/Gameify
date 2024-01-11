@@ -4,7 +4,7 @@ import Loading from './Loading/Loading'
 const GamesSection = ({
     gamesData,
     heading,
-    handleLoadMore,
+    increaseSearchAmount,
     searchAmount,
     handleAddToCart,
     cart,
@@ -26,7 +26,7 @@ const GamesSection = ({
             </div>
             <Loading
                 searchAmount={searchAmount}
-                handleLoadMore={handleLoadMore}
+                increaseSearchAmount={increaseSearchAmount}
             ></Loading>
         </div>
     )

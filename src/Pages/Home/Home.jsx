@@ -12,11 +12,13 @@ import { useEffect } from 'react'
 
 const Home = ({
     cart,
-    clearCart,
     setCart,
     removeItemFromCart,
     loadingScreenPlayed,
+    handleCategoryClick,
+    navigateToWithDelay,
 }) => {
+    // if the loading screen has played, play the background video instantly
     useEffect(() => {
         if (loadingScreenPlayed) {
             document.querySelector('#backgroundVideo').play()
@@ -24,8 +26,12 @@ const Home = ({
     }, [])
 
     return (
-        <div className="fixed inset-0">
-            <Header headerBgColour={'#FF'} cart={cart}></Header>
+        <div id="home" className="fixed inset-0">
+            <Header
+                headerBgColour={'#FF'}
+                cart={cart}
+                navigateToWithDelay={navigateToWithDelay}
+            ></Header>
 
             <div className="flex flex-col mx-auto max-w-lg h-[100vh] sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
                 <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5">
@@ -118,11 +124,13 @@ const Home = ({
                     <source src={Background} type="video/mp4"></source>
                 </video>
             </div>
-            <MobileMenu></MobileMenu>
+            <MobileMenu
+                handleCategoryClick={handleCategoryClick}
+                navigateToWithDelay={navigateToWithDelay}
+            ></MobileMenu>
             <Cart
                 cart={cart}
                 setCart={setCart}
-                clearCart={clearCart}
                 removeItemFromCart={removeItemFromCart}
             ></Cart>
         </div>

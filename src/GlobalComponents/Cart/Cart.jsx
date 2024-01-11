@@ -1,6 +1,21 @@
 import CloseImgWhite from '../../Assets/GlobalImages/CloseImgWhite.png'
 
-const Cart = ({ cart, clearCart, setCart, removeItemFromCart }) => {
+const Cart = ({ cart, setCart, removeItemFromCart }) => {
+    // handle when a user wants to clear the cart
+    const clearCart = ({ setCart }) => {
+        const clearedCart = []
+        setCart(clearedCart)
+        window.localStorage.setItem('storedCart', JSON.stringify(clearedCart))
+    }
+
+    // calculate the total of all game prices
+    const CalculateTotal = (cart) => {
+        let sum = 0
+        cart.forEach((el) => (sum += Number(el.price)))
+        return parseFloat(sum).toFixed(2)
+    }
+
+    // close Cart
     const toggleCartOff = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -8,22 +23,19 @@ const Cart = ({ cart, clearCart, setCart, removeItemFromCart }) => {
         document.querySelector('body').style.position = 'static'
         document.querySelector('body').style.overflowY = 'auto'
 
+        // hide cart
         document.querySelector('#Cart').style.opacity = '0'
+
+        // wait 0.5s then remove from Page
         await delay(500)
         document.querySelector('#Cart').style.display = 'none'
     }
 
-    const CalculateTotal = (cart) => {
-        let sum = 0
-        cart.forEach((el) => (sum += Number(el.price)))
-
-        return parseFloat(sum).toFixed(2)
-    }
-
+    // render the cart
     return (
         <div
             id="Cart"
-            className="hidden opacity-0 fixed w-screen h-screen backdrop-brightness-50 z-50 top-0 right-0 duration-300"
+            className="hidden opacity-0 fixed w-screen h-screen backdrop-brightness-50 z-50 top-0 right-0 duration-500"
         >
             <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-10/12 z-50 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
                 <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-10/12 sm:w-4/12 lg:w-3/12 2xl:w-2/12">

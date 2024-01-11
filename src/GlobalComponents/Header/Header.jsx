@@ -1,5 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { toggleCartOn } from '../Cart/CartFunctions'
 import './Header.css'
 import Logo from '../../Assets/GlobalImages/GameifyLogo.png'
 import SearchImg from '../../Assets/GlobalImages/SearchImg.png'
@@ -11,11 +12,15 @@ import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
 const Header = ({ headerBgColour, cart }) => {
     const [cartActive, setCartActive] = useState(false)
-    const navigate = useNavigate()
 
+    // Navigate to a new page with a transition
+    const navigate = useNavigate()
     const navigateToWithDelay = (location) => {
+        // hide page with a transition
         document.querySelector('body').style.transitionDuration = '0.8s'
         document.querySelector('body').style.opacity = '0'
+
+        // navigate to page after 0.8s, show page then remove transition effects.
         setTimeout(() => {
             navigate(location)
             document.querySelector('body').style.opacity = '1'
@@ -23,6 +28,7 @@ const Header = ({ headerBgColour, cart }) => {
         }, 800)
     }
 
+    // check if cart has items in it
     useEffect(() => {
         if (cart.length > 0) {
             setCartActive(true)
@@ -31,6 +37,7 @@ const Header = ({ headerBgColour, cart }) => {
         }
     }, [cart])
 
+    // determine if user is scrolling up or down and display header accordingly
     const doc = document.documentElement
     const w = window
 
@@ -69,6 +76,9 @@ const Header = ({ headerBgColour, cart }) => {
         }
     }
 
+    window.addEventListener('scroll', checkScroll)
+
+    // toggle the mobile menu on
     const toggleHamburgerMenuOn = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
@@ -77,21 +87,6 @@ const Header = ({ headerBgColour, cart }) => {
         await delay(0)
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
-
-    const toggleCartOn = async () => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
-        document.querySelector('#Cart').style.display = 'block'
-
-        await delay(0)
-        document.querySelector('#Cart').style.opacity = '1'
-
-        // stop user from scrolling the body
-        document.querySelector('body').style.position = 'fixed'
-        document.querySelector('body').style.overflowY = 'scroll'
-    }
-
-    window.addEventListener('scroll', checkScroll)
 
     return (
         <div
@@ -149,11 +144,7 @@ const Header = ({ headerBgColour, cart }) => {
                         style={{ opacity: cartActive ? '1' : '0' }}
                     ></img>
                 </button>
-                <button
-                    onClick={() => {
-                        toggleHamburgerMenuOn()
-                    }}
-                >
+                <button onClick={() => toggleHamburgerMenuOn()}>
                     <img
                         className="w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
                         src={HamburgerMenuImg}
