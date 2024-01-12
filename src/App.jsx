@@ -36,8 +36,11 @@ const App = () => {
         new Promise((resolve) => setTimeout(resolve, 1000))
 
     useEffect(() => {
+        // prevent scrolling
+        document.querySelector('body').style.overflowY = 'hidden'
         authenticate().then(() => {
             const ele = document.querySelector('.pageLoader')
+
             if (ele) {
                 // tell app loading screen has played and play background video if on the home page
                 setLoadingScreenPlayed(true)
@@ -52,6 +55,8 @@ const App = () => {
                     setTimeout(() => {
                         // remove from DOM
                         ele.style.display = 'none'
+                        // re-enable scrolling
+                        document.querySelector('body').style.overflowY = 'auto'
                     }, 500)
                 }, 1000)
             }
@@ -211,6 +216,7 @@ const App = () => {
                     ApiData={ApiData}
                     setApiData={setApiData}
                     handleCategoryClick={handleCategoryClick}
+                    searchAmount={searchAmount}
                     increaseSearchAmount={increaseSearchAmount}
                 />
             ),

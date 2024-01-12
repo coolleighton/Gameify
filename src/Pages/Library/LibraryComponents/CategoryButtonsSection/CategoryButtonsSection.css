@@ -1,0 +1,10 @@
+.categoryButtonsWrapper {
+    height: calc(100vh - 88px);
+    display: flex;
+    margin-top: 88px;
+}
+
+.categoryButtons {
+    height: 94%;
+    margin: auto;
+}

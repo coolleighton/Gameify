@@ -64,14 +64,17 @@ const Header = ({ headerBgColour, cart }) => {
     const toggleHeader = function (direction, curScroll) {
         if (direction === 2 && curScroll > 50) {
             document.querySelector('#header').classList.add('hide')
-            document.querySelector('#categoryButtons').style.marginTop =
-                '1.7rem'
-            document.querySelector('#categoryButtons').style.height = '94vh'
+            document.querySelector('#categoryButtonsWrapper').style.height =
+                '100vh'
+            document.querySelector('#categoryButtonsWrapper').style.marginTop =
+                '0'
             prevDirection = direction
         } else if (direction === 1) {
             document.querySelector('#header').classList.remove('hide')
-            document.querySelector('#categoryButtons').style.marginTop = '6rem'
-            document.querySelector('#categoryButtons').style.height = '87vh'
+            document.querySelector('#categoryButtonsWrapper').style.height =
+                'calc(100vh - 88px)'
+            document.querySelector('#categoryButtonsWrapper').style.marginTop =
+                '88px'
             prevDirection = direction
         }
     }
@@ -84,7 +87,7 @@ const Header = ({ headerBgColour, cart }) => {
 
         document.querySelector('#hamburgerMenu').style.display = 'block'
 
-        await delay(0)
+        await delay(500)
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
@@ -95,7 +98,7 @@ const Header = ({ headerBgColour, cart }) => {
             style={{ backgroundColor: headerBgColour }}
         >
             <button onClick={() => navigateToWithDelay('/')}>
-                <div className="mr-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
+                <div className="mr-2 xs:ml-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
                     <img className="w-12 sm:mr-4" src={Logo}></img>
                     <h1 className="hidden font-semibold text-3xl sm:block">
                         Gameify

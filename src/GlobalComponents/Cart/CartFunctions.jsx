@@ -1,9 +1,12 @@
 // toggle the cart on
 export const toggleCartOn = async () => {
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
     document.querySelector('#Cart').style.display = 'block'
-    document.querySelector('#Cart').style.opacity = '1'
 
     // stop user from scrolling the body
-    document.querySelector('body').style.position = 'fixed'
-    document.querySelector('body').style.overflowY = 'scroll'
+    document.querySelector('body').style.overflowY = 'clip'
+    await delay(50)
+    // show cart
+    document.querySelector('#Cart').style.opacity = '1'
 }

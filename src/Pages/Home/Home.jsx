@@ -26,16 +26,16 @@ const Home = ({
     }, [])
 
     return (
-        <div id="home" className="fixed inset-0">
+        <div id="home" className="relative inset-0">
             <Header
                 headerBgColour={'#FF'}
                 cart={cart}
                 navigateToWithDelay={navigateToWithDelay}
             ></Header>
 
-            <div className="flex flex-col mx-auto max-w-lg h-[100vh] sm:flex-row sm:max-w-full sm:justify-center sm:items-center">
-                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5">
-                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
+            <div className="flex flex-col mx-auto h-[100vh] sm:w-[670px] sm:flex-row sm:justify-start sm:items-center">
+                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5 w-11/12 mx-auto">
+                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center  sm:w-11/12 mx-auto rounded-lg backdrop-blur">
                         <h1 className="title break-words sm:text-7xl font-extrabold pb-5">
                             Gameify
                         </h1>
@@ -49,7 +49,7 @@ const Home = ({
                         </p>
                     </div>
 
-                    <div className="portfolioLinks flex justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center w-11/12 container mx-auto rounded-lg backdrop-blur">
+                    <div className="portfolioLinks flex justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center sm:w-11/12 mx-auto rounded-lg backdrop-blur">
                         <a
                             className="w-2/3 bg-white rounded-lg mx-2 hover:scale-105 hover:bg-blue-100 duration-200"
                             href="https://github.com/coolleighton"
@@ -75,7 +75,7 @@ const Home = ({
                     </div>
                 </div>
                 <div className="sm:ml-0 sm:mr-6">
-                    <div className="flex flex-col justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12">
+                    <div className="flex flex-col justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12 sm:w-[210px]">
                         <h2 className="text-3xl font-bold pb-5">
                             Quick Navigation
                         </h2>
