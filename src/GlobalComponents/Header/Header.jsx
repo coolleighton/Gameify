@@ -16,6 +16,8 @@ const Header = ({ headerBgColour, cart }) => {
     // Navigate to a new page with a transition
     const navigate = useNavigate()
     const navigateToWithDelay = (location) => {
+
+        
         // hide page with a transition
         document.querySelector('body').style.transitionDuration = '0.8s'
         document.querySelector('body').style.opacity = '0'

@@ -125,6 +125,11 @@ const App = () => {
         setSearchAmount(newSearchAmount)
     }
 
+    // set search amount to 12 when re-rendering library
+    const setSearchAmountDefault = () => {
+        setSearchAmount(12)
+    }
+
     // handle what games we want to display when clicking a category button
     const handleCategoryClick = (category, categoryInfo, text) => {
         console.log(category, categoryInfo, text)

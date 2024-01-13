@@ -8,3 +8,7 @@
     height: 94%;
     margin: auto;
 }
+
+#LibraryButton:hover img {
+    background-color: rgb(141, 141, 141);
+}
