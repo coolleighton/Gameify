@@ -30,6 +30,13 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
         document.querySelector('#Cart').style.display = 'none'
     }
 
+    // close cart if user clicks outside card
+    document.addEventListener('click', (e) => {
+        if (e.target.id === 'Cart') {
+            toggleCartOff()
+        }
+    })
+
     // render the cart
     return (
         <div

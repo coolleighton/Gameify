@@ -1,4 +1,5 @@
 import DownArrowImg from '../../../../../Assets/GlobalImages/DownArrowImg.png'
+import TickImg from '../../../../../Assets/GlobalImages/TickImg.png'
 import ButtonData from '../../../../../GlobalComponents/StandardCategoryButton/ButtonsData'
 
 const Filters = ({
@@ -31,7 +32,7 @@ const Filters = ({
         document.querySelector('#' + id + 'Items').style.display = 'none'
     }
 
-    const handleFilterClick = (categoryInfo, text, id) => {
+    const handleFilterClick = (categoryInfo, text, id, e) => {
         if (id === 'special') {
             handleFilterSpecialCategory(categoryInfo, text)
         } else if (id === 'platform') {
@@ -39,6 +40,7 @@ const Filters = ({
         } else if (id === 'genre') {
             handleFilterGenreCategory(categoryInfo, text)
         }
+
         hideFilterItems(id)
     }
 
@@ -63,7 +65,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-full w-52"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-52"
                     id="genreItems"
                 >
                     {ButtonData.Genres.map((item) => {
@@ -80,7 +82,7 @@ const Filters = ({
                                     )
                                 }
                             >
-                                {item.text}
+                                <p>{item.text}</p>
                             </button>
                         )
                     })}
@@ -122,7 +124,7 @@ const Filters = ({
                                     )
                                 }
                             >
-                                {item.text}
+                                <p>{item.text}</p>
                             </button>
                         )
                     })}
@@ -142,7 +144,7 @@ const Filters = ({
                         </span>
                     </p>
                     <img
-                        id="special"
+                        id="platform"
                         className="h-3 w-3 ml-2"
                         src={DownArrowImg}
                     ></img>
@@ -166,20 +168,10 @@ const Filters = ({
                                     )
                                 }
                             >
-                                {item.text}
+                                <p>{item.text}</p>
                             </button>
                         )
                     })}
-                    <button
-                        className="hover:bg-gray-200 duration-300 rounded-lg px-2 w-full text-left"
-                        key="name"
-                        id="special"
-                        onClick={() =>
-                            handleFilterClick('name', 'Name', 'special')
-                        }
-                    >
-                        Name
-                    </button>
                 </div>
             </div>
         </div>

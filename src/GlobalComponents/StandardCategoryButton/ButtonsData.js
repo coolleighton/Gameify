@@ -1,11 +1,14 @@
 import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
 
+import RatingWhiteImg from '../../Assets/GlobalImages/RatingWhiteImg.png'
+import TopWhiteImg from '../../Assets/GlobalImages/TopWhiteImg.png'
+import DateWhiteImg from '../../Assets/GlobalImages/DateWhiteImg.png'
+
 import WindowsWhiteImg from '../../Assets/PlatformImages/WindowsWhiteImg.png'
 import LinuxWhiteImg from '../../Assets/PlatformImages/LinuxWhiteImg.png'
 import MacWhiteImg from '../../Assets/PlatformImages/MacWhiteImg.png'
 import PlaystationWhiteImg from '../../Assets/PlatformImages/PlaystationWhiteImg.png'
 import XboxWhiteImg from '../../Assets/PlatformImages/XboxWhiteImg.png'
-
 import NintendoWhiteImg from '../../Assets/PlatformImages/NintendoWhiteImg.png'
 
 import ActionWhiteImg from '../../Assets/GenreImages/ActionWhiteImg.png'
@@ -37,17 +40,17 @@ const ButtonData = {
 
     Special: [
         {
-            whiteIcon: GridWhiteImg,
+            whiteIcon: TopWhiteImg,
             text: 'All Time Top',
             categoryInfo: '',
         },
         {
-            whiteIcon: GridWhiteImg,
+            whiteIcon: RatingWhiteImg,
             text: 'Rating',
             categoryInfo: 'metacritic',
         },
         {
-            whiteIcon: GridWhiteImg,
+            whiteIcon: DateWhiteImg,
             text: 'Release Date',
             categoryInfo: 'released',
         },
