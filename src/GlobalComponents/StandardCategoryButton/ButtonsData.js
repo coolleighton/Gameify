@@ -35,6 +35,24 @@ const ButtonData = {
         },
     ],
 
+    Special: [
+        {
+            whiteIcon: GridWhiteImg,
+            text: 'All Time Top',
+            categoryInfo: '',
+        },
+        {
+            whiteIcon: GridWhiteImg,
+            text: 'Rating',
+            categoryInfo: 'metacritic',
+        },
+        {
+            whiteIcon: GridWhiteImg,
+            text: 'Release Date',
+            categoryInfo: 'released',
+        },
+    ],
+
     Platforms: [
         {
             whiteIcon: WindowsWhiteImg,

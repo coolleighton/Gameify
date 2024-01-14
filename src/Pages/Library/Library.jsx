@@ -11,10 +11,14 @@ const Library = ({
     removeItemFromCart,
     handleAddToCart,
     handleCategoryClick,
-    increaseSearchAmount,
-    searchAmount,
     heading,
     setSearchAmount,
+    gameGenre,
+    gamePlatform,
+    gameSpecialCategory,
+    handleFilterSpecialCategory,
+    handleFilterPlatformCategory,
+    handleFilterGenreCategory,
 }) => {
     return (
         <div className="relative w-full">
@@ -33,6 +37,12 @@ const Library = ({
                     heading={heading}
                     gamesData={ApiData}
                     cart={cart}
+                    gameGenre={gameGenre}
+                    gamePlatform={gamePlatform}
+                    gameSpecialCategory={gameSpecialCategory}
+                    handleFilterSpecialCategory={handleFilterSpecialCategory}
+                    handleFilterPlatformCategory={handleFilterPlatformCategory}
+                    handleFilterGenreCategory={handleFilterGenreCategory}
                 ></GamesSection>
             </div>
             <MobileMenu

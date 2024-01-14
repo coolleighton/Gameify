@@ -9,10 +9,20 @@ const App = () => {
     const [cart, setCart] = useState([])
     const [ApiData, setApiData] = useState([])
     const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
-    const [gameGenre, setGameGenre] = useState('')
-    const [gamePlatform, setGamePlatform] = useState('')
+    const [gameGenre, setGameGenre] = useState({
+        url: '',
+        displayText: ' All',
+    })
+    const [gamePlatform, setGamePlatform] = useState({
+        url: '',
+        displayText: ' All',
+    })
+    const [gameSpecialCategory, setGameSpecialCategory] = useState({
+        url: '',
+        displayText: ' All Time Top',
+    })
     const [searchAmount, setSearchAmount] = useState(12)
-    const [heading, setHeading] = useState('All games')
+    const [heading, setHeading] = useState('All Time Top')
 
     // load cart data from local storage
     useEffect(() => {
@@ -126,25 +136,7 @@ const App = () => {
             if (searchAmount < 39) {
                 let newSearchAmount = searchAmount + 4
                 setSearchAmount(newSearchAmount)
-                console.log(newSearchAmount)
             }
-        }
-    }
-
-    // handle what games we want to display when clicking a category button
-    const handleCategoryClick = (category, categoryInfo, text) => {
-        // scroll to top, set heading and reset search amount
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        setHeading(text)
-        setSearchAmount(12)
-
-        // check which type of button has been clicked and set api info
-        if (category === 'genre') {
-            setGameGenre('&genres=' + categoryInfo)
-            setGamePlatform('')
-        } else if (category === 'platform') {
-            setGameGenre('')
-            setGamePlatform('&parent_platforms=' + categoryInfo)
         }
     }
 
@@ -158,13 +150,75 @@ const App = () => {
         }
     }
 
+    // handle what games we want to display when clicking a category button
+    const handleCategoryClick = (category, categoryInfo, text) => {
+        // scroll to top, set heading and reset search amount
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        setHeading(text)
+        setSearchAmount(12)
+
+        // check which type of button has been clicked and set api info
+        if (category === 'genre') {
+            setGamePlatform({ url: '', displayText: ' All' })
+            setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
+            setGameGenre({
+                url: '&genres=' + categoryInfo,
+                displayText: ' ' + text,
+            })
+        } else if (category === 'platform') {
+            // set Api/displayText data
+            setGameGenre({ url: '', displayText: ' All' })
+            setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
+            setGamePlatform({
+                url: '&parent_platforms=' + categoryInfo,
+                displayText: ' ' + text,
+            })
+        } else if (category === 'special') {
+            // set Api/displayText data
+            setGameGenre({ url: '', displayText: ' All' })
+            setGamePlatform({ url: '', displayText: ' All' })
+            setGameSpecialCategory({
+                url:
+                    '&ordering=' +
+                    categoryInfo +
+                    '&parent_platforms=1,2,3,5,6,7',
+                displayText: ' ' + text,
+            })
+        }
+    }
+
+    // filter results by a special category
+    const handleFilterSpecialCategory = (categoryInfo, text) => {
+        setGameSpecialCategory({
+            url: '&ordering=' + categoryInfo + '&parent_platforms=1,2,3,5,6,7',
+            displayText: ' ' + text,
+        })
+    }
+
+    // filter results by a special category
+    const handleFilterPlatformCategory = (categoryInfo, text) => {
+        setGamePlatform({
+            url: '&parent_platforms=' + categoryInfo,
+            displayText: ' ' + text,
+        })
+    }
+
+    // filter results by a special category
+    const handleFilterGenreCategory = (categoryInfo, text) => {
+        setGameGenre({
+            url: '&genres=' + categoryInfo,
+            displayText: ' ' + text,
+        })
+    }
+
     useEffect(() => {
         // declare API URL
 
         let ApiUrl =
             'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf' +
-            gameGenre +
-            gamePlatform +
+            gameGenre.url +
+            gameSpecialCategory.url +
+            gamePlatform.url +
             '&page_size=' +
             searchAmount
 
@@ -192,7 +246,7 @@ const App = () => {
         } catch (error) {
             console.error('Error fetching data from Rawg:', error)
         }
-    }, [gameGenre, gamePlatform, searchAmount])
+    }, [gameGenre, gamePlatform, searchAmount, gameSpecialCategory])
 
     const router = createBrowserRouter([
         {
@@ -222,6 +276,12 @@ const App = () => {
                     setApiData={setApiData}
                     handleCategoryClick={handleCategoryClick}
                     setSearchAmount={setSearchAmount}
+                    gameGenre={gameGenre}
+                    gamePlatform={gamePlatform}
+                    gameSpecialCategory={gameSpecialCategory}
+                    handleFilterSpecialCategory={handleFilterSpecialCategory}
+                    handleFilterPlatformCategory={handleFilterPlatformCategory}
+                    handleFilterGenreCategory={handleFilterGenreCategory}
                 />
             ),
             errorElement: <ErrorPage />,

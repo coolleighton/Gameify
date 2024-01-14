@@ -21,8 +21,21 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
                         ></StandardCategoryButton>
                     )
                 })}
-
-                <h1 className="text-3xl font-bold mt-6 mb-2">Platforms</h1>
+                <h1 className="text-3xl font-bold mt-4 mb-2">Trending</h1>
+                {ButtonData.Special.map((item) => {
+                    return (
+                        <StandardCategoryButton
+                            key={item.text}
+                            whiteIcon={item.whiteIcon}
+                            categoryInfo={item.categoryInfo}
+                            text={item.text}
+                            category="special"
+                            handleCategoryClick={handleCategoryClick}
+                            id="LibraryButton"
+                        ></StandardCategoryButton>
+                    )
+                })}
+                <h1 className="text-3xl font-bold mt-4 mb-2">Platforms</h1>
                 {ButtonData.Platforms.map((item) => {
                     return (
                         <StandardCategoryButton
@@ -36,7 +49,7 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
                         ></StandardCategoryButton>
                     )
                 })}
-                <h1 className="text-3xl font-bold mt-6 mb-2">Genre</h1>
+                <h1 className="text-3xl font-bold mt-4 mb-2">Genre</h1>
                 {ButtonData.Genres.map((item) => {
                     return (
                         <StandardCategoryButton
