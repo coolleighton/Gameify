@@ -1,5 +1,4 @@
 import DownArrowImg from '../../../../../Assets/GlobalImages/DownArrowImg.png'
-import TickImg from '../../../../../Assets/GlobalImages/TickImg.png'
 import ButtonData from '../../../../../GlobalComponents/StandardCategoryButton/ButtonsData'
 
 const Filters = ({
@@ -45,10 +44,10 @@ const Filters = ({
     }
 
     return (
-        <div className="flex absolute z-50">
-            <div className="mr-8 relative rounded-lg flex">
+        <div className="flex flex-col lg:flex-row absolute w-[inherit] sm:w-auto z-50 justify-center items-center sm:items-start">
+            <div className="lg:mr-8 absolute top-1 lg:relative lg:top-0 rounded-lg flex">
                 <button
-                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-52"
+                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-56"
                     id="genre"
                     onClick={() => showFilterItems('genre')}
                 >
@@ -65,7 +64,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-52"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
                     id="genreItems"
                 >
                     {ButtonData.Genres.map((item) => {
@@ -88,9 +87,9 @@ const Filters = ({
                     })}
                 </div>
             </div>
-            <div className="mr-8 relative rounded-lg flex">
+            <div className="lg:mr-8 top-14 absolute lg:relative lg:top-0 rounded-lg">
                 <button
-                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-52"
+                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-56"
                     id="platform"
                     onClick={() => showFilterItems('platform')}
                 >
@@ -107,7 +106,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-52"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
                     id="platformItems"
                 >
                     {ButtonData.Platforms.map((item) => {
@@ -131,7 +130,7 @@ const Filters = ({
                 </div>
             </div>
 
-            <div className="mr-8 relative rounded-lg ">
+            <div className="lg:mr-8 top-[6.8rem] absolute lg:relative lg:top-0 rounded-lg">
                 <button
                     className="flex text-black px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-56"
                     id="special"
@@ -151,7 +150,7 @@ const Filters = ({
                 </button>
 
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
                     id="specialItems"
                 >
                     {ButtonData.Special.map((item) => {
