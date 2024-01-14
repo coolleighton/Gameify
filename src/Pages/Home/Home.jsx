@@ -16,7 +16,7 @@ const Home = ({
     removeItemFromCart,
     loadingScreenPlayed,
     handleCategoryClick,
-    navigateToWithDelay,
+    setSearchAmount,
 }) => {
     // if the loading screen has played, play the background video instantly
     useEffect(() => {
@@ -30,7 +30,7 @@ const Home = ({
             <Header
                 headerBgColour={'#FF'}
                 cart={cart}
-                navigateToWithDelay={navigateToWithDelay}
+                setSearchAmount={setSearchAmount}
             ></Header>
 
             <div className="flex flex-col mx-auto h-[100vh] sm:w-[670px] sm:flex-row sm:justify-start sm:items-center">
@@ -126,7 +126,7 @@ const Home = ({
             </div>
             <MobileMenu
                 handleCategoryClick={handleCategoryClick}
-                navigateToWithDelay={navigateToWithDelay}
+                setSearchAmount={setSearchAmount}
             ></MobileMenu>
             <Cart
                 cart={cart}

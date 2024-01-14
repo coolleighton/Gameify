@@ -14,10 +14,15 @@ const Library = ({
     increaseSearchAmount,
     searchAmount,
     heading,
+    setSearchAmount,
 }) => {
     return (
         <div className="relative w-full">
-            <Header headerBgColour={'#04020b'} cart={cart}></Header>
+            <Header
+                headerBgColour={'#04020b'}
+                cart={cart}
+                setSearchAmount={setSearchAmount}
+            ></Header>
             <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-72 sm:block"></div>
                 <CategoryButtonsSection
@@ -25,14 +30,15 @@ const Library = ({
                 ></CategoryButtonsSection>
                 <GamesSection
                     handleAddToCart={handleAddToCart}
-                    searchAmount={searchAmount}
                     heading={heading}
                     gamesData={ApiData}
                     cart={cart}
-                    increaseSearchAmount={increaseSearchAmount}
                 ></GamesSection>
             </div>
-            <MobileMenu handleCategoryClick={handleCategoryClick}></MobileMenu>
+            <MobileMenu
+                handleCategoryClick={handleCategoryClick}
+                setSearchAmount={setSearchAmount}
+            ></MobileMenu>
             <Cart
                 cart={cart}
                 setCart={setCart}

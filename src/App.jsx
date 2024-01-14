@@ -120,20 +120,19 @@ const App = () => {
     }
 
     // handle when user has scrolled to bottom of the games section and increase search amount
-    const increaseSearchAmount = (amount) => {
-        let newSearchAmount = amount + 4
-        setSearchAmount(newSearchAmount)
-    }
-
-    // set search amount to 12 when re-rendering library
-    const setSearchAmountDefault = () => {
-        setSearchAmount(12)
+    window.onscroll = function () {
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+            // you're at the bottom of the page
+            if (searchAmount < 39) {
+                let newSearchAmount = searchAmount + 4
+                setSearchAmount(newSearchAmount)
+                console.log(newSearchAmount)
+            }
+        }
     }
 
     // handle what games we want to display when clicking a category button
     const handleCategoryClick = (category, categoryInfo, text) => {
-        console.log(category, categoryInfo, text)
-
         // scroll to top, set heading and reset search amount
         window.scrollTo({ top: 0, behavior: 'smooth' })
         setHeading(text)
@@ -205,6 +204,7 @@ const App = () => {
                     loadingScreenPlayed={loadingScreenPlayed}
                     removeItemFromCart={removeItemFromCart}
                     handleCategoryClick={handleCategoryClick}
+                    setSearchAmount={setSearchAmount}
                 />
             ),
             errorElement: <ErrorPage />,
@@ -221,8 +221,7 @@ const App = () => {
                     ApiData={ApiData}
                     setApiData={setApiData}
                     handleCategoryClick={handleCategoryClick}
-                    searchAmount={searchAmount}
-                    increaseSearchAmount={increaseSearchAmount}
+                    setSearchAmount={setSearchAmount}
                 />
             ),
             errorElement: <ErrorPage />,

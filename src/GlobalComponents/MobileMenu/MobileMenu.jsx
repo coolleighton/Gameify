@@ -1,15 +1,17 @@
 import CloseImg from '../../Assets/GlobalImages/CloseImg.png'
+import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
 
 import ButtonData from '../StandardCategoryButton/ButtonsData.js'
 import StandardCategoryButton from '../StandardCategoryButton/StandardCategoryButton.jsx'
 import './MobileMenu.css'
 import { useNavigate } from 'react-router-dom'
 
-const MobileMenu = ({ handleCategoryClick }) => {
+const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
     const navigate = useNavigate()
 
     // Navigate to a new page
-    const navigateToWithDelay = (location) => {
+    const navigateTo = (location) => {
+        setSearchAmount(12)
         navigate(location)
     }
 
@@ -27,14 +29,8 @@ const MobileMenu = ({ handleCategoryClick }) => {
         toggleHamburgerMenuOff()
         if (!window.location.href.includes('Library')) {
             console.log('Not in library')
-            navigateToWithDelay('/Library')
+            navigateTo('/Library')
         }
-    }
-
-    // close menu then go to page
-    const handleNavigate = (location) => {
-        toggleHamburgerMenuOff()
-        navigateToWithDelay(location)
     }
 
     return (
@@ -47,6 +43,20 @@ const MobileMenu = ({ handleCategoryClick }) => {
                     <h1 className="text-3xl text-black font-bold mb-2">
                         Quick Links
                     </h1>
+                    <StandardCategoryButton
+                        key="Home"
+                        whiteIcon={GridWhiteImg}
+                        text="Home"
+                        handleCategoryClick={() => navigateTo('/')}
+                        id="MobileMenuButton"
+                    ></StandardCategoryButton>
+                    <StandardCategoryButton
+                        key="Library"
+                        whiteIcon={GridWhiteImg}
+                        text="Library"
+                        handleCategoryClick={() => navigateTo('/Library')}
+                        id="MobileMenuButton"
+                    ></StandardCategoryButton>
 
                     <h1 className="text-3xl text-black font-bold mt-6 mb-2">
                         Your Games

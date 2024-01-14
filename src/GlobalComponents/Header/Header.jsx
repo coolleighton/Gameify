@@ -10,20 +10,19 @@ import HomeImg from '../../Assets/GlobalImages/HomeImg.png'
 import HamburgerMenuImg from '../../Assets/GlobalImages/HamburgerMenuImg.png'
 import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
-const Header = ({ headerBgColour, cart }) => {
+const Header = ({ headerBgColour, cart, setSearchAmount }) => {
     const [cartActive, setCartActive] = useState(false)
 
     // Navigate to a new page with a transition
     const navigate = useNavigate()
     const navigateToWithDelay = (location) => {
-
-        
         // hide page with a transition
         document.querySelector('body').style.transitionDuration = '0.8s'
         document.querySelector('body').style.opacity = '0'
 
         // navigate to page after 0.8s, show page then remove transition effects.
         setTimeout(() => {
+            setSearchAmount(12)
             navigate(location)
             document.querySelector('body').style.opacity = '1'
             document.querySelector('body').style.transitionDuration = '0'
@@ -86,10 +85,8 @@ const Header = ({ headerBgColour, cart }) => {
     // toggle the mobile menu on
     const toggleHamburgerMenuOn = async () => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
         document.querySelector('#hamburgerMenu').style.display = 'block'
-
-        await delay(500)
+        await delay(50)
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
