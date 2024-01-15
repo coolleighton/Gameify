@@ -16,7 +16,7 @@ const GamesSection = ({
     handleFilterGenreCategory,
 }) => {
     return (
-        <div id="gamesSection" className="w-full rounded-2xl mt-24">
+        <div id="gamesSection" className="w-full rounded-2xl mt-20">
             <h1 className="font-extrabold text-center text-[2.5rem] pt-3 mb-6 md:text-7xl xs:text-5xl sm:text-left">
                 {heading}
             </h1>

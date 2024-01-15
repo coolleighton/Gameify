@@ -73,7 +73,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
         } else if (direction === 1) {
             document.querySelector('#header').classList.remove('hide')
             document.querySelector('#categoryButtonsWrapper').style.height =
-                'calc(100vh - 88px)'
+                'calc(100vh - 64px)'
             document.querySelector('#categoryButtonsWrapper').style.marginTop =
                 '64px'
             prevDirection = direction
