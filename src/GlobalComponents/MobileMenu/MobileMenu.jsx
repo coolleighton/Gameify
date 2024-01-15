@@ -1,7 +1,7 @@
 import CloseImg from '../../Assets/GlobalImages/CloseImg.png'
 import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
 
-import ButtonData from '../StandardCategoryButton/ButtonsData.js'
+import ButtonData from '../../Assets/ButtonsData.js'
 import StandardCategoryButton from '../StandardCategoryButton/StandardCategoryButton.jsx'
 import './MobileMenu.css'
 import { useNavigate } from 'react-router-dom'
@@ -57,23 +57,6 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
                         handleCategoryClick={() => navigateTo('/Library')}
                         id="MobileMenuButton"
                     ></StandardCategoryButton>
-
-                    <h1 className="text-3xl text-black font-bold mt-6 mb-2">
-                        Your Games
-                    </h1>
-
-                    {ButtonData.General.map((item) => {
-                        return (
-                            <StandardCategoryButton
-                                key={item.text}
-                                whiteIcon={item.whiteIcon}
-                                text={item.text}
-                                handleCategoryClick={handleCategoryClick}
-                                id="MobileMenuButton"
-                            ></StandardCategoryButton>
-                        )
-                    })}
-
                     <h1 className="text-3xl text-black font-bold mt-6 mb-2">
                         Platforms
                     </h1>

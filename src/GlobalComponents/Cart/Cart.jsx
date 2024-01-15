@@ -46,7 +46,7 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
             <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-10/12 z-50 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
                 <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-10/12 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
                     <div className="flex justify-between pt-8 pb-8 px-8">
-                        <h2 className="text-2xl font-bold">
+                        <h2 className="text-3xl font-bold">
                             {cart.length} Games
                         </h2>
                         <button onClick={() => toggleCartOff()}>
@@ -57,6 +57,7 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
                         {cart.map((item) => {
                             return (
                                 <div
+                                    id={item.name}
                                     key={item.name}
                                     className="bg-gray-500 bg-opacity-20 mb-5 rounded-xl "
                                 >

@@ -7,6 +7,7 @@ import LinuxWhiteImg from '../../../../../../Assets/PlatformImages/LinuxWhiteImg
 import MacWhiteImg from '../../../../../../Assets/PlatformImages/MacWhiteImg.png'
 import NintendoWhiteImg from '../../../../../../Assets/PlatformImages/NintendoWhiteImg.png'
 import WebWhiteImg from '../../../../../../Assets/PlatformImages/WebWhiteImg.png'
+import SegaWhiteImg from '../../../../../../Assets/PlatformImages/SegaWhiteImg.png'
 
 const PlatformImg = (platform) => {
     let imageSrc = ''
@@ -28,6 +29,8 @@ const PlatformImg = (platform) => {
         imageSrc = NintendoWhiteImg
     } else if (platform.platform === 'web') {
         imageSrc = WebWhiteImg
+    } else if (platform.platform === 'sega') {
+        imageSrc = SegaWhiteImg
     } else {
         console.log(platform, 'platform image not found')
     }

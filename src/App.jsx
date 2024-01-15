@@ -6,9 +6,11 @@ import Library from './Pages/Library/Library.jsx'
 import ErrorPage from './GlobalComponents/ErrorPage/ErrorPage.jsx'
 
 const App = () => {
+    const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
     const [cart, setCart] = useState([])
     const [ApiData, setApiData] = useState([])
-    const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
+    const [searchAmount, setSearchAmount] = useState(12)
+    const [heading, setHeading] = useState('All Time Top')
     const [gameGenre, setGameGenre] = useState({
         url: '',
         displayText: ' All',
@@ -21,8 +23,6 @@ const App = () => {
         url: '',
         displayText: ' All Time Top',
     })
-    const [searchAmount, setSearchAmount] = useState(12)
-    const [heading, setHeading] = useState('All Time Top')
 
     // load cart data from local storage
     useEffect(() => {
@@ -35,10 +35,28 @@ const App = () => {
     }, [])
 
     // handle removing an item from the cart
-    const removeItemFromCart = (name) => {
+    const removeItemFromCart = async (name) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply transition and wait 0.3s for transition to run
+        document.getElementById(name).style.transition = '0.3s'
+        document.getElementById(name).style.opacity = '0'
+        await delay(300)
+
+        // create new array with this item removed and update cart with array
         const newArray = cart.filter((item) => item.name !== name)
         window.localStorage.setItem('storedCart', JSON.stringify(newArray))
         setCart(newArray)
+    }
+
+    // handle when a user adds an item to the cart
+    const handleAddToCart = (id, active) => {
+        if (!active) {
+            const object = ApiData.find((obj) => obj.name === id)
+            const newCart = [...cart, object]
+            setCart(newCart)
+            window.localStorage.setItem('storedCart', JSON.stringify(newCart))
+        }
     }
 
     // loading animation while wait for page to load
@@ -140,20 +158,18 @@ const App = () => {
         }
     }
 
-    // handle when a user adds an item to the cart
-    const handleAddToCart = (id, active) => {
-        if (!active) {
-            const object = ApiData.find((obj) => obj.name === id)
-            const newCart = [...cart, object]
-            setCart(newCart)
-            window.localStorage.setItem('storedCart', JSON.stringify(newCart))
-        }
-    }
-
     // handle what games we want to display when clicking a category button
-    const handleCategoryClick = (category, categoryInfo, text) => {
-        // scroll to top, set heading and reset search amount
+    const handleCategoryClick = async (category, categoryInfo, text) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
+        document.querySelector('#GamesGrid').style.transition = '0.5s'
+        document.querySelector('#GamesGrid').style.opacity = '0'
         window.scrollTo({ top: 0, behavior: 'smooth' })
+        await delay(500)
+
+        //  set heading and reset search amount
+
         setHeading(text)
         setSearchAmount(12)
 
@@ -189,6 +205,7 @@ const App = () => {
 
     // filter results by a special category
     const handleFilterSpecialCategory = (categoryInfo, text) => {
+        setHeading(text)
         setGameSpecialCategory({
             url: '&ordering=' + categoryInfo + '&parent_platforms=1,2,3,5,6,7',
             displayText: ' ' + text,
@@ -197,6 +214,7 @@ const App = () => {
 
     // filter results by a special category
     const handleFilterPlatformCategory = (categoryInfo, text) => {
+        setHeading(text)
         setGamePlatform({
             url: '&parent_platforms=' + categoryInfo,
             displayText: ' ' + text,
@@ -205,6 +223,7 @@ const App = () => {
 
     // filter results by a special category
     const handleFilterGenreCategory = (categoryInfo, text) => {
+        setHeading(text)
         setGameGenre({
             url: '&genres=' + categoryInfo,
             displayText: ' ' + text,
@@ -229,6 +248,8 @@ const App = () => {
                 const data = await response.json()
                 const dataResult = data.results
 
+                console.log(dataResult)
+
                 // create a new array with only the data we need
                 let displayData = []
                 displayData = dataResult.map((item) => {
@@ -237,10 +258,17 @@ const App = () => {
                         image: item.background_image,
                         platforms: item.parent_platforms,
                         price: generateRandomPrice(item.name),
+                        rating: item.metacritic,
                     }
                 })
 
+                console.log(displayData)
+
                 setApiData(displayData)
+                if (document.querySelector('#GamesGrid')) {
+                    document.querySelector('#GamesGrid').style.opacity = '1'
+                    document.querySelector('#GamesGrid').style.transition = '0'
+                }
             }
             fetchData()
         } catch (error) {

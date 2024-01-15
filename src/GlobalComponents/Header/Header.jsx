@@ -75,7 +75,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
             document.querySelector('#categoryButtonsWrapper').style.height =
                 'calc(100vh - 88px)'
             document.querySelector('#categoryButtonsWrapper').style.marginTop =
-                '88px'
+                '64px'
             prevDirection = direction
         }
     }
@@ -93,65 +93,67 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
     return (
         <div
             id="header"
-            className="px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full"
+            className="px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full z-50 sm:px-9"
             style={{ backgroundColor: headerBgColour }}
         >
-            <button onClick={() => navigateToWithDelay('/')}>
-                <div className="mr-2 xs:ml-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
-                    <img className="w-12 sm:mr-4" src={Logo}></img>
-                    <h1 className="hidden font-semibold text-3xl sm:block">
-                        Gameify
-                    </h1>
+            <div className="flex justify-between items-center w-11/12 sm:w-full mx-auto">
+                <button onClick={() => navigateToWithDelay('/')}>
+                    <div className="mr-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
+                        <img className="w-12 sm:mr-4" src={Logo}></img>
+                        <h1 className="hidden font-semibold text-3xl sm:block">
+                            Gameify
+                        </h1>
+                    </div>
+                </button>
+
+                <div className="searchBar flex flex-row text-sm items-center bg-white rounded-md px-1 mx-2">
+                    <input
+                        className="h-8 w-full outline-none text-black text-bold px-2"
+                        placeholder="Search games..."
+                    ></input>
+                    <img className="h-5 cursor-pointer" src={SearchImg}></img>
                 </div>
-            </button>
 
-            <div className="searchBar flex flex-row text-sm items-center bg-white rounded-md px-1 mx-2">
-                <input
-                    className="h-8 w-full outline-none text-black text-bold px-2"
-                    placeholder="Search games..."
-                ></input>
-                <img className="h-5 cursor-pointer" src={SearchImg}></img>
-            </div>
-
-            <div className="flex flex-row justify-between items-center ml-1">
-                <button
-                    onClick={() => navigateToWithDelay('/')}
-                    className="hidden sm:block"
-                >
-                    <img
-                        className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
-                        src={HomeImg}
-                    ></img>
-                </button>
-                <button
-                    onClick={() => navigateToWithDelay('/Library')}
-                    className="hidden sm:block"
-                >
-                    <img
-                        className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
-                        src={LibraryImg}
-                    ></img>
-                </button>
-                <button
-                    className="relative hover:scale-125 duration-200"
-                    onClick={() => toggleCartOn()}
-                >
-                    <img
-                        className=" w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
-                        src={CartImg}
-                    ></img>
-                    <img
-                        className="opacity-0 absolute top-0 right-0 w-3 h-3 duration-200"
-                        src={CartActiveImg}
-                        style={{ opacity: cartActive ? '1' : '0' }}
-                    ></img>
-                </button>
-                <button onClick={() => toggleHamburgerMenuOn()}>
-                    <img
-                        className="w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
-                        src={HamburgerMenuImg}
-                    ></img>
-                </button>
+                <div className="flex flex-row justify-between items-center ml-1">
+                    <button
+                        onClick={() => navigateToWithDelay('/')}
+                        className="hidden sm:block"
+                    >
+                        <img
+                            className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                            src={HomeImg}
+                        ></img>
+                    </button>
+                    <button
+                        onClick={() => navigateToWithDelay('/Library')}
+                        className="hidden sm:block"
+                    >
+                        <img
+                            className="w-8 mx-1 cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                            src={LibraryImg}
+                        ></img>
+                    </button>
+                    <button
+                        className="relative hover:scale-125 duration-200"
+                        onClick={() => toggleCartOn()}
+                    >
+                        <img
+                            className=" w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
+                            src={CartImg}
+                        ></img>
+                        <img
+                            className="opacity-0 absolute top-0 right-0 w-3 h-3 duration-200"
+                            src={CartActiveImg}
+                            style={{ opacity: cartActive ? '1' : '0' }}
+                        ></img>
+                    </button>
+                    <button onClick={() => toggleHamburgerMenuOn()}>
+                        <img
+                            className="w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                            src={HamburgerMenuImg}
+                        ></img>
+                    </button>
+                </div>
             </div>
         </div>
     )

@@ -1,43 +1,36 @@
-import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
+import GridWhiteImg from './GlobalImages/GridWhiteImg.png'
 
-import RatingWhiteImg from '../../Assets/GlobalImages/RatingWhiteImg.png'
-import TopWhiteImg from '../../Assets/GlobalImages/TopWhiteImg.png'
-import DateWhiteImg from '../../Assets/GlobalImages/DateWhiteImg.png'
+import RatingWhiteImg from './GlobalImages/RatingWhiteImg.png'
+import TopWhiteImg from './GlobalImages/TopWhiteImg.png'
+import DateWhiteImg from './GlobalImages/DateWhiteImg.png'
 
-import WindowsWhiteImg from '../../Assets/PlatformImages/WindowsWhiteImg.png'
-import LinuxWhiteImg from '../../Assets/PlatformImages/LinuxWhiteImg.png'
-import MacWhiteImg from '../../Assets/PlatformImages/MacWhiteImg.png'
-import PlaystationWhiteImg from '../../Assets/PlatformImages/PlaystationWhiteImg.png'
-import XboxWhiteImg from '../../Assets/PlatformImages/XboxWhiteImg.png'
-import NintendoWhiteImg from '../../Assets/PlatformImages/NintendoWhiteImg.png'
+import WindowsWhiteImg from './PlatformImages/WindowsWhiteImg.png'
+import LinuxWhiteImg from './PlatformImages/LinuxWhiteImg.png'
+import MacWhiteImg from './PlatformImages/MacWhiteImg.png'
+import PlaystationWhiteImg from './PlatformImages/PlaystationWhiteImg.png'
+import XboxWhiteImg from './PlatformImages/XboxWhiteImg.png'
+import NintendoWhiteImg from './PlatformImages/NintendoWhiteImg.png'
 
-import ActionWhiteImg from '../../Assets/GenreImages/ActionWhiteImg.png'
-import AdventureWhiteImg from '../../Assets/GenreImages/AdventureWhiteImg.png'
-import ShooterWhiteImg from '../../Assets/GenreImages/ShooterWhiteImg.png'
-import SportsWhiteImg from '../../Assets/GenreImages/SportsWhiteImg.png'
-import ArcadeWhiteImg from '../../Assets/GenreImages/ArcadeWhiteImg.png'
-import BoardGameWhiteImg from '../../Assets/GenreImages/BoardGameWhiteImg.png'
-import CardGameWhiteImg from '../../Assets/GenreImages/CardGameWhiteImg.png'
-import CasualWhiteImg from '../../Assets/GenreImages/CasualWhiteImg.png'
-import EducationalWhiteImg from '../../Assets/GenreImages/EducationalWhiteImg.png'
-import FightingWhiteImg from '../../Assets/GenreImages/FightingWhiteImg.png'
-import IndieWhiteImg from '../../Assets/GenreImages/IndieWhiteImg.png'
-import MmoWhiteImg from '../../Assets/GenreImages/MmoWhiteImg.png'
-import PlatformerWhiteImg from '../../Assets/GenreImages/PlatformerWhiteImg.png'
-import PuzzleWhiteImg from '../../Assets/GenreImages/PuzzleWhiteImg.png'
-import RacingWhiteImg from '../../Assets/GenreImages/RacingWhiteImg.png'
-import RpgWhiteImg from '../../Assets/GenreImages/RpgWhiteImg.png'
-import SimWhiteImg from '../../Assets/GenreImages/SimWhiteImg.png'
-import StrategyWhiteImg from '../../Assets/GenreImages/StrategyWhiteImg.png'
+import ActionWhiteImg from './GenreImages/ActionWhiteImg.png'
+import AdventureWhiteImg from './GenreImages/AdventureWhiteImg.png'
+import ShooterWhiteImg from './GenreImages/ShooterWhiteImg.png'
+import SportsWhiteImg from './GenreImages/SportsWhiteImg.png'
+import ArcadeWhiteImg from './GenreImages/ArcadeWhiteImg.png'
+import BoardGameWhiteImg from './GenreImages/BoardGameWhiteImg.png'
+import CardGameWhiteImg from './GenreImages/CardGameWhiteImg.png'
+import CasualWhiteImg from './GenreImages/CasualWhiteImg.png'
+import EducationalWhiteImg from './GenreImages/EducationalWhiteImg.png'
+import FightingWhiteImg from './GenreImages/FightingWhiteImg.png'
+import IndieWhiteImg from './GenreImages/IndieWhiteImg.png'
+import MmoWhiteImg from './GenreImages/MmoWhiteImg.png'
+import PlatformerWhiteImg from './GenreImages/PlatformerWhiteImg.png'
+import PuzzleWhiteImg from './GenreImages/PuzzleWhiteImg.png'
+import RacingWhiteImg from './GenreImages/RacingWhiteImg.png'
+import RpgWhiteImg from './GenreImages/RpgWhiteImg.png'
+import SimWhiteImg from './GenreImages/SimWhiteImg.png'
+import StrategyWhiteImg from './GenreImages/StrategyWhiteImg.png'
 
 const ButtonData = {
-    General: [
-        {
-            whiteIcon: GridWhiteImg,
-            text: 'Your Games',
-        },
-    ],
-
     Special: [
         {
             whiteIcon: TopWhiteImg,

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import PlatformImg from './PlatformImg/PlatformImg'
+import OrangeTick from '../../../../../Assets/GlobalImages/OrangeTick.png'
 
 const GameCard = ({ cardData, handleAddToCart, cart }) => {
     const [active, setActive] = useState(false)
@@ -20,10 +21,15 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
                 <div className="flex justify-between">
                     <button
                         onClick={() => handleAddToCart(cardData.name, active)}
-                        className="px-2 py-1 w-36 rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200"
+                        className="px-2 py-1 w-36 rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200 flex justify-center items-center"
                         style={{ color: active ? '#FF8B1B' : 'white' }}
                     >
-                        {active ? 'Added' : 'Add to cart +'}
+                        <p>{active ? 'Added' : 'Add to cart +'}</p>
+                        <img
+                            style={{ display: active ? 'block' : 'none' }}
+                            className="w-4 ml-1"
+                            src={OrangeTick}
+                        ></img>
                     </button>
                     <p className="text-center px-2 py-1 ml-2 w-24 rounded-lg bg-gray-500 bg-opacity-30">
                         £{cardData.price}

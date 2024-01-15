@@ -19,6 +19,10 @@
     }
 }
 
+html {
+    font-family: 'Tektur', sans-serif;
+}
+
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
     width: 10px;

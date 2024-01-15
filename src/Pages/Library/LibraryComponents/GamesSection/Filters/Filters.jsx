@@ -1,5 +1,5 @@
 import DownArrowImg from '../../../../../Assets/GlobalImages/DownArrowImg.png'
-import ButtonData from '../../../../../GlobalComponents/StandardCategoryButton/ButtonsData'
+import ButtonData from '../../../../../Assets/ButtonsData'
 
 const Filters = ({
     gameGenre,
@@ -44,7 +44,7 @@ const Filters = ({
     }
 
     return (
-        <div className="flex flex-col lg:flex-row absolute w-[inherit] sm:w-auto z-50 justify-center items-center sm:items-start">
+        <div className="flex flex-col lg:flex-row absolute w-[inherit] sm:w-auto z-10 justify-center items-center sm:items-start">
             <div className="lg:mr-8 absolute top-1 lg:relative lg:top-0 rounded-lg flex">
                 <button
                     className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-56"
@@ -64,7 +64,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-10"
                     id="genreItems"
                 >
                     {ButtonData.Genres.map((item) => {
@@ -106,7 +106,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-10"
                     id="platformItems"
                 >
                     {ButtonData.Platforms.map((item) => {
@@ -150,7 +150,7 @@ const Filters = ({
                 </button>
 
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-50"
+                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-56 z-10"
                     id="specialItems"
                 >
                     {ButtonData.Special.map((item) => {
