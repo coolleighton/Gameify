@@ -23,7 +23,7 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
                         ></StandardCategoryButton>
                     )
                 })}
-                <h1 className="text-3xl font-bold mt-4 mb-2">Platforms</h1>
+                <h1 className="text-3xl font-bold mt-4 mb-2">Platform</h1>
                 {ButtonData.Platforms.map((item) => {
                     return (
                         <StandardCategoryButton

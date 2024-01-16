@@ -1,6 +1,8 @@
 import Header from '../../GlobalComponents/Header/Header.jsx'
 import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
 import Cart from '../../GlobalComponents/Cart/Cart.jsx'
+import ButtonData from '../../Assets/ButtonsData.js'
+import { useNavigate } from 'react-router-dom'
 
 import Background from '../../Assets/Background.mp4'
 import GithubImg from '../../Assets/GlobalImages/GithubImg.png'
@@ -18,12 +20,34 @@ const Home = ({
     handleCategoryClick,
     setSearchAmount,
 }) => {
+    const navigate = useNavigate()
+
     // if the loading screen has played, play the background video instantly
     useEffect(() => {
         if (loadingScreenPlayed) {
             document.querySelector('#backgroundVideo').play()
         }
     }, [])
+
+    // set new api info, close menu, if needed go to library
+    const HandleMenuClick = async (category, categoryInfo, text) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply 0.8s fade out transition
+        document.querySelector('body').style.transitionDuration = '0.8s'
+        document.querySelector('body').style.opacity = '0'
+        await delay(800)
+
+        // navigate to page, set search amount, set new api data, scroll to top
+        navigate('/Library')
+        setSearchAmount(12)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        await handleCategoryClick(category, categoryInfo, text)
+
+        // re-show page
+        document.querySelector('body').style.opacity = '1'
+        document.querySelector('body').style.transitionDuration = '0'
+    }
 
     return (
         <div id="home" className="relative inset-0">
@@ -80,41 +104,29 @@ const Home = ({
                             Quick Navigation
                         </h2>
 
-                        <button className="flex items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200 ">
-                            <div className="flex items-center justify-center py-2">
-                                <img className="w-6 h-6" src={LibraryImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    Library
-                                </p>
-                            </div>
-                        </button>
-
-                        <button className="flex items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200">
-                            <div className="flex items-center justify-center py-2">
-                                <img className="w-6 h-6" src={LibraryImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    Library
-                                </p>
-                            </div>
-                        </button>
-
-                        <button className="flex items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200">
-                            <div className="flex items-center justify-center py-2">
-                                <img className="w-6 h-6" src={LibraryImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    Library
-                                </p>
-                            </div>
-                        </button>
-
-                        <button className="lastButton flex items-center justify-center bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
-                            <div className="flex items-center justify-center py-2">
-                                <img className="w-6 h-6" src={LibraryImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    Library
-                                </p>
-                            </div>
-                        </button>
+                        {ButtonData.Special.map((item) => {
+                            return (
+                                <button
+                                    className="flex py-2 items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200"
+                                    key={item.text}
+                                    onClick={() =>
+                                        HandleMenuClick(
+                                            'special',
+                                            item.categoryInfo,
+                                            item.text
+                                        )
+                                    }
+                                >
+                                    <img
+                                        className="w-6 h-6"
+                                        src={item.BlackIcon}
+                                    ></img>
+                                    <p className="text-black pl-2 font-semibold">
+                                        {item.text}
+                                    </p>
+                                </button>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

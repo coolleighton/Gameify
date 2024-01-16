@@ -3,6 +3,9 @@ import GridWhiteImg from './GlobalImages/GridWhiteImg.png'
 import RatingWhiteImg from './GlobalImages/RatingWhiteImg.png'
 import TopWhiteImg from './GlobalImages/TopWhiteImg.png'
 import DateWhiteImg from './GlobalImages/DateWhiteImg.png'
+import RatingBlackImg from './GlobalImages/RatingBlackImg.png'
+import TopBlackImg from './GlobalImages/TopBlackImg.png'
+import DateBlackImg from './GlobalImages/DateBlackImg.png'
 
 import WindowsWhiteImg from './PlatformImages/WindowsWhiteImg.png'
 import LinuxWhiteImg from './PlatformImages/LinuxWhiteImg.png'
@@ -34,16 +37,19 @@ const ButtonData = {
     Special: [
         {
             whiteIcon: TopWhiteImg,
+            BlackIcon: TopBlackImg,
             text: 'All Time Top',
             categoryInfo: '',
         },
         {
             whiteIcon: RatingWhiteImg,
+            BlackIcon: RatingBlackImg,
             text: 'Rating',
             categoryInfo: 'metacritic',
         },
         {
             whiteIcon: DateWhiteImg,
+            BlackIcon: DateBlackImg,
             text: 'Release Date',
             categoryInfo: 'released',
         },

@@ -162,14 +162,18 @@ const App = () => {
     const handleCategoryClick = async (category, categoryInfo, text) => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
+        console.log(category, categoryInfo, text)
+
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
-        document.querySelector('#GamesGrid').style.transition = '0.5s'
-        document.querySelector('#GamesGrid').style.opacity = '0'
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        if (document.querySelector('#GamesGrid')) {
+            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.opacity = '0'
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
         await delay(500)
 
         //  set heading and reset search amount
-
         setHeading(text)
         setSearchAmount(12)
 
@@ -248,8 +252,6 @@ const App = () => {
                 const data = await response.json()
                 const dataResult = data.results
 
-                console.log(dataResult)
-
                 // create a new array with only the data we need
                 let displayData = []
                 displayData = dataResult.map((item) => {
@@ -261,8 +263,6 @@ const App = () => {
                         rating: item.metacritic,
                     }
                 })
-
-                console.log(displayData)
 
                 setApiData(displayData)
                 if (document.querySelector('#GamesGrid')) {
@@ -287,6 +287,9 @@ const App = () => {
                     removeItemFromCart={removeItemFromCart}
                     handleCategoryClick={handleCategoryClick}
                     setSearchAmount={setSearchAmount}
+                    setGamePlatform={setGamePlatform}
+                    setGameSpecialCategory={setGameSpecialCategory}
+                    setGameGenre={setGameGenre}
                 />
             ),
             errorElement: <ErrorPage />,

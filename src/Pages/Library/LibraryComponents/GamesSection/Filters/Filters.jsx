@@ -31,7 +31,7 @@ const Filters = ({
         document.querySelector('#' + id + 'Items').style.display = 'none'
     }
 
-    const handleFilterClick = (categoryInfo, text, id, e) => {
+    const handleFilterClick = (categoryInfo, text, id) => {
         if (id === 'special') {
             handleFilterSpecialCategory(categoryInfo, text)
         } else if (id === 'platform') {
@@ -132,7 +132,7 @@ const Filters = ({
 
             <div className="lg:mr-8 top-[6.8rem] absolute lg:relative lg:top-0 rounded-lg">
                 <button
-                    className="flex text-black px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-56"
+                    className="flex text-black px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-64"
                     id="special"
                     onClick={() => showFilterItems('special')}
                 >
