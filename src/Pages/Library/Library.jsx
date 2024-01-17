@@ -23,6 +23,7 @@ const Library = ({
     return (
         <div className="relative w-full">
             <Header
+                SearchData={ApiData}
                 headerBgColour={'#04020b'}
                 cart={cart}
                 setSearchAmount={setSearchAmount}

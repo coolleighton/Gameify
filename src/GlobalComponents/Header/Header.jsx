@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { toggleCartOn } from '../Cart/CartFunctions'
+import SearchList from './SearchBar/SearchList'
 import './Header.css'
 import Logo from '../../Assets/GlobalImages/GameifyLogo.png'
 import SearchImg from '../../Assets/GlobalImages/SearchImg.png'
@@ -10,8 +11,12 @@ import HomeImg from '../../Assets/GlobalImages/HomeImg.png'
 import HamburgerMenuImg from '../../Assets/GlobalImages/HamburgerMenuImg.png'
 import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
-const Header = ({ headerBgColour, cart, setSearchAmount }) => {
+const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
     const [cartActive, setCartActive] = useState(false)
+    const [searchActive, setSearchActive] = useState(false)
+    const [inputValue, setInputValue] = useState('')
+    const [searchValue, setSearchValue] = useState('')
+    const [searchData, setSearchData] = useState({})
 
     // Navigate to a new page with a transition
     const navigate = useNavigate()
@@ -90,6 +95,88 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
+    // hide searchBarList when clicking outside search Bar or clicking an item in the search
+    document.addEventListener('click', (e) => {
+        if ((e.target.id === 'searchBar') === false) {
+            setSearchActive(false)
+        }
+    })
+
+    // handle when input value changes
+    const handleSearchValueChange = (value) => {
+        setSearchActive(true)
+        setInputValue(value)
+    }
+
+    // show search if there is already an inputvalue
+    const handleSearchClick = () => {
+        if (!!inputValue) {
+            setSearchActive(true)
+        }
+    }
+
+    // run search function after user has stopped typing for 1 second
+    useEffect(() => {
+        // hide search list while processing api request
+
+        const hideSearchList = async () => {
+            const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+            document.querySelector('#searchListInnerDiv').style.opacity = '0'
+            await delay(300)
+            document.querySelector('#searchListInnerDiv').style.display = 'none'
+        }
+
+        hideSearchList()
+
+        const timer = setTimeout(() => {
+            setSearchValue(inputValue)
+        }, 1000)
+
+        // clear the timer when the component unmounts or when inputValue changes
+        return () => clearTimeout(timer)
+    }, [inputValue])
+
+    // get request for search data on search value change
+    useEffect(() => {
+        // declare API URL
+
+        let ApiUrl =
+            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf&search=' +
+            inputValue
+
+        try {
+            // function that will fetch data, keep what we need and set 'ApiData' with that data
+            const fetchData = async () => {
+                const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+                const response = await fetch(ApiUrl)
+                const data = await response.json()
+                const dataResult = data.results
+
+                console.log(dataResult)
+
+                // create a new array with only the data we need
+                let displayData = []
+                displayData = dataResult.map((item) => {
+                    return {
+                        name: item.name,
+                        image: item.background_image,
+                    }
+                })
+
+                setSearchData(displayData)
+                await delay(1000)
+                document.querySelector('#searchListInnerDiv').style.display =
+                    'block'
+                document.querySelector('#searchListInnerDiv').style.opacity =
+                    '1'
+            }
+            fetchData()
+        } catch (error) {
+            console.error('Error fetching data from Rawg:', error)
+        }
+    }, [searchValue])
+
     return (
         <div
             id="header"
@@ -106,12 +193,36 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
                     </div>
                 </button>
 
-                <div className="searchBar flex flex-row text-sm items-center bg-white rounded-md px-1 mx-2">
-                    <input
-                        className="h-8 w-full outline-none text-black text-bold px-2"
-                        placeholder="Search games..."
-                    ></input>
-                    <img className="h-5 cursor-pointer" src={SearchImg}></img>
+                <div
+                    id="searchBar"
+                    className="searchBar relative bg-white rounded-md px-1 mx-2"
+                >
+                    <div
+                        id="searchBar"
+                        className="flex flex-row text-sm items-center"
+                    >
+                        <input
+                            id="searchBar"
+                            autoComplete="off"
+                            className="h-8 w-full outline-none text-black text-bold px-2"
+                            placeholder="Search games..."
+                            value={inputValue}
+                            onChange={(e) =>
+                                handleSearchValueChange(e.target.value)
+                            }
+                            onClick={handleSearchClick}
+                        ></input>
+                        <img
+                            id="searchBar"
+                            className="h-5 cursor-pointer"
+                            src={SearchImg}
+                        ></img>
+                    </div>
+
+                    <SearchList
+                        searchData={searchData}
+                        searchActive={searchActive}
+                    ></SearchList>
                 </div>
 
                 <div className="flex flex-row justify-between items-center ml-1">

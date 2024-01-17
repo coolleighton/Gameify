@@ -162,8 +162,6 @@ const App = () => {
     const handleCategoryClick = async (category, categoryInfo, text) => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
-        console.log(category, categoryInfo, text)
-
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
         if (document.querySelector('#GamesGrid')) {
             document.querySelector('#GamesGrid').style.transition = '0.5s'
