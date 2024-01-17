@@ -73,9 +73,9 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
         } else if (direction === 1) {
             document.querySelector('#header').classList.remove('hide')
             document.querySelector('#categoryButtonsWrapper').style.height =
-                'calc(100vh - 68px)'
+                'calc(100vh - 84px)'
             document.querySelector('#categoryButtonsWrapper').style.marginTop =
-                '68px'
+                '84px'
             prevDirection = direction
         }
     }

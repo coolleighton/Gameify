@@ -208,7 +208,18 @@ const App = () => {
     }
 
     // filter results by a special category
-    const handleFilterSpecialCategory = (categoryInfo, text) => {
+    const handleFilterSpecialCategory = async (categoryInfo, text) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
+        if (document.querySelector('#GamesGrid')) {
+            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.opacity = '0'
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        await delay(500)
+
         setHeading(text)
         setGameSpecialCategory({
             url: '&ordering=' + categoryInfo + '&parent_platforms=1,2,3,5,6,7',
@@ -217,7 +228,18 @@ const App = () => {
     }
 
     // filter results by a special category
-    const handleFilterPlatformCategory = (categoryInfo, text) => {
+    const handleFilterPlatformCategory = async (categoryInfo, text) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
+        if (document.querySelector('#GamesGrid')) {
+            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.opacity = '0'
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        await delay(500)
+
         setHeading(text)
         setGamePlatform({
             url: '&parent_platforms=' + categoryInfo,
@@ -226,7 +248,18 @@ const App = () => {
     }
 
     // filter results by a special category
-    const handleFilterGenreCategory = (categoryInfo, text) => {
+    const handleFilterGenreCategory = async (categoryInfo, text) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
+        if (document.querySelector('#GamesGrid')) {
+            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.opacity = '0'
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        await delay(500)
+
         setHeading(text)
         setGameGenre({
             url: '&genres=' + categoryInfo,
@@ -269,6 +302,8 @@ const App = () => {
                     document.querySelector('#GamesGrid').style.opacity = '1'
                     document.querySelector('#GamesGrid').style.transition = '0'
                 }
+                document.querySelector('body').style.opacity = '1'
+                document.querySelector('body').style.transitionDuration = '0'
             }
             fetchData()
         } catch (error) {

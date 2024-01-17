@@ -44,9 +44,7 @@ const Home = ({
         window.scrollTo({ top: 0, behavior: 'smooth' })
         await handleCategoryClick(category, categoryInfo, text)
 
-        // re-show page
-        document.querySelector('body').style.opacity = '1'
-        document.querySelector('body').style.transitionDuration = '0'
+        // pag re-shown in api call page
     }
 
     return (

@@ -4,8 +4,11 @@ export const toggleCartOn = async () => {
 
     document.querySelector('#Cart').style.display = 'block'
 
-    // stop user from scrolling the body
-    document.querySelector('body').style.overflowY = 'clip'
+    if (window.innerWidth > 640) {
+        // stop user from scrolling the body on anything bigger than mobile
+        document.querySelector('body').style.overflowY = 'clip'
+    }
+
     await delay(50)
     // show cart
     document.querySelector('#Cart').style.opacity = '1'
