@@ -61,7 +61,7 @@ const SearchList = ({ searchData, searchActive }) => {
             </div>
             <div
                 key="searchLoader"
-                className="mt-28 w-6/12 m-auto flex justify-center"
+                className="mt-28 pb-28 w-6/12 m-auto flex justify-center"
             >
                 <div className="searchLoader"></div>
             </div>
