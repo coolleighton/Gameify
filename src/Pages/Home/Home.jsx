@@ -55,9 +55,9 @@ const Home = ({
                 setSearchAmount={setSearchAmount}
             ></Header>
 
-            <div className="flex flex-col mx-auto h-[100vh] sm:w-[670px] sm:flex-row sm:justify-start sm:items-center">
-                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-5 w-11/12 mx-auto">
-                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center  sm:w-11/12 mx-auto rounded-lg backdrop-blur">
+            <div className="flex flex-col mx-auto h-[100vh] sm:w-[695px] sm:flex-row sm:justify-start sm:items-center">
+                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-12 w-11/12 mx-auto">
+                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center sm:w-11/12 mx-auto rounded-lg backdrop-blur">
                         <h1 className="title break-words sm:text-7xl font-extrabold pb-5">
                             Gameify
                         </h1>
@@ -125,6 +125,12 @@ const Home = ({
                                 </button>
                             )
                         })}
+                        <button className="flex py-2 items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200">
+                            <img className="w-6 h-6" src={LibraryImg}></img>
+                            <p className="text-black pl-2 font-semibold">
+                                Library
+                            </p>
+                        </button>
                     </div>
                 </div>
             </div>

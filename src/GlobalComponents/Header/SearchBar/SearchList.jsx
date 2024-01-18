@@ -27,43 +27,57 @@ const SearchList = ({ searchData, searchActive }) => {
         }
     }, [searchActive])
 
+    // display loader when loading, display error message if search returns nothing
+    useEffect(() => {
+        if (!searchData.length > 0) {
+            document.querySelector('#searchLoader').style.display = 'none'
+            document.querySelector('#searchError').style.display = 'flex'
+        } else {
+            document.querySelector('#searchLoader').style.display = 'flex'
+            document.querySelector('#searchError').style.display = 'none'
+        }
+    }, [searchData])
+
     return (
         <div
             id="searchList"
-            className="hidden p-3 opacity-0 duration-300 absolute -translate-x-1 bg-white h-[40vh] w-full rounded-b-md overflow-y-scroll no-scrollbar"
+            className="hidden sm:px-3 opacity-0 duration-300 absolute -translate-x-1 bg-white h-[40vh] w-full rounded-b-md overflow-y-scroll no-scrollbar"
         >
             <div key="searchList" id="searchListInnerDiv">
                 {searchData.length > 0 ? (
                     // Render content when searchData has a value
                     searchData.map((item) => (
                         <button
-                            className="w-full p-3 flex items-center mb-4 duration-300 hover:bg-gray-200 p-2 rounded-xl"
+                            className="w-full p-2 xs:p-3 flex flex-col sm:flex-row items-center mb-1 sm:mb-4 duration-300 hover:bg-gray-200 rounded-xl"
                             key={item.name}
                         >
                             <img
-                                className=" w-4/12 rounded-xl h-32 object-cover"
+                                className=" sm:w-4/12 rounded-xl h-20 xs:h-28 object-cover mb-1 sm:h-32"
                                 src={item.image}
                                 alt={item.name}
                             ></img>
-                            <p className="text-black text-xl ml-4">
+                            <p className="text-black text-center text-sm sm:text-xl sm:ml-4">
                                 {item.name}
                             </p>
                         </button>
                     ))
                 ) : (
                     // Render loading state or other content when searchData is empty
-                    <div className="mt-32 mb-64 w-6/12 m-auto flex justify-center">
-                        <p className="text-black">
-                            Try searching for something else
-                        </p>
-                    </div>
+                    <div></div>
                 )}
             </div>
             <div
                 key="searchLoader"
-                className="mt-28 pb-28 w-6/12 m-auto flex justify-center"
+                id="searchLoader"
+                className="mt-28 mb-12 w-6/12 m-auto flex justify-center"
             >
                 <div className="searchLoader"></div>
+            </div>
+            <div
+                id="searchError"
+                className="mt-28 w-6/12 mx-auto flex justify-center"
+            >
+                <p className="text-black">Try searching for something else</p>
             </div>
         </div>
     )

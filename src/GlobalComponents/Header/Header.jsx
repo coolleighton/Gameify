@@ -106,6 +106,8 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
     const handleSearchValueChange = (value) => {
         setSearchActive(true)
         setInputValue(value)
+        document.querySelector('#searchLoader').style.display = 'flex'
+        document.querySelector('#searchError').style.display = 'none'
     }
 
     // show search if there is already an inputvalue
@@ -139,9 +141,8 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
     // get request for search data on search value change
     useEffect(() => {
         // declare API URL
-
         let ApiUrl =
-            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf&search=' +
+            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf&search_precise=true&search=' +
             inputValue
 
         try {
@@ -153,8 +154,6 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
                 const data = await response.json()
                 const dataResult = data.results
 
-                console.log(dataResult)
-
                 // create a new array with only the data we need
                 let displayData = []
                 displayData = dataResult.map((item) => {
@@ -165,7 +164,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
                 })
 
                 setSearchData(displayData)
-                await delay(1000)
+                await delay(500)
                 document.querySelector('#searchListInnerDiv').style.display =
                     'block'
                 document.querySelector('#searchListInnerDiv').style.opacity =
@@ -180,7 +179,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
     return (
         <div
             id="header"
-            className="px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full z-50 sm:px-9"
+            className="sm:px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full z-50 sm:px-9"
             style={{ backgroundColor: headerBgColour }}
         >
             <div className="flex justify-between items-center w-11/12 sm:w-full mx-auto">
