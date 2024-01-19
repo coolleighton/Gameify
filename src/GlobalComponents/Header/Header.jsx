@@ -11,7 +11,7 @@ import HomeImg from '../../Assets/GlobalImages/HomeImg.png'
 import HamburgerMenuImg from '../../Assets/GlobalImages/HamburgerMenuImg.png'
 import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
-const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
+const Header = ({ headerBgColour, cart, setSearchAmount }) => {
     const [cartActive, setCartActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
     const [inputValue, setInputValue] = useState('')
@@ -106,6 +106,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
     const handleSearchValueChange = (value) => {
         setSearchActive(true)
         setInputValue(value)
+        console.log(value)
         document.querySelector('#searchLoader').style.display = 'flex'
         document.querySelector('#searchError').style.display = 'none'
     }
@@ -205,7 +206,6 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
                             autoComplete="off"
                             className="h-8 w-full outline-none text-black text-bold px-2"
                             placeholder="Search games..."
-                            value={inputValue}
                             onChange={(e) =>
                                 handleSearchValueChange(e.target.value)
                             }
@@ -221,6 +221,7 @@ const Header = ({ headerBgColour, cart, setSearchAmount, SearchData }) => {
                     <SearchList
                         searchData={searchData}
                         searchActive={searchActive}
+                        inputValue={inputValue}
                     ></SearchList>
                 </div>
 
