@@ -9,6 +9,8 @@ const App = () => {
     const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
     const [cart, setCart] = useState([])
     const [ApiData, setApiData] = useState([])
+    const [inputValue, setInputValue] = useState('')
+    const [searchValue, setSearchValue] = useState('')
     const [searchAmount, setSearchAmount] = useState(12)
     const [heading, setHeading] = useState('All Time Top')
     const [gameGenre, setGameGenre] = useState({
@@ -23,6 +25,20 @@ const App = () => {
         url: '',
         displayText: ' All Time Top',
     })
+    const [gameSearch, setGameSearch] = useState({ url: '', displayText: '' })
+
+    // set all search criteria to default
+    const resetSearchCriteria = () => {
+        setGameSearch({ url: '', displayText: '' })
+        setGameGenre({ url: '', displayText: ' All' })
+        setGamePlatform({ url: '', displayText: ' All' })
+        setGameSpecialCategory({
+            url: '',
+            displayText: ' All Time Top',
+        })
+        setHeading('All Time Top')
+        setSearchAmount(12)
+    }
 
     // load cart data from local storage
     useEffect(() => {
@@ -164,12 +180,12 @@ const App = () => {
 
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
         if (document.querySelector('#GamesGrid')) {
-            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.transition = '0.3s'
             document.querySelector('#GamesGrid').style.opacity = '0'
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
 
-        await delay(500)
+        await delay(300)
 
         //  set heading and reset search amount
         setHeading(text)
@@ -179,6 +195,7 @@ const App = () => {
         if (category === 'genre') {
             setGamePlatform({ url: '', displayText: ' All' })
             setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
+            setGameSearch({ url: '', displayText: '' })
             setGameGenre({
                 url: '&genres=' + categoryInfo,
                 displayText: ' ' + text,
@@ -187,6 +204,7 @@ const App = () => {
             // set Api/displayText data
             setGameGenre({ url: '', displayText: ' All' })
             setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
+            setGameSearch({ url: '', displayText: '' })
             setGamePlatform({
                 url: '&parent_platforms=' + categoryInfo,
                 displayText: ' ' + text,
@@ -195,12 +213,22 @@ const App = () => {
             // set Api/displayText data
             setGameGenre({ url: '', displayText: ' All' })
             setGamePlatform({ url: '', displayText: ' All' })
+            setGameSearch({ url: '', displayText: '' })
             setGameSpecialCategory({
                 url:
                     '&ordering=' +
                     categoryInfo +
                     '&parent_platforms=1,2,3,5,6,7',
                 displayText: ' ' + text,
+            })
+        } else if (category === 'search') {
+            // set Api/displayText data
+            setGameGenre({ url: '', displayText: ' All' })
+            setGamePlatform({ url: '', displayText: ' All' })
+            setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
+            setGameSearch({
+                url: '&search_precise=true&search=' + categoryInfo,
+                displayText: '',
             })
         }
     }
@@ -211,12 +239,12 @@ const App = () => {
 
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
         if (document.querySelector('#GamesGrid')) {
-            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.transition = '0.3s'
             document.querySelector('#GamesGrid').style.opacity = '0'
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
 
-        await delay(500)
+        await delay(300)
 
         setHeading(text)
         setGameSpecialCategory({
@@ -231,12 +259,12 @@ const App = () => {
 
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
         if (document.querySelector('#GamesGrid')) {
-            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.transition = '0.3s'
             document.querySelector('#GamesGrid').style.opacity = '0'
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
 
-        await delay(500)
+        await delay(300)
 
         setHeading(text)
         setGamePlatform({
@@ -251,12 +279,12 @@ const App = () => {
 
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
         if (document.querySelector('#GamesGrid')) {
-            document.querySelector('#GamesGrid').style.transition = '0.5s'
+            document.querySelector('#GamesGrid').style.transition = '0.3s'
             document.querySelector('#GamesGrid').style.opacity = '0'
             window.scrollTo({ top: 0, behavior: 'smooth' })
         }
 
-        await delay(500)
+        await delay(300)
 
         setHeading(text)
         setGameGenre({
@@ -273,6 +301,7 @@ const App = () => {
             gameGenre.url +
             gameSpecialCategory.url +
             gamePlatform.url +
+            gameSearch.url +
             '&page_size=' +
             searchAmount
 
@@ -323,6 +352,11 @@ const App = () => {
                     setGamePlatform={setGamePlatform}
                     setGameSpecialCategory={setGameSpecialCategory}
                     setGameGenre={setGameGenre}
+                    inputValue={inputValue}
+                    searchValue={searchValue}
+                    setInputValue={setInputValue}
+                    setSearchValue={setSearchValue}
+                    resetSearchCriteria={resetSearchCriteria}
                 />
             ),
             errorElement: <ErrorPage />,
@@ -346,6 +380,12 @@ const App = () => {
                     handleFilterSpecialCategory={handleFilterSpecialCategory}
                     handleFilterPlatformCategory={handleFilterPlatformCategory}
                     handleFilterGenreCategory={handleFilterGenreCategory}
+                    inputValue={inputValue}
+                    searchValue={searchValue}
+                    setInputValue={setInputValue}
+                    setSearchValue={setSearchValue}
+                    loadingScreenPlayed={loadingScreenPlayed}
+                    resetSearchCriteria={resetSearchCriteria}
                 />
             ),
             errorElement: <ErrorPage />,

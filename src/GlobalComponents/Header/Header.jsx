@@ -11,27 +11,36 @@ import HomeImg from '../../Assets/GlobalImages/HomeImg.png'
 import HamburgerMenuImg from '../../Assets/GlobalImages/HamburgerMenuImg.png'
 import CartActiveImg from '../../Assets/GlobalImages/CartActiveImg.png'
 
-const Header = ({ headerBgColour, cart, setSearchAmount }) => {
+const Header = ({
+    headerBgColour,
+    cart,
+    setSearchAmount,
+    inputValue,
+    searchValue,
+    setInputValue,
+    setSearchValue,
+    handleCategoryClick,
+    resetSearchCriteria,
+}) => {
     const [cartActive, setCartActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
-    const [inputValue, setInputValue] = useState('')
-    const [searchValue, setSearchValue] = useState('')
     const [searchData, setSearchData] = useState({})
 
     // Navigate to a new page with a transition
     const navigate = useNavigate()
     const navigateToWithDelay = (location) => {
         // hide page with a transition
-        document.querySelector('body').style.transitionDuration = '0.8s'
+        document.querySelector('body').style.transitionDuration = '0.5s'
         document.querySelector('body').style.opacity = '0'
 
-        // navigate to page after 0.8s, show page then remove transition effects.
+        // navigate to page after 0.3s, show page then remove transition effects.
         setTimeout(() => {
             setSearchAmount(12)
             navigate(location)
+            resetSearchCriteria()
             document.querySelector('body').style.opacity = '1'
             document.querySelector('body').style.transitionDuration = '0'
-        }, 800)
+        }, 500)
     }
 
     // check if cart has items in it
@@ -106,7 +115,6 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
     const handleSearchValueChange = (value) => {
         setSearchActive(true)
         setInputValue(value)
-        console.log(value)
         document.querySelector('#searchLoader').style.display = 'flex'
         document.querySelector('#searchError').style.display = 'none'
     }
@@ -118,17 +126,17 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
         }
     }
 
+    // hide search list
+
+    const hideSearchList = async () => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+        document.querySelector('#searchListInnerDiv').style.opacity = '0'
+        await delay(300)
+        document.querySelector('#searchListInnerDiv').style.display = 'none'
+    }
+
     // run search function after user has stopped typing for 1 second
     useEffect(() => {
-        // hide search list while processing api request
-
-        const hideSearchList = async () => {
-            const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-            document.querySelector('#searchListInnerDiv').style.opacity = '0'
-            await delay(300)
-            document.querySelector('#searchListInnerDiv').style.display = 'none'
-        }
-
         hideSearchList()
 
         const timer = setTimeout(() => {
@@ -165,7 +173,9 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
                 })
 
                 setSearchData(displayData)
+
                 await delay(500)
+
                 document.querySelector('#searchListInnerDiv').style.display =
                     'block'
                 document.querySelector('#searchListInnerDiv').style.opacity =
@@ -176,6 +186,62 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
             console.error('Error fetching data from Rawg:', error)
         }
     }, [searchValue])
+
+    // search button is clicked and input has value
+    const searchButtonClick = () => {
+        if (document.querySelector('.searchBarInput').value) {
+            console.log('search button clicked and input has value')
+            setSearchValue(document.querySelector('.searchBarInput').value)
+            setInputValue(document.querySelector('.searchBarInput').value)
+            setSearchAmount(12)
+            handleCategoryClick(
+                'search',
+                document.querySelector('.searchBarInput').value,
+                document.querySelector('.searchBarInput').value
+            )
+            setSearchValue('')
+            setInputValue('')
+            setSearchActive(false)
+
+            if (window.location.href.includes('Library') === false) {
+                navigate('/Library')
+            }
+        }
+    }
+
+    // if enter is pressed and input has a value trigger the below function
+    const enterKeyPressed = (e) => {
+        if (
+            e.key === 'Enter' &&
+            document.querySelector('.searchBarInput').value
+        ) {
+            console.log('enter pressed and input has value')
+            setSearchValue(document.querySelector('.searchBarInput').value)
+            setInputValue(document.querySelector('.searchBarInput').value)
+            setSearchAmount(12)
+            handleCategoryClick(
+                'search',
+                document.querySelector('.searchBarInput').value,
+                document.querySelector('.searchBarInput').value
+            )
+            setSearchValue('')
+            setInputValue('')
+            setSearchActive(false)
+
+            if (window.location.href.includes('Library') === false) {
+                navigate('/Library')
+            }
+        }
+    }
+
+    // searchBarInput expand on focus
+    document.addEventListener('click', (e) => {
+        if (e.target.id === 'searchBar') {
+            document.querySelector('.searchBarInput').style.width = '36rem'
+        } else {
+            document.querySelector('.searchBarInput').style.width = '16rem'
+        }
+    })
 
     return (
         <div
@@ -204,24 +270,35 @@ const Header = ({ headerBgColour, cart, setSearchAmount }) => {
                         <input
                             id="searchBar"
                             autoComplete="off"
-                            className="h-8 w-full outline-none text-black text-bold px-2"
+                            className="searchBarInput h-8 w-full outline-none text-black text-bold px-2"
                             placeholder="Search games..."
                             onChange={(e) =>
                                 handleSearchValueChange(e.target.value)
                             }
+                            onKeyDown={(e) => enterKeyPressed(e)}
+                            value={inputValue}
                             onClick={handleSearchClick}
                         ></input>
-                        <img
-                            id="searchBar"
-                            className="h-5 cursor-pointer"
-                            src={SearchImg}
-                        ></img>
+                        <button
+                            className="py-[2px]"
+                            id="searchButton"
+                            onClick={searchButtonClick}
+                        >
+                            <img
+                                onClick={searchButtonClick}
+                                id="searchButton"
+                                className="h-7 p-1 cursor-pointer duration-300 rounded hover:bg-gray-200"
+                                src={SearchImg}
+                            ></img>
+                        </button>
                     </div>
 
                     <SearchList
                         searchData={searchData}
                         searchActive={searchActive}
-                        inputValue={inputValue}
+                        setSearchAmount={setSearchAmount}
+                        setSearchValue={setSearchValue}
+                        setInputValue={setInputValue}
                     ></SearchList>
                 </div>
 

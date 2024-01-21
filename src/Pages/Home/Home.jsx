@@ -19,6 +19,11 @@ const Home = ({
     loadingScreenPlayed,
     handleCategoryClick,
     setSearchAmount,
+    inputValue,
+    searchValue,
+    setInputValue,
+    setSearchValue,
+    resetSearchCriteria,
 }) => {
     const navigate = useNavigate()
 
@@ -33,10 +38,10 @@ const Home = ({
     const HandleMenuClick = async (category, categoryInfo, text) => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
-        // apply 0.8s fade out transition
-        document.querySelector('body').style.transitionDuration = '0.8s'
+        // apply 0.3s fade out transition
+        document.querySelector('body').style.transitionDuration = '0.3s'
         document.querySelector('body').style.opacity = '0'
-        await delay(800)
+        await delay(300)
 
         // navigate to page, set search amount, set new api data, scroll to top
         navigate('/Library')
@@ -53,6 +58,12 @@ const Home = ({
                 headerBgColour={'#FF'}
                 cart={cart}
                 setSearchAmount={setSearchAmount}
+                inputValue={inputValue}
+                searchValue={searchValue}
+                setInputValue={setInputValue}
+                setSearchValue={setSearchValue}
+                handleCategoryClick={handleCategoryClick}
+                resetSearchCriteria={resetSearchCriteria}
             ></Header>
 
             <div className="flex flex-col mx-auto h-[100vh] sm:w-[695px] sm:flex-row sm:justify-start sm:items-center">

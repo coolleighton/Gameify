@@ -44,7 +44,10 @@ const Filters = ({
     }
 
     return (
-        <div className="flex flex-col lg:flex-row absolute w-[inherit] sm:w-auto z-10 justify-center items-center sm:items-start">
+        <div
+            id="Filters"
+            className="flex flex-col lg:flex-row absolute w-[inherit] sm:w-auto z-10 justify-center items-center sm:items-start"
+        >
             <div className="lg:mr-8 absolute top-1 lg:relative lg:top-0 rounded-lg flex">
                 <button
                     className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-[14.5rem]"

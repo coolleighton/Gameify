@@ -26,7 +26,7 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
         document.querySelector('#Cart').style.opacity = '0'
 
         // wait 0.5s then remove from Page
-        await delay(500)
+        await delay(300)
         document.querySelector('#Cart').style.display = 'none'
     }
 
@@ -41,7 +41,7 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
     return (
         <div
             id="Cart"
-            className="hidden opacity-0 fixed w-screen h-screen backdrop-brightness-50 backdrop-blur-sm z-50 top-0 right-0 duration-500"
+            className="hidden opacity-0 fixed w-screen h-screen backdrop-brightness-50 backdrop-blur-sm z-50 top-0 right-0 duration-300"
         >
             <div className="fixed bg-[#04020b] h-screen top-0 right-0 w-10/12 z-50 sm:w-4/12 lg:w-3/12 2xl:w-2/12">
                 <div className="fixed flex flex-col justify-between h-screen bg-gray-500 bg-opacity-20 w-10/12 sm:w-4/12 lg:w-3/12 2xl:w-2/12">

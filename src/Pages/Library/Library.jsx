@@ -19,14 +19,26 @@ const Library = ({
     handleFilterSpecialCategory,
     handleFilterPlatformCategory,
     handleFilterGenreCategory,
+    inputValue,
+    searchValue,
+    setInputValue,
+    setSearchValue,
+    loadingScreenPlayed,
+    resetSearchCriteria,
 }) => {
     return (
-        <div className="relative w-full">
+        <div id="Library" className="relative w-full">
             <Header
                 SearchData={ApiData}
                 headerBgColour={'#04020b'}
                 cart={cart}
                 setSearchAmount={setSearchAmount}
+                inputValue={inputValue}
+                searchValue={searchValue}
+                setInputValue={setInputValue}
+                setSearchValue={setSearchValue}
+                handleCategoryClick={handleCategoryClick}
+                resetSearchCriteria={resetSearchCriteria}
             ></Header>
             <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-72 sm:block"></div>
@@ -44,6 +56,7 @@ const Library = ({
                     handleFilterSpecialCategory={handleFilterSpecialCategory}
                     handleFilterPlatformCategory={handleFilterPlatformCategory}
                     handleFilterGenreCategory={handleFilterGenreCategory}
+                    loadingScreenPlayed={loadingScreenPlayed}
                 ></GamesSection>
             </div>
             <MobileMenu

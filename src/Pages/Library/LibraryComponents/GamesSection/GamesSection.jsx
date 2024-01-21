@@ -1,6 +1,8 @@
 import GameCard from './GameCard/GameCard'
 import Loading from './Loading/Loading'
 import Filters from './Filters/Filters'
+import IncorrectSearchMessage from '../../../../GlobalComponents/IncorrectSearchMessage/IncorrectSearchMessage.jsx'
+import { useEffect, useState } from 'react'
 
 const GamesSection = ({
     gamesData,
@@ -13,7 +15,16 @@ const GamesSection = ({
     handleFilterSpecialCategory,
     handleFilterPlatformCategory,
     handleFilterGenreCategory,
+    loadingScreenPlayed,
 }) => {
+    useEffect(() => {
+        if (loadingScreenPlayed) {
+            if (gamesData.length < 1) {
+                document.querySelector('#modal').style.display = 'block'
+            }
+        }
+    }, [gamesData])
+
     return (
         <div id="gamesSection" className="w-full rounded-2xl mt-24">
             <h1 className="font-extrabold text-center text-[2.5rem] pt-3 mb-6 md:text-7xl xs:text-5xl sm:text-left">
@@ -42,7 +53,9 @@ const GamesSection = ({
                     )
                 })}
             </div>
+
             <Loading></Loading>
+            <IncorrectSearchMessage></IncorrectSearchMessage>
         </div>
     )
 }

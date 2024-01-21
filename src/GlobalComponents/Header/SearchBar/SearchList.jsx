@@ -2,29 +2,28 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SearchList.css'
 
-const SearchList = ({ searchData, searchActive, inputValue }) => {
+const SearchList = ({
+    searchData,
+    searchActive,
+    setSearchAmount,
+    setInputValue,
+    setSearchValue,
+}) => {
     // Navigate to a new page with a transition
     const navigate = useNavigate()
     const navigateToWithDelay = () => {
         // hide page with a transition
-        document.querySelector('body').style.transitionDuration = '0.8s'
+        document.querySelector('body').style.transitionDuration = '0.5s'
         document.querySelector('body').style.opacity = '0'
 
-        // navigate to page after 0.8s, show page then remove transition effects.
+        // navigate to page after 0.5s, show page then remove transition effects.
         setTimeout(() => {
             setSearchAmount(12)
-            navigate('./Library')
+            navigate('/Library')
             document.querySelector('body').style.opacity = '1'
             document.querySelector('body').style.transitionDuration = '0'
-        }, 800)
+        }, 500)
     }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.code === 'Enter' && inputValue) {
-            console.log(document.querySelector('#searchBar'))
-            console.log('enter pressed while search active')
-        }
-    })
 
     // display search list when searchList is active
     useEffect(() => {
