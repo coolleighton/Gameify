@@ -106,24 +106,3 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
 }
 
 export default MobileMenu
-/*
-<StandardLinkButton
-                        whiteIcon={WindowsWhiteImg}
-                        blackIcon={WindowsBlackImg}
-                        text="Home"
-                        handleCategoryClick={() => handleNavigate('/')}
-                        style={{ backgroundColor: 'black' }}
-                        textStyle={{ color: 'black' }}
-                        id="MobileMenuButton"
-                    ></StandardLinkButton>
-
-                    <StandardLinkButton
-                        whiteIcon={WindowsWhiteImg}
-                        blackIcon={WindowsBlackImg}
-                        text="Library"
-                        handleCategoryClick={() => handleNavigate('/Library')}
-                        style={{ backgroundColor: 'black' }}
-                        textStyle={{ color: 'black' }}
-                        id="MobileMenuButton"
-                    ></StandardLinkButton>
-*/

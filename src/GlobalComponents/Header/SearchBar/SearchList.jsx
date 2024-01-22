@@ -1,30 +1,7 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './SearchList.css'
 
-const SearchList = ({
-    searchData,
-    searchActive,
-    setSearchAmount,
-    setInputValue,
-    setSearchValue,
-}) => {
-    // Navigate to a new page with a transition
-    const navigate = useNavigate()
-    const navigateToWithDelay = () => {
-        // hide page with a transition
-        document.querySelector('body').style.transitionDuration = '0.5s'
-        document.querySelector('body').style.opacity = '0'
-
-        // navigate to page after 0.5s, show page then remove transition effects.
-        setTimeout(() => {
-            setSearchAmount(12)
-            navigate('/Library')
-            document.querySelector('body').style.opacity = '1'
-            document.querySelector('body').style.transitionDuration = '0'
-        }, 500)
-    }
-
+const SearchList = ({ searchData, searchActive }) => {
     // display search list when searchList is active
     useEffect(() => {
         const searchListElement = document.querySelector('#searchList')

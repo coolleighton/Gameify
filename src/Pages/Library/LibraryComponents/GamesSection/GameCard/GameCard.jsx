@@ -1,9 +1,31 @@
 import { useState, useEffect } from 'react'
 import PlatformImg from './PlatformImg/PlatformImg'
 import OrangeTick from '../../../../../Assets/GlobalImages/OrangeTick.png'
+import ImageNotFound from '../../../../../Assets/GlobalImages/ImageNotFound.png'
 
 const GameCard = ({ cardData, handleAddToCart, cart }) => {
     const [active, setActive] = useState(false)
+
+    // render image not found if no images available
+    const RenderImageNotFound = (imageSrc) => {
+        if (imageSrc === null) {
+            return (
+                <div className="rounded-t-2xl h-56 w-full object-cover flex justify-center items-center relative">
+                    <img
+                        className="w-full h-full rounded-t-2xl"
+                        src={ImageNotFound}
+                    ></img>
+                    <p className="text-xl absolute">Image not found</p>
+                </div>
+            )
+        } else
+            return (
+                <img
+                    className="rounded-t-2xl h-56 w-full object-cover"
+                    src={imageSrc}
+                ></img>
+            )
+    }
 
     useEffect(() => {
         // Check if the current card is in the cart and set active accordingly
@@ -13,10 +35,7 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
 
     return (
         <div className="max-w-2xl rounded-2xl bg-gray-500 bg-opacity-20 cursor-pointer hover:scale-105 duration-300">
-            <img
-                className="rounded-t-2xl h-56 w-full object-cover"
-                src={cardData.image}
-            ></img>
+            {RenderImageNotFound(cardData.image)}
             <div className="p-4">
                 <div className="flex justify-between">
                     <button

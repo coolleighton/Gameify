@@ -215,10 +215,7 @@ const App = () => {
             setGamePlatform({ url: '', displayText: ' All' })
             setGameSearch({ url: '', displayText: '' })
             setGameSpecialCategory({
-                url:
-                    '&ordering=' +
-                    categoryInfo +
-                    '&parent_platforms=1,2,3,5,6,7',
+                url: '&ordering=-' + categoryInfo,
                 displayText: ' ' + text,
             })
         } else if (category === 'search') {
@@ -248,7 +245,7 @@ const App = () => {
 
         setHeading(text)
         setGameSpecialCategory({
-            url: '&ordering=' + categoryInfo + '&parent_platforms=1,2,3,5,6,7',
+            url: '&ordering=-' + categoryInfo,
             displayText: ' ' + text,
         })
     }
@@ -297,7 +294,7 @@ const App = () => {
         // declare API URL
 
         let ApiUrl =
-            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf' +
+            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf&parent_platforms=1,2,3,5,6,7' +
             gameGenre.url +
             gameSpecialCategory.url +
             gamePlatform.url +
@@ -323,6 +320,7 @@ const App = () => {
                         rating: item.metacritic,
                     }
                 })
+                console.log(displayData)
 
                 setApiData(displayData)
                 if (document.querySelector('#GamesGrid')) {

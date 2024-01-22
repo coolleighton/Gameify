@@ -176,6 +176,8 @@ const Header = ({
 
                 await delay(500)
 
+                // hide loading animation when list has been loaded
+                document.querySelector('#searchLoader').style.display = 'none'
                 document.querySelector('#searchListInnerDiv').style.display =
                     'block'
                 document.querySelector('#searchListInnerDiv').style.opacity =
@@ -236,10 +238,12 @@ const Header = ({
 
     // searchBarInput expand on focus
     document.addEventListener('click', (e) => {
-        if (e.target.id === 'searchBar') {
-            document.querySelector('.searchBarInput').style.width = '36rem'
-        } else {
-            document.querySelector('.searchBarInput').style.width = '16rem'
+        if (window.innerWidth > 1024) {
+            if (e.target.id === 'searchBar') {
+                document.querySelector('.searchBarInput').style.width = '36rem'
+            } else {
+                document.querySelector('.searchBarInput').style.width = '16rem'
+            }
         }
     })
 
