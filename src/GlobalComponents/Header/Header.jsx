@@ -226,8 +226,6 @@ const Header = ({
                 document.querySelector('.searchBarInput').value,
                 document.querySelector('.searchBarInput').value
             )
-            setSearchValue('')
-            setInputValue('')
             setSearchActive(false)
 
             if (window.location.href.includes('Library') === false) {
@@ -265,7 +263,7 @@ const Header = ({
 
                 <div
                     id="searchBar"
-                    className="searchBar relative bg-white rounded-md px-1 mx-2"
+                    className="searchBar relative bg-white rounded-md px-1"
                 >
                     <div
                         id="searchBar"
@@ -274,7 +272,7 @@ const Header = ({
                         <input
                             id="searchBar"
                             autoComplete="off"
-                            className="searchBarInput h-8 w-full outline-none text-black text-bold px-2"
+                            className="searchBarInput h-8 w-full outline-none text-black text-md xs:text-[1rem] px-2"
                             placeholder="Search games..."
                             onChange={(e) =>
                                 handleSearchValueChange(e.target.value)
@@ -291,7 +289,7 @@ const Header = ({
                             <img
                                 onClick={searchButtonClick}
                                 id="searchButton"
-                                className="h-7 p-1 cursor-pointer duration-300 rounded hover:bg-gray-200"
+                                className="hidden sm:block h-8 py-1 cursor-pointer duration-300 rounded hover:bg-gray-200"
                                 src={SearchImg}
                             ></img>
                         </button>
@@ -330,7 +328,7 @@ const Header = ({
                         onClick={() => toggleCartOn()}
                     >
                         <img
-                            className=" w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
+                            className="w-7 sm:w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
                             src={CartImg}
                         ></img>
                         <img
@@ -341,7 +339,7 @@ const Header = ({
                     </button>
                     <button onClick={() => toggleHamburgerMenuOn()}>
                         <img
-                            className="w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
+                            className="w-8 sm:w-10 ml-2 sm:hidden cursor-pointer hover:scale-125 duration-200 ease-in-out sm:mx-2"
                             src={HamburgerMenuImg}
                         ></img>
                     </button>

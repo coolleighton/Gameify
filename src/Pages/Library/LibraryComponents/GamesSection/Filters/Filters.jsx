@@ -70,6 +70,14 @@ const Filters = ({
                     className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
                     id="genreItems"
                 >
+                    <button
+                        className="hover:bg-gray-200 duration-300 rounded-lg px-2 w-full text-left"
+                        key="allGenres"
+                        id="genre"
+                        onClick={() => handleFilterClick('', ' All', 'genre')}
+                    >
+                        <p>All</p>
+                    </button>
                     {ButtonData.Genres.map((item) => {
                         return (
                             <button
@@ -112,6 +120,16 @@ const Filters = ({
                     className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
                     id="platformItems"
                 >
+                    <button
+                        className="hover:bg-gray-200 duration-300 rounded-lg px-2 w-full text-left"
+                        key="allPlatforms"
+                        id="platform"
+                        onClick={() =>
+                            handleFilterClick('', ' All', 'platform')
+                        }
+                    >
+                        <p>All</p>
+                    </button>
                     {ButtonData.Platforms.map((item) => {
                         return (
                             <button

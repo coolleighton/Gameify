@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Home from './Pages/Home/Home.jsx'
 import Library from './Pages/Library/Library.jsx'
 import ErrorPage from './GlobalComponents/ErrorPage/ErrorPage.jsx'
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript'
 
 const App = () => {
     const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
@@ -193,7 +194,10 @@ const App = () => {
 
         // check which type of button has been clicked and set api info
         if (category === 'genre') {
-            setGamePlatform({ url: '', displayText: ' All' })
+            setGamePlatform({
+                url: '&parent_platforms=1,2,3,5,6,7',
+                displayText: ' All',
+            })
             setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
             setGameSearch({ url: '', displayText: '' })
             setGameGenre({
@@ -212,7 +216,10 @@ const App = () => {
         } else if (category === 'special') {
             // set Api/displayText data
             setGameGenre({ url: '', displayText: ' All' })
-            setGamePlatform({ url: '', displayText: ' All' })
+            setGamePlatform({
+                url: '&parent_platforms=1,2,3,5,6,7',
+                displayText: ' All',
+            })
             setGameSearch({ url: '', displayText: '' })
             setGameSpecialCategory({
                 url: '&ordering=-' + categoryInfo,
@@ -221,7 +228,10 @@ const App = () => {
         } else if (category === 'search') {
             // set Api/displayText data
             setGameGenre({ url: '', displayText: ' All' })
-            setGamePlatform({ url: '', displayText: ' All' })
+            setGamePlatform({
+                url: '&parent_platforms=1,2,3,5,6,7',
+                displayText: ' All',
+            })
             setGameSpecialCategory({ url: '', displayText: ' All Time Top' })
             setGameSearch({
                 url: '&search_precise=true&search=' + categoryInfo,
@@ -263,15 +273,28 @@ const App = () => {
 
         await delay(300)
 
+        // check if searching for all
+
+        let ApiData = {}
+        if (categoryInfo) {
+            ApiData = {
+                url: '&parent_platforms=' + categoryInfo,
+                displayText: ' ' + text,
+            }
+        } else {
+            ApiData = {
+                url: '',
+                displayText: ' ' + text,
+            }
+        }
+
         setHeading(text)
-        setGamePlatform({
-            url: '&parent_platforms=' + categoryInfo,
-            displayText: ' ' + text,
-        })
+        setGamePlatform(ApiData)
     }
 
     // filter results by a special category
     const handleFilterGenreCategory = async (categoryInfo, text) => {
+        console.log(categoryInfo, text)
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
         // apply transition, scroll to top and wait 0.5s to complete (opacity set back to 1 when api call complete)
@@ -283,18 +306,30 @@ const App = () => {
 
         await delay(300)
 
+        // check if searching for all
+
+        let ApiData = {}
+        if (categoryInfo) {
+            ApiData = {
+                url: '&genres=' + categoryInfo,
+                displayText: ' ' + text,
+            }
+        } else {
+            ApiData = {
+                url: '',
+                displayText: ' ' + text,
+            }
+        }
+
         setHeading(text)
-        setGameGenre({
-            url: '&genres=' + categoryInfo,
-            displayText: ' ' + text,
-        })
+        setGameGenre(ApiData)
     }
 
     useEffect(() => {
         // declare API URL
 
         let ApiUrl =
-            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf&parent_platforms=1,2,3,5,6,7' +
+            'https://api.rawg.io/api/games?key=561d4b7435f64843bd5c65f0b931d7bf' +
             gameGenre.url +
             gameSpecialCategory.url +
             gamePlatform.url +
@@ -302,6 +337,7 @@ const App = () => {
             '&page_size=' +
             searchAmount
 
+        console.log(ApiUrl)
         try {
             // function that will fetch data, keep what we need and set 'ApiData' with that data
             const fetchData = async () => {
@@ -320,7 +356,6 @@ const App = () => {
                         rating: item.metacritic,
                     }
                 })
-                console.log(displayData)
 
                 setApiData(displayData)
                 if (document.querySelector('#GamesGrid')) {

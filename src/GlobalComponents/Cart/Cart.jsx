@@ -89,16 +89,24 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
                         })}
                     </div>
                     <div>
-                        <div className="flex justify-between py-8 px-8 z-50">
-                            <p className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl">
+                        <div className="flex flex-col justify-between py-8 px-8 z-50">
+                            <p className="bg-gray-500 bg-opacity-40 py-1 px-3 mb-4 rounded-xl w-auto ml-auto">
                                 Total: £{CalculateTotal(cart)}
                             </p>
-                            <button
-                                className="bg-gray-500 bg-opacity-40 ml-2 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
-                                onClick={() => clearCart({ setCart })}
-                            >
-                                Clear
-                            </button>
+                            <div className="flex justify-between">
+                                <button
+                                    className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
+                                    onClick={() => clearCart({ setCart })}
+                                >
+                                    Clear
+                                </button>
+                                <button
+                                    className="bg-gray-500 bg-opacity-40 py-1 px-3 rounded-xl hover:bg-opacity-80 duration-300"
+                                    onClick={() => clearCart({ setCart })}
+                                >
+                                    Checkout
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
