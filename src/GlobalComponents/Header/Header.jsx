@@ -211,8 +211,19 @@ const Header = ({
         }
     }
 
+    // Navigate to a new page with a transition
+
+    const navigateToLibraryWithTransition = async (e) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+
+        // hide page with a transition
+
+        // navigate to page after 0.3s, show page then remove transition effects.
+    }
+
     // if enter is pressed and input has a value trigger the below function
-    const enterKeyPressed = (e) => {
+    const enterKeyPressed = async (e) => {
+        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
         if (
             e.key === 'Enter' &&
             document.querySelector('.searchBarInput').value
@@ -229,7 +240,17 @@ const Header = ({
             setSearchActive(false)
 
             if (window.location.href.includes('Library') === false) {
-                navigate('/Library')
+                setSearchAmount(12)
+                document.querySelector('body').style.transitionDuration = '0.5s'
+                document.querySelector('body').style.opacity = '0'
+
+                setTimeout(() => {
+                    navigate('/Library')
+                    resetSearchCriteria()
+                    document.querySelector('body').style.opacity = '1'
+                    document.querySelector('body').style.transitionDuration =
+                        '0'
+                }, 500)
             }
         }
     }

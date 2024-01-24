@@ -8,6 +8,7 @@ import Background from '../../Assets/Background.mp4'
 import GithubImg from '../../Assets/GlobalImages/GithubImg.png'
 import PortfolioImg from '../../Assets/GlobalImages/PortfolioImg.png'
 import LibraryImg from '../../Assets/GlobalImages/DarkLibraryImg.png'
+import RawgWhiteImg from '../../Assets/GlobalImages/RawgWhiteImg.png'
 import './Home.css'
 
 import { useEffect } from 'react'
@@ -78,37 +79,49 @@ const Home = ({
                             to mimic a real shop.
                             <br></br>
                             <br></br>
-                            See my other projects below.
+                            See my other projects and the Rawg API which
+                            supplies the data below.
                         </p>
                     </div>
 
-                    <div className="portfolioLinks flex justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center sm:w-11/12 mx-auto rounded-lg backdrop-blur">
-                        <a
-                            className="w-2/3 bg-white rounded-lg mx-2 hover:scale-105 hover:bg-blue-100 duration-200"
-                            href="https://github.com/coolleighton"
-                        >
-                            <div className="flex items-center justify-center py-1">
-                                <img src={GithubImg}></img>
+                    <div className="p-6 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto sm:w-11/12 rounded-lg backdrop-blur">
+                        <div className="portfolioLinks flex justify-center">
+                            <a
+                                className="mr-2 bg-white h-10 flex mb-4 justify-center xs:w-11/12 sm:w-full items-center rounded-lg hover:scale-105 hover:bg-blue-100 duration-200"
+                                href="https://github.com/coolleighton"
+                            >
+                                <div className="flex items-center justify-center py-1 ">
+                                    <img src={GithubImg}></img>
+                                    <p className="text-black pl-2 font-semibold">
+                                        Github
+                                    </p>
+                                </div>
+                            </a>
+                            <a
+                                className="ml-2  bg-white h-10 flex xs:w-11/12 sm:w-full justify-center items-center rounded-lg hover:scale-105 hover:bg-blue-100 duration-200"
+                                href="https://leightonjcoughlin.netlify.app/"
+                            >
+                                <div className="flex items-center justify-center py-1">
+                                    <img src={PortfolioImg}></img>
+                                    <p className="text-black pl-2 font-semibold">
+                                        Portfolio
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <a href="https://rawg.io/apidocs">
+                            <div className="h-10 flex justify-center items-center py-1 mt-4 bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
+                                <img className="h-5" src={RawgWhiteImg}></img>
                                 <p className="text-black pl-2 font-semibold">
-                                    Github
-                                </p>
-                            </div>
-                        </a>
-                        <a
-                            className="bottomPortfolioLink w-2/3 bg-white rounded-lg mx-2 hover:scale-105 hover:bg-blue-100 duration-200"
-                            href="https://leightonjcoughlin.netlify.app/"
-                        >
-                            <div className="flex items-center justify-center py-1">
-                                <img src={PortfolioImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    Portfolio
+                                    Rawg API
                                 </p>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div className="sm:ml-0 sm:mr-6">
-                    <div className="flex flex-col justify-center px-6 py-8 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12 sm:w-[210px]">
+                    <div className="flex flex-col justify-center p-6 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12 sm:w-[210px]">
                         <h2 className="text-3xl font-bold pb-5">
                             Quick Navigation
                         </h2>
@@ -116,7 +129,7 @@ const Home = ({
                         {ButtonData.Special.map((item) => {
                             return (
                                 <button
-                                    className="flex py-2 items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200"
+                                    className="flex py-2 items-center justify-center bg-white rounded-lg mb-4 hover:scale-105 hover:bg-blue-100 duration-200"
                                     key={item.text}
                                     onClick={() =>
                                         HandleMenuClick(
@@ -136,7 +149,14 @@ const Home = ({
                                 </button>
                             )
                         })}
-                        <button className="flex py-2 items-center justify-center bg-white rounded-lg mb-5 hover:scale-105 hover:bg-blue-100 duration-200">
+                        <button className="flex py-2 items-center justify-center bg-white rounded-lg mb-4 hover:scale-105 hover:bg-blue-100 duration-200">
+                            <img className="w-6 h-6" src={LibraryImg}></img>
+                            <p className="text-black pl-2 font-semibold">
+                                I'm Feeling Lucky
+                            </p>
+                        </button>
+
+                        <button className="flex py-2 items-center justify-center bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
                             <img className="w-6 h-6" src={LibraryImg}></img>
                             <p className="text-black pl-2 font-semibold">
                                 Library

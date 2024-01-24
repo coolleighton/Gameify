@@ -337,7 +337,6 @@ const App = () => {
             '&page_size=' +
             searchAmount
 
-        console.log(ApiUrl)
         try {
             // function that will fetch data, keep what we need and set 'ApiData' with that data
             const fetchData = async () => {

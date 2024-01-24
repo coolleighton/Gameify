@@ -57,7 +57,7 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
                         {cart.map((item) => {
                             return (
                                 <div
-                                    id={item.name}
+                                    id={item.name + 'cart'}
                                     key={item.name}
                                     className="bg-gray-500 bg-opacity-20 mb-5 rounded-xl "
                                 >
