@@ -67,9 +67,9 @@ const Home = ({
                 resetSearchCriteria={resetSearchCriteria}
             ></Header>
 
-            <div className="flex flex-col mx-auto h-[100vh] sm:w-[695px] sm:flex-row sm:justify-start sm:items-center">
-                <div className="mt-[5.5rem] sm:mt-0 sm:max-w-lg sm:ml-12 w-11/12 mx-auto">
-                    <div className="p-8 mb-4 sm:mb-5 bg-gray-600 bg-opacity-50 text-center sm:w-11/12 mx-auto rounded-lg backdrop-blur">
+            <div className="flex flex-col mx-auto h-[100vh] md:w-[776px] md:flex-row md:justify-start md:items-center">
+                <div className="mt-[5.5rem] md:mt-0 md:max-w-lg w-11/12 mx-auto">
+                    <div className="p-8 mb-6 md:mb-5 bg-gray-600 bg-opacity-50 text-center sm:w-9/12 md:w-11/12 mx-auto rounded-lg backdrop-blur">
                         <h1 className="title break-words sm:text-7xl font-extrabold pb-5">
                             Gameify
                         </h1>
@@ -79,12 +79,11 @@ const Home = ({
                             to mimic a real shop.
                             <br></br>
                             <br></br>
-                            See my other projects and the Rawg API which
-                            supplies the data below.
+                            See my other projects and the Rawg API below.
                         </p>
                     </div>
 
-                    <div className="p-6 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto sm:w-11/12 rounded-lg backdrop-blur">
+                    <div className="p-6 mb-6 bg-gray-600 bg-opacity-50 text-center mx-auto sm:w-9/12 md:w-11/12 rounded-lg backdrop-blur">
                         <div className="portfolioLinks flex justify-center">
                             <a
                                 className="mr-2 bg-white h-10 flex mb-4 justify-center xs:w-11/12 sm:w-full items-center rounded-lg hover:scale-105 hover:bg-blue-100 duration-200"
@@ -98,7 +97,7 @@ const Home = ({
                                 </div>
                             </a>
                             <a
-                                className="ml-2  bg-white h-10 flex xs:w-11/12 sm:w-full justify-center items-center rounded-lg hover:scale-105 hover:bg-blue-100 duration-200"
+                                className="ml-2 bg-white h-10 flex xs:w-11/12 sm:w-full justify-center items-center rounded-lg hover:scale-105 hover:bg-blue-100 duration-200"
                                 href="https://leightonjcoughlin.netlify.app/"
                             >
                                 <div className="flex items-center justify-center py-1">
@@ -120,48 +119,43 @@ const Home = ({
                         </a>
                     </div>
                 </div>
-                <div className="sm:ml-0 sm:mr-6">
-                    <div className="flex flex-col justify-center p-6 mb-4 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur w-11/12 sm:w-[210px]">
-                        <h2 className="text-3xl font-bold pb-5">
-                            Quick Navigation
-                        </h2>
+                <div className="sm:ml-0 md:mr-6 flex">
+                    <div className="w-11/12 mx-auto md:w-full">
+                        <div className="flex flex-col justify-center p-6 mb-8 bg-gray-600 bg-opacity-50 text-center mx-auto rounded-lg backdrop-blur sm:w-9/12 md:w-[240px]">
+                            <h2 className="text-3xl font-bold pb-5">
+                                Quick Navigation
+                            </h2>
 
-                        {ButtonData.Special.map((item) => {
-                            return (
-                                <button
-                                    className="flex py-2 items-center justify-center bg-white rounded-lg mb-4 hover:scale-105 hover:bg-blue-100 duration-200"
-                                    key={item.text}
-                                    onClick={() =>
-                                        HandleMenuClick(
-                                            'special',
-                                            item.categoryInfo,
-                                            item.text
-                                        )
-                                    }
-                                >
-                                    <img
-                                        className="w-6 h-6"
-                                        src={item.BlackIcon}
-                                    ></img>
-                                    <p className="text-black pl-2 font-semibold">
-                                        {item.text}
-                                    </p>
-                                </button>
-                            )
-                        })}
-                        <button className="flex py-2 items-center justify-center bg-white rounded-lg mb-4 hover:scale-105 hover:bg-blue-100 duration-200">
-                            <img className="w-6 h-6" src={LibraryImg}></img>
-                            <p className="text-black pl-2 font-semibold">
-                                I'm Feeling Lucky
-                            </p>
-                        </button>
-
-                        <button className="flex py-2 items-center justify-center bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
-                            <img className="w-6 h-6" src={LibraryImg}></img>
-                            <p className="text-black pl-2 font-semibold">
-                                Library
-                            </p>
-                        </button>
+                            {ButtonData.Special.map((item) => {
+                                return (
+                                    <button
+                                        className="flex py-2 items-center justify-center bg-white rounded-lg mb-4 hover:scale-105 hover:bg-blue-100 duration-200"
+                                        key={item.text}
+                                        onClick={() =>
+                                            HandleMenuClick(
+                                                'special',
+                                                item.categoryInfo,
+                                                item.text
+                                            )
+                                        }
+                                    >
+                                        <img
+                                            className="w-6 h-6"
+                                            src={item.BlackIcon}
+                                        ></img>
+                                        <p className="text-black pl-2 font-semibold">
+                                            {item.text}
+                                        </p>
+                                    </button>
+                                )
+                            })}
+                            <button className="flex py-2 items-center justify-center bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
+                                <img className="w-6 h-6" src={LibraryImg}></img>
+                                <p className="text-black pl-2 font-semibold">
+                                    I'm Feeling Lucky
+                                </p>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

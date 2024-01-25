@@ -37,7 +37,7 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
                         className="h-4 xs:h-5 mr-1 "
                         src={RatingWhiteImage}
                     ></img>
-                    <p className="text-lg xs:text-xl font-light">0%</p>
+                    <p className="text-lg xs:text-xl font-light">No Rating</p>
                 </div>
             )
         } else

@@ -54,7 +54,7 @@ const App = () => {
     // handle removing an item from the cart
     const removeItemFromCart = async (name) => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
+        console.log(name)
         // apply transition and wait 0.3s for transition to run
         document.getElementById(name).style.transition = '0.3s'
         document.getElementById(name).style.opacity = '0'
@@ -163,16 +163,38 @@ const App = () => {
             return myArray[9]
         }
     }
-
+    // '1280px''1536px',
     // handle when user has scrolled to bottom of the games section and increase search amount
     window.onscroll = function () {
         if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-            // you're at the bottom of the page
             if (searchAmount < 39) {
-                let newSearchAmount = searchAmount + 4
+                // check if grid has 1,2 or 4 cols then add 4 if not add 3
+                let increment = 4
+                if (window.innerWidth > 1280 && window.innerWidth < 1536) {
+                    increment = 3
+                } else {
+                    increment = 4
+                }
+                // you're at the bottom of the page
+                let newSearchAmount = searchAmount + increment
                 setSearchAmount(newSearchAmount)
             }
         }
+    }
+
+    function capitalizeWords(str) {
+        // Split the string into an array of words
+        const words = str.split(' ')
+
+        // Capitalize the first letter of each word
+        const capitalizedWords = words.map(
+            (word) => word.charAt(0).toUpperCase() + word.slice(1)
+        )
+
+        // Join the words back into a string
+        const result = capitalizedWords.join(' ')
+
+        return result
     }
 
     // handle what games we want to display when clicking a category button
@@ -189,7 +211,7 @@ const App = () => {
         await delay(300)
 
         //  set heading and reset search amount
-        setHeading(text)
+        setHeading(capitalizeWords(text))
         setSearchAmount(12)
 
         // check which type of button has been clicked and set api info
