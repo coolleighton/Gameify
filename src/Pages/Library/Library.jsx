@@ -25,9 +25,16 @@ const Library = ({
     setSearchValue,
     loadingScreenPlayed,
     resetSearchCriteria,
+    isFadingOut,
+    setIsFadingOut,
 }) => {
     return (
-        <div id="Library" className="relative w-full">
+        <div
+            id="Library"
+            className={`screen ${
+                isFadingOut ? 'fade-out' : ''
+            } relative w-full`}
+        >
             <Header
                 SearchData={ApiData}
                 headerBgColour={'#04020b'}
@@ -39,6 +46,8 @@ const Library = ({
                 setSearchValue={setSearchValue}
                 handleCategoryClick={handleCategoryClick}
                 resetSearchCriteria={resetSearchCriteria}
+                isFadingOut={isFadingOut}
+                setIsFadingOut={setIsFadingOut}
             ></Header>
             <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-72 sm:block"></div>

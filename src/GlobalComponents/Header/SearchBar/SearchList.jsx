@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './SearchList.css'
 
 const SearchList = ({ searchData, searchActive }) => {
@@ -38,6 +39,13 @@ const SearchList = ({ searchData, searchActive }) => {
         }
     }, [searchData])
 
+    // naigate to game screen when clicked
+    const navigate = useNavigate()
+    const NavigateToGame = (GameId) => {
+        console.log('clicked')
+        navigate('/Game/' + GameId, { state: { id: GameId } })
+    }
+
     return (
         <div
             id="searchList"
@@ -50,6 +58,7 @@ const SearchList = ({ searchData, searchActive }) => {
                         <button
                             className="w-full p-2 xs:p-3 flex flex-col sm:flex-row items-center mb-1 sm:mb-4 duration-300 hover:bg-gray-200 rounded-xl"
                             key={item.name}
+                            onClick={() => NavigateToGame(item.id)}
                         >
                             <img
                                 className=" sm:w-4/12 rounded-xl h-20 xs:h-28 object-cover mb-1 sm:h-32"

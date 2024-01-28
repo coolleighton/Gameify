@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react'
 
 import Home from './Pages/Home/Home.jsx'
 import Library from './Pages/Library/Library.jsx'
+import Game from './Pages/Game/Game.jsx'
 import ErrorPage from './GlobalComponents/ErrorPage/ErrorPage.jsx'
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript'
 
 const App = () => {
+    const [isFadingOut, setIsFadingOut] = useState(false)
     const [loadingScreenPlayed, setLoadingScreenPlayed] = useState(false)
     const [cart, setCart] = useState([])
     const [ApiData, setApiData] = useState([])
@@ -54,7 +55,7 @@ const App = () => {
     // handle removing an item from the cart
     const removeItemFromCart = async (name) => {
         const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-        console.log(name)
+
         // apply transition and wait 0.3s for transition to run
         document.getElementById(name).style.transition = '0.3s'
         document.getElementById(name).style.opacity = '0'
@@ -371,6 +372,7 @@ const App = () => {
                 displayData = dataResult.map((item) => {
                     return {
                         name: item.name,
+                        id: item.id,
                         image: item.background_image,
                         platforms: item.parent_platforms,
                         price: generateRandomPrice(item.name),
@@ -397,6 +399,8 @@ const App = () => {
             path: '/',
             element: (
                 <Home
+                    isFadingOut={isFadingOut}
+                    setIsFadingOut={setIsFadingOut}
                     cart={cart}
                     setCart={setCart}
                     loadingScreenPlayed={loadingScreenPlayed}
@@ -419,6 +423,8 @@ const App = () => {
             path: 'Library',
             element: (
                 <Library
+                    isFadingOut={isFadingOut}
+                    setIsFadingOut={setIsFadingOut}
                     heading={heading}
                     cart={cart}
                     setCart={setCart}
@@ -444,9 +450,35 @@ const App = () => {
             ),
             errorElement: <ErrorPage />,
         },
+        {
+            path: '/Game/:GameId',
+            element: (
+                <Game
+                    ApiData={ApiData}
+                    cart={cart}
+                    setCart={setCart}
+                    removeItemFromCart={removeItemFromCart}
+                    setSearchAmount={setSearchAmount}
+                    inputValue={inputValue}
+                    searchValue={searchValue}
+                    setInputValue={setInputValue}
+                    setSearchValue={setSearchValue}
+                    handleCategoryClic={handleCategoryClick}
+                    resetSearchCriteria={resetSearchCriteria}
+                    setIsFadingOut={setIsFadingOut}
+                    isFadingOut={isFadingOut}
+                />
+            ),
+            errorElement: <ErrorPage />,
+        },
     ])
 
-    return <RouterProvider router={router}></RouterProvider>
+    return (
+        <RouterProvider
+            className={`screen ${isFadingOut ? 'fade-out' : ''}`}
+            router={router}
+        ></RouterProvider>
+    )
 }
 
 export default App

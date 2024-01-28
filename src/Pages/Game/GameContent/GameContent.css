@@ -1,0 +1,11 @@
+#gameContentMain {
+    height: calc(100vh - 192px);
+}
+
+.descriptionClosed {
+    height: 15rem;
+}
+
+.descriptionOpen {
+    height: calc(100vh - 380px);
+}

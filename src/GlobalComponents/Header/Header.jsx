@@ -21,26 +21,28 @@ const Header = ({
     setSearchValue,
     handleCategoryClick,
     resetSearchCriteria,
+    setIsFadingOut,
 }) => {
     const [cartActive, setCartActive] = useState(false)
     const [searchActive, setSearchActive] = useState(false)
     const [searchData, setSearchData] = useState({})
 
-    // Navigate to a new page with a transition
+    // aply exit transition, navigate, conditionally resetResearchCritera reshow screen
     const navigate = useNavigate()
-    const navigateToWithDelay = (location) => {
-        // hide page with a transition
-        document.querySelector('body').style.transitionDuration = '0.5s'
-        document.querySelector('body').style.opacity = '0'
+    const handleNavigate = (location, boolean) => {
+        setIsFadingOut(true)
 
-        // navigate to page after 0.3s, show page then remove transition effects.
+        navigate(location)
+
         setTimeout(() => {
-            setSearchAmount(12)
-            navigate(location)
-            resetSearchCriteria()
-            document.querySelector('body').style.opacity = '1'
-            document.querySelector('body').style.transitionDuration = '0'
-        }, 500)
+            if (boolean === true) {
+                resetSearchCriteria()
+            }
+        }, 300)
+
+        setTimeout(() => {
+            setIsFadingOut(false)
+        }, 300)
     }
 
     // check if cart has items in it
@@ -169,6 +171,7 @@ const Header = ({
                     return {
                         name: item.name,
                         image: item.background_image,
+                        id: item.id,
                     }
                 })
 
@@ -201,34 +204,21 @@ const Header = ({
                 document.querySelector('.searchBarInput').value,
                 document.querySelector('.searchBarInput').value
             )
-            setSearchValue('')
-            setInputValue('')
             setSearchActive(false)
 
             if (window.location.href.includes('Library') === false) {
-                navigate('/Library')
+                handleNavigateWithTransition('/Library')
             }
         }
     }
 
-    // Navigate to a new page with a transition
-
-    const navigateToLibraryWithTransition = async (e) => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
-        // hide page with a transition
-
-        // navigate to page after 0.3s, show page then remove transition effects.
-    }
-
     // if enter is pressed and input has a value trigger the below function
-    const enterKeyPressed = async (e) => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
+    const enterKeyPressed = (e) => {
         if (
             e.key === 'Enter' &&
             document.querySelector('.searchBarInput').value
         ) {
-            console.log('enter pressed and input has value')
+            console.log('search button clicked and input has value')
             setSearchValue(document.querySelector('.searchBarInput').value)
             setInputValue(document.querySelector('.searchBarInput').value)
             setSearchAmount(12)
@@ -240,17 +230,7 @@ const Header = ({
             setSearchActive(false)
 
             if (window.location.href.includes('Library') === false) {
-                setSearchAmount(12)
-                document.querySelector('body').style.transitionDuration = '0.5s'
-                document.querySelector('body').style.opacity = '0'
-
-                setTimeout(() => {
-                    navigate('/Library')
-                    resetSearchCriteria()
-                    document.querySelector('body').style.opacity = '1'
-                    document.querySelector('body').style.transitionDuration =
-                        '0'
-                }, 500)
+                handleNavigate('/Library')
             }
         }
     }
@@ -273,7 +253,7 @@ const Header = ({
             style={{ backgroundColor: headerBgColour }}
         >
             <div className="flex justify-between items-center w-11/12 sm:w-full mx-auto">
-                <button onClick={() => navigateToWithDelay('/')}>
+                <button onClick={() => handleNavigate('/', true)}>
                     <div className="mr-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
                         <img className="w-12 sm:mr-4" src={Logo}></img>
                         <h1 className="hidden font-semibold text-3xl sm:block">
@@ -327,7 +307,7 @@ const Header = ({
 
                 <div className="flex flex-row justify-between items-center ml-1">
                     <button
-                        onClick={() => navigateToWithDelay('/')}
+                        onClick={() => handleNavigate('/', true)}
                         className="hidden sm:block"
                     >
                         <img
@@ -336,7 +316,7 @@ const Header = ({
                         ></img>
                     </button>
                     <button
-                        onClick={() => navigateToWithDelay('/Library')}
+                        onClick={() => handleNavigate('/Library', true)}
                         className="hidden sm:block"
                     >
                         <img

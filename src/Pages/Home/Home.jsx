@@ -25,6 +25,8 @@ const Home = ({
     setInputValue,
     setSearchValue,
     resetSearchCriteria,
+    isFadingOut,
+    setIsFadingOut,
 }) => {
     const navigate = useNavigate()
 
@@ -54,7 +56,12 @@ const Home = ({
     }
 
     return (
-        <div id="home" className="relative inset-0">
+        <div
+            id="home"
+            className={`screen ${
+                isFadingOut ? 'fade-out' : ''
+            } relative inset-0`}
+        >
             <Header
                 headerBgColour={'#FF'}
                 cart={cart}
@@ -65,6 +72,8 @@ const Home = ({
                 setSearchValue={setSearchValue}
                 handleCategoryClick={handleCategoryClick}
                 resetSearchCriteria={resetSearchCriteria}
+                isFadingOut={isFadingOut}
+                setIsFadingOut={setIsFadingOut}
             ></Header>
 
             <div className="flex flex-col mx-auto h-[100vh] md:w-[776px] md:flex-row md:justify-start md:items-center">

@@ -55,7 +55,6 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
                     </div>
                     <div className=" w-100 overflow-y-scroll no-scrollbar mx-10 rounded-xl">
                         {cart.map((item) => {
-                            console.log(item.nam)
                             return (
                                 <div
                                     id={item.name}

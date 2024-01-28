@@ -44,3 +44,12 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.screen {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}

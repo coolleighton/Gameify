@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PlatformImg from './PlatformImg/PlatformImg'
 import OrangeTick from '../../../../../Assets/GlobalImages/OrangeTick.png'
 import ImageNotFound from '../../../../../Assets/GlobalImages/ImageNotFound.png'
@@ -58,8 +59,18 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
         setActive(isInCart)
     }, [cart, cardData.name])
 
+    // naigate to game screen when clicked
+    const navigate = useNavigate()
+    const NavigateToGame = (GameId) => {
+        console.log('clicked')
+        navigate('/Game/' + GameId, { state: { id: GameId } })
+    }
+
     return (
-        <div className=" max-w-2xl rounded-2xl bg-gray-500 bg-opacity-20 cursor-pointer hover:scale-105 duration-300">
+        <div
+            className="max-w-2xl rounded-2xl bg-gray-500 bg-opacity-20 cursor-pointer hover:scale-105 duration-300"
+            onClick={() => NavigateToGame(cardData.id)}
+        >
             {RenderImageNotFound(cardData.image)}
             <div className="p-4">
                 <div className="flex justify-between">
