@@ -19,6 +19,7 @@ const Game = ({
     resetSearchCriteria,
     isFadingOut,
     setIsFadingOut,
+    handleAddToCart,
 }) => {
     const [gameData, setGameData] = useState({})
     const [gameDetails, setGameDetails] = useState({})
@@ -40,9 +41,13 @@ const Game = ({
                     const response = await fetch(detailsApiUrl)
                     const data = await response.json()
 
+                    console.log(data)
+
                     // create a new array with only the data we need
                     let displayData = {
+                        age: data.esrb_rating.name,
                         name: data.name,
+                        mainImage: data.background_image,
                         description: data.description_raw,
                         genres: data.genres,
                         platforms: data.platforms,
@@ -83,6 +88,7 @@ const Game = ({
             gameDetails: gameDetails,
             gameScreenshots: gameScreenshots,
         })
+        console.log(gameData)
     }, [gameDetails, gameScreenshots])
 
     return (
@@ -106,7 +112,11 @@ const Game = ({
                 setIsFadingOut={setIsFadingOut}
             ></Header>
             {Object.keys(gameData).length > 0 ? (
-                <GameContent gameData={gameData}></GameContent>
+                <GameContent
+                    gameData={gameData}
+                    cart={cart}
+                    handleAddToCart={handleAddToCart}
+                ></GameContent>
             ) : (
                 <></>
             )}

@@ -75,7 +75,11 @@ const GameCard = ({ cardData, handleAddToCart, cart }) => {
             <div className="p-4">
                 <div className="flex justify-between">
                     <button
-                        onClick={() => handleAddToCart(cardData.name, active)}
+                        id="addToCartButton"
+                        onClick={(e) => {
+                            e.stopPropagation() // Prevent the click from propagating to the parent div
+                            handleAddToCart(cardData.name, active)
+                        }}
                         className="text-sm xs:text-md px-2 py-1 w-36 rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200 flex justify-center items-center"
                         style={{ color: active ? '#FF8B1B' : 'white' }}
                     >

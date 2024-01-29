@@ -164,6 +164,7 @@ const App = () => {
             return myArray[9]
         }
     }
+
     // '1280px''1536px',
     // handle when user has scrolled to bottom of the games section and increase search amount
     window.onscroll = function () {
@@ -467,6 +468,7 @@ const App = () => {
                     resetSearchCriteria={resetSearchCriteria}
                     setIsFadingOut={setIsFadingOut}
                     isFadingOut={isFadingOut}
+                    handleAddToCart={handleAddToCart}
                 />
             ),
             errorElement: <ErrorPage />,
