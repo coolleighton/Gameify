@@ -169,14 +169,14 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                 await delay(200)
                 document.querySelector('.descriptionPara').style.height =
                     'calc(100vh - 440px)'
-                await delay(10)
+                await delay(5)
                 document.querySelector('.extraGameInfo').style.display = 'none'
             } else {
                 document.querySelector('.descriptionPara').style.height =
                     '15rem'
-                await delay(200)
+                await delay(300)
                 document.querySelector('.extraGameInfo').style.display = 'flex'
-                await delay(10)
+                await delay(5)
                 document.querySelector('.extraGameInfo').style.opacity = '1'
             }
         }
@@ -228,7 +228,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                         </button>
                     </div>
 
-                    <div className="extraGameInfo flex flex-col duration-300">
+                    <div className="extraGameInfo flex flex-col duration-150">
                         <div className="grid grid-cols-2">
                             <div>
                                 <p className="font-bold mt-4">Genres:</p>
@@ -275,7 +275,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                         onClick={() => {
                             handleAddToCart(gameData.gameDetails.name, active)
                         }}
-                        className="px-2 py-4 w-full rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-200 flex justify-center items-center"
+                        className="px-2 py-4 w-full rounded-lg bg-gray-500 bg-opacity-30 hover:bg-opacity-50 duration-300 flex justify-center items-center"
                         style={{ color: active ? '#FF8B1B' : 'white' }}
                     >
                         <p>{active ? 'Added' : 'Add to cart +'}</p>

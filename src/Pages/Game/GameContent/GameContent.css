@@ -2,14 +2,6 @@
     height: calc(100vh - 202px);
 }
 
-.descriptionClosed {
-    height: 15rem;
-}
-
-.descriptionOpen {
-    height: calc(100vh - 440px);
-}
-
 .descriptionButton:hover {
     transition: 300ms;
     --tw-bg-opacity: 0.5;
