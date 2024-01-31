@@ -156,13 +156,6 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
     useEffect(() => {
         const transition = async () => {
             const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-            /* .descriptionClosed {
-    height: 15rem;
-}
-
-.descriptionOpen {
-    height: calc(100vh - 440px);
-} */
 
             if (descriptionActive) {
                 document.querySelector('.extraGameInfo').style.opacity = '0'
@@ -198,7 +191,9 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                 </h1>
             </div>
             <div id="gameContentMain" className="grid grid-cols-3 gap-8 mt-4">
-                <div className="col-span-2 w-full">{returnImages()}</div>
+                <div className="imageDiv col-span-2 w-full">
+                    {returnImages()}
+                </div>
 
                 <div className="relative flex flex-col justify-between overflow-hidden col-span-1 rounded-2xl bg-gray-500 bg-opacity-20 p-6 h-full">
                     <div className="">

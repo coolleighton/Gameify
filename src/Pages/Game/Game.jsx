@@ -41,8 +41,6 @@ const Game = ({
                     const response = await fetch(detailsApiUrl)
                     const data = await response.json()
 
-                    console.log(data)
-
                     // create a new array with only the data we need
                     let displayData = {
                         age: data.esrb_rating.name,
@@ -81,14 +79,13 @@ const Game = ({
         }
 
         fetchData()
-    }, [])
+    }, [gameId])
 
     useEffect(() => {
         setGameData({
             gameDetails: gameDetails,
             gameScreenshots: gameScreenshots,
         })
-        console.log(gameData)
     }, [gameDetails, gameScreenshots])
 
     return (

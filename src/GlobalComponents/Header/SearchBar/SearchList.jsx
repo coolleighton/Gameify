@@ -43,6 +43,9 @@ const SearchList = ({ searchData, searchActive }) => {
     const navigate = useNavigate()
     const NavigateToGame = (GameId) => {
         console.log('clicked')
+
+        if (window.location.href.includes('Game')) {
+        }
         navigate('/Game/' + GameId, { state: { id: GameId } })
     }
 

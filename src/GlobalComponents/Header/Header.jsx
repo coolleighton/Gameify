@@ -207,7 +207,7 @@ const Header = ({
             setSearchActive(false)
 
             if (window.location.href.includes('Library') === false) {
-                handleNavigateWithTransition('/Library')
+                handleNavigate('/Library')
             }
         }
     }
@@ -249,7 +249,7 @@ const Header = ({
     return (
         <div
             id="header"
-            className="sm:px-5 py-5 flex flex-row items-center justify-between sm:px-7 fixed w-full z-50 sm:px-9"
+            className="sm:px-5 py-5 flex flex-row items-center justify-between fixed w-full z-50"
             style={{ backgroundColor: headerBgColour }}
         >
             <div className="flex justify-between items-center w-11/12 sm:w-full mx-auto">

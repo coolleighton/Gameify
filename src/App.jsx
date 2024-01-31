@@ -464,7 +464,7 @@ const App = () => {
                     searchValue={searchValue}
                     setInputValue={setInputValue}
                     setSearchValue={setSearchValue}
-                    handleCategoryClic={handleCategoryClick}
+                    handleCategoryClick={handleCategoryClick}
                     resetSearchCriteria={resetSearchCriteria}
                     setIsFadingOut={setIsFadingOut}
                     isFadingOut={isFadingOut}
