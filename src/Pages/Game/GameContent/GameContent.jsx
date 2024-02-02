@@ -190,7 +190,10 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                     {gameData.gameDetails.name}
                 </h1>
             </div>
-            <div id="gameContentMain" className="grid grid-cols-3 gap-8 mt-4">
+            <div
+                id="gameContentMain"
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4"
+            >
                 <div className="imageDiv col-span-2 w-full">
                     {returnImages()}
                 </div>
@@ -223,7 +226,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                         </button>
                     </div>
 
-                    <div className="extraGameInfo flex flex-col duration-150">
+                    <div className="extraGameInfo flex flex-col mb-2 duration-150 overflow-y-scroll overflow-x-hidden no-scrollbar">
                         <div className="grid grid-cols-2">
                             <div>
                                 <p className="font-bold mt-4">Genres:</p>
@@ -240,7 +243,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                             <div>
                                 <p className="font-bold mt-4">Metacritic:</p>
                                 <p className="">
-                                    {gameData.gameDetails.rating}%
+                                    {gameData.gameDetails.rating}
                                 </p>
                             </div>
                             <div>

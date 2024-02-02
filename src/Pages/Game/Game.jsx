@@ -24,6 +24,7 @@ const Game = ({
     const [gameData, setGameData] = useState({})
     const [gameDetails, setGameDetails] = useState({})
     const [gameScreenshots, setGameScreenshots] = useState({})
+    const [renderContent, setRenderContent] = useState(false)
     const location = useLocation()
     const gameId = location.state.id
 
@@ -40,16 +41,35 @@ const Game = ({
                 const fetchDetailsData = async () => {
                     const response = await fetch(detailsApiUrl)
                     const data = await response.json()
+                    console.log(data)
+
+                    // check if age has a value
+                    const getAge = () => {
+                        if (data.esrb_rating) {
+                            return data.esrb_rating.name
+                        } else {
+                            return 'Not found'
+                        }
+                    }
+
+                    // check if metacritic rating has a value
+                    const getRating = () => {
+                        if (data.metacritic) {
+                            return data.metacritic + '%'
+                        } else {
+                            return 'Not found'
+                        }
+                    }
 
                     // create a new array with only the data we need
                     let displayData = {
-                        age: data.esrb_rating.name,
+                        age: getAge(),
                         name: data.name,
                         mainImage: data.background_image,
                         description: data.description_raw,
                         genres: data.genres,
                         platforms: data.platforms,
-                        rating: data.metacritic,
+                        rating: getRating(),
                         developers: data.developers,
                     }
                     setGameDetails(displayData)
@@ -88,6 +108,14 @@ const Game = ({
         })
     }, [gameDetails, gameScreenshots])
 
+    useEffect(() => {
+        if (Object.keys(gameData).length > 0) {
+            setRenderContent(true)
+        } else {
+            setRenderContent(false)
+        }
+    }, [gameData])
+
     return (
         <div
             className={`screen ${
@@ -108,7 +136,7 @@ const Game = ({
                 isFadingOut={isFadingOut}
                 setIsFadingOut={setIsFadingOut}
             ></Header>
-            {Object.keys(gameData).length > 0 ? (
+            {renderContent ? (
                 <GameContent
                     gameData={gameData}
                     cart={cart}
