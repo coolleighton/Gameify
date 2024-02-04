@@ -70,8 +70,11 @@ const App = () => {
     // handle when a user adds an item to the cart
     const handleAddToCart = (id, active) => {
         if (!active) {
+            console.log(ApiData)
             const object = ApiData.find((obj) => obj.name === id)
+            console.log(object)
             const newCart = [...cart, object]
+            console.log(newCart)
             setCart(newCart)
             window.localStorage.setItem('storedCart', JSON.stringify(newCart))
         }

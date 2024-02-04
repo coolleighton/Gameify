@@ -137,13 +137,13 @@ const Header = ({
         document.querySelector('#searchListInnerDiv').style.display = 'none'
     }
 
-    // run search function after user has stopped typing for 1 second
+    // run search function after user has stopped typing for 0.5 seconds
     useEffect(() => {
         hideSearchList()
 
         const timer = setTimeout(() => {
             setSearchValue(inputValue)
-        }, 1000)
+        }, 500)
 
         // clear the timer when the component unmounts or when inputValue changes
         return () => clearTimeout(timer)
@@ -299,9 +299,8 @@ const Header = ({
                     <SearchList
                         searchData={searchData}
                         searchActive={searchActive}
-                        setSearchAmount={setSearchAmount}
-                        setSearchValue={setSearchValue}
-                        setInputValue={setInputValue}
+                        setIsFadingOut={setIsFadingOut}
+                        handleCategoryClick={handleCategoryClick}
                     ></SearchList>
                 </div>
 

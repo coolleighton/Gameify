@@ -2,6 +2,10 @@
 export const toggleCartOn = async () => {
     const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
+    if (window.location.href.includes('/Library')) {
+        console.log(document.querySelector('#header').style.paddingRight)
+    }
+
     document.querySelector('#Cart').style.display = 'block'
 
     if (window.innerWidth > 640) {

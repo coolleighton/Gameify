@@ -2,7 +2,12 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SearchList.css'
 
-const SearchList = ({ searchData, searchActive }) => {
+const SearchList = ({
+    searchData,
+    searchActive,
+    setIsFadingOut,
+    handleCategoryClick,
+}) => {
     // display search list when searchList is active
     useEffect(() => {
         const searchListElement = document.querySelector('#searchList')
@@ -42,11 +47,18 @@ const SearchList = ({ searchData, searchActive }) => {
     // naigate to game screen when clicked
     const navigate = useNavigate()
     const NavigateToGame = (GameId) => {
-        console.log('clicked')
+        handleCategoryClick(
+            'search',
+            document.querySelector('.searchBarInput').value,
+            document.querySelector('.searchBarInput').value
+        )
+        setIsFadingOut(true)
 
-        if (window.location.href.includes('Game')) {
-        }
         navigate('/Game/' + GameId, { state: { id: GameId } })
+
+        setTimeout(() => {
+            setIsFadingOut(false)
+        }, 300)
     }
 
     return (

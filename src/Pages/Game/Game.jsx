@@ -41,7 +41,6 @@ const Game = ({
                 const fetchDetailsData = async () => {
                     const response = await fetch(detailsApiUrl)
                     const data = await response.json()
-                    console.log(data)
 
                     // check if age has a value
                     const getAge = () => {
@@ -89,7 +88,8 @@ const Game = ({
             try {
                 const fetchScreenshotData = async () => {
                     const response = await fetch(screenshotsApiUrl)
-                    const data = await response.json()
+                    let data = await response.json()
+
                     setGameScreenshots(data)
                 }
                 fetchScreenshotData()
@@ -118,6 +118,7 @@ const Game = ({
 
     return (
         <div
+            id="gameScreen"
             className={`screen ${
                 isFadingOut ? 'fade-out' : ''
             } relative w-full`}

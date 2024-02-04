@@ -2,6 +2,7 @@ import BackArrowWhiteImg from '../../../Assets/GlobalImages/BackArrowWhiteImg.pn
 import DownWhiteImg from '../../../Assets/GlobalImages/DownWhiteImg.png'
 import UpWhiteImg from '../../../Assets/GlobalImages/UpWhiteImg.png'
 import OrangeTick from '../../../Assets/GlobalImages/OrangeTick.png'
+import ImageNotFound from '../../../Assets/GlobalImages/ImageNotFound.png'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './GameContent.css'
@@ -87,12 +88,23 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
     // return the component for images
     const returnImages = () => {
         if (Object.keys(gameData.gameScreenshots).length > 0) {
-            return (
-                <img
-                    className="rounded-2xl w-full h-full object-cover"
-                    src={gameData.gameScreenshots.results[0].image}
-                ></img>
-            )
+            if (gameData.gameScreenshots.results.length < 1) {
+                return (
+                    <div className="rounded-2xl h-full w-full object-cover flex justify-center items-center relative">
+                        <img
+                            className="w-full h-full rounded-2xl"
+                            src={ImageNotFound}
+                        ></img>
+                        <p className="text-xl absolute">Image not found</p>
+                    </div>
+                )
+            } else
+                return (
+                    <img
+                        className="rounded-2xl w-full h-full object-cover"
+                        src={gameData.gameScreenshots.results[0].image}
+                    ></img>
+                )
         }
     }
 
@@ -157,60 +169,64 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
         const transition = async () => {
             const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
-            if (descriptionActive) {
-                document.querySelector('.extraGameInfo').style.opacity = '0'
-                await delay(200)
-                document.querySelector('.descriptionPara').style.height =
-                    'calc(100vh - 440px)'
-                await delay(5)
-                document.querySelector('.extraGameInfo').style.display = 'none'
-            } else {
-                document.querySelector('.descriptionPara').style.height =
-                    '15rem'
-                await delay(300)
-                document.querySelector('.extraGameInfo').style.display = 'flex'
-                await delay(5)
-                document.querySelector('.extraGameInfo').style.opacity = '1'
+            if (screen.width > 1030) {
+                if (descriptionActive) {
+                    document.querySelector('.extraGameInfo').style.opacity = '0'
+                    await delay(200)
+                    document.querySelector('.descriptionPara').style.height =
+                        'calc(100vh - 440px)'
+                    await delay(5)
+                    document.querySelector('.extraGameInfo').style.display =
+                        'none'
+                } else {
+                    document.querySelector('.descriptionPara').style.height =
+                        '15rem'
+                    await delay(300)
+                    document.querySelector('.extraGameInfo').style.display =
+                        'flex'
+                    await delay(5)
+                    document.querySelector('.extraGameInfo').style.opacity = '1'
+                }
             }
         }
         transition()
     }, [descriptionActive])
 
     return (
-        <div className="pt-24 px-8">
-            <div className="flex justify-between items-center">
+        <div className="pt-24 px-6 lg:p-8">
+            <div className="flex flex-col lg:flex-row justify-between items-center lg:mt-12">
                 <button
                     onClick={() => navigateToLibrary()}
                     className="flex justify-center items-center hover:scale-110 duration-300"
                 >
-                    <img className="h-8" src={BackArrowWhiteImg}></img>
-                    <h2 className="text-2xl ml-1">Library</h2>
+                    <img className="h-6 lg:h-8" src={BackArrowWhiteImg}></img>
+                    <h2 className="text-lg lg:text-2xl ml-1">Library</h2>
                 </button>
-                <h1 className="text-6xl font-extrabold">
+                <h1 className="text-center text-2xl xs:text-4xl mt-2 lg:text-right lg:text-6xl font-extrabold ">
                     {gameData.gameDetails.name}
                 </h1>
             </div>
             <div
                 id="gameContentMain"
-                className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8 mt-4"
             >
-                <div className="imageDiv col-span-2 w-full">
+                <div className="imageDiv h-56 sm:h-auto mb-6 lg:mb-0 col-span-2 w-full">
                     {returnImages()}
                 </div>
 
-                <div className="relative flex flex-col justify-between overflow-hidden col-span-1 rounded-2xl bg-gray-500 bg-opacity-20 p-6 h-full">
-                    <div className="">
-                        <div className=" bg-gray-500 bg-opacity-20 rounded-t-xl overflow-y-scroll no-scrollbar">
+                <div className="relative flex flex-col-reverse lg:flex-col justify-between overflow-hidden col-span-1 lg:rounded-2xl bg-gray-500 bg-opacity-0 lg:bg-opacity-20 lg:p-6 lg:h-full">
+                    <div>
+                        <div className="bg-gray-500 bg-opacity-20 rounded-xl lg:rounded-t-xl lg:rounded-b-none lg:overflow-y-scroll mb-6 lg:mb-0">
                             <h2 className="px-4 pt-4 text-2xl font-bold mb-2">
                                 Description
                             </h2>
-                            <p className="descriptionPara px-4 duration-300">
+                            <p className="descriptionPara px-4 pb-4 duration-300">
                                 {gameData.gameDetails.description}
                             </p>
                         </div>
                         <button
                             onClick={() => toggleDescription()}
-                            className="descriptionButton bg-gray-500 py-4 rounded-b-xl bg-opacity-30 w-full flex justify-end items-center"
+                            className="descriptionButton hidden lg:flex bg-gray-500 py-4 rounded-b-xl bg-opacity-30 w-full justify-end items-center"
                         >
                             <img
                                 className="h-5"
@@ -220,13 +236,13 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                                         : DownWhiteImg
                                 }
                             ></img>
-                            <p className="text-md mr-6">
+                            <p className="text-lg mr-6">
                                 {descriptionActive ? 'Less' : 'More'}
                             </p>
                         </button>
                     </div>
 
-                    <div className="extraGameInfo flex flex-col mb-2 duration-150 overflow-y-scroll overflow-x-hidden no-scrollbar">
+                    <div className="extraGameInfo flex flex-col mb-6 mt-2 lg:mb-2 duration-150 overflow-y-scroll no-scrollbar overflow-x-hidden">
                         <div className="grid grid-cols-2">
                             <div>
                                 <p className="font-bold mt-4">Genres:</p>
@@ -262,7 +278,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                                 <p className="font-bold mt-4 text-right">
                                     Developers:
                                 </p>
-                                <div className="text-right mb-4">
+                                <div className="text-right">
                                     {returnDevelopers()}
                                 </div>
                             </div>

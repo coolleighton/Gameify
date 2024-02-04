@@ -49,7 +49,7 @@ const Library = ({
                 isFadingOut={isFadingOut}
                 setIsFadingOut={setIsFadingOut}
             ></Header>
-            <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-2 sm:grid-cols-[1fr_10fr] sm:w-full">
+            <div className="grid grid-cols-1 relative w-10/12 mx-auto sm:grid-cols-[1fr_10fr] sm:w-full">
                 <div className="hidden w-72 sm:block"></div>
                 <CategoryButtonsSection
                     handleCategoryClick={handleCategoryClick}
@@ -66,6 +66,7 @@ const Library = ({
                     handleFilterPlatformCategory={handleFilterPlatformCategory}
                     handleFilterGenreCategory={handleFilterGenreCategory}
                     loadingScreenPlayed={loadingScreenPlayed}
+                    setIsFadingOut={setIsFadingOut}
                 ></GamesSection>
             </div>
             <MobileMenu

@@ -16,6 +16,7 @@ const GamesSection = ({
     handleFilterPlatformCategory,
     handleFilterGenreCategory,
     loadingScreenPlayed,
+    setIsFadingOut,
 }) => {
     useEffect(() => {
         if (loadingScreenPlayed) {
@@ -49,6 +50,7 @@ const GamesSection = ({
                             cardData={item}
                             handleAddToCart={handleAddToCart}
                             cart={cart}
+                            setIsFadingOut={setIsFadingOut}
                         ></GameCard>
                     )
                 })}

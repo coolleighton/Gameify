@@ -1,9 +1,8 @@
-#gameContentMain {
-    height: calc(100vh - 200px);
-}
-
-.imageDiv {
-    height: calc(100vh - 200px);
+@media (min-width: 1030px) {
+    #gameContentMain,
+    .imageDiv {
+        height: calc(100vh - 200px);
+    }
 }
 
 .descriptionButton:hover {
