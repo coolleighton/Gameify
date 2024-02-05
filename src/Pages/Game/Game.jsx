@@ -62,6 +62,7 @@ const Game = ({
 
                     // create a new array with only the data we need
                     let displayData = {
+                        released: data.released,
                         age: getAge(),
                         name: data.name,
                         mainImage: data.background_image,

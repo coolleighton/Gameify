@@ -3,6 +3,7 @@ import DownWhiteImg from '../../../Assets/GlobalImages/DownWhiteImg.png'
 import UpWhiteImg from '../../../Assets/GlobalImages/UpWhiteImg.png'
 import OrangeTick from '../../../Assets/GlobalImages/OrangeTick.png'
 import ImageNotFound from '../../../Assets/GlobalImages/ImageNotFound.png'
+import Carosel from './Carosel/Carosel'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import './GameContent.css'
@@ -90,21 +91,15 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
         if (Object.keys(gameData.gameScreenshots).length > 0) {
             if (gameData.gameScreenshots.results.length < 1) {
                 return (
-                    <div className="rounded-2xl h-full w-full object-cover flex justify-center items-center relative">
+                    <div className="rounded-lg lg:rounded-2xl h-full w-full object-cover flex justify-center items-center relative">
                         <img
-                            className="w-full h-full rounded-2xl"
+                            className="w-full h-full"
                             src={ImageNotFound}
                         ></img>
                         <p className="text-xl absolute">Image not found</p>
                     </div>
                 )
-            } else
-                return (
-                    <img
-                        className="rounded-2xl w-full h-full object-cover"
-                        src={gameData.gameScreenshots.results[0].image}
-                    ></img>
-                )
+            } else return <Carosel gameData={gameData}></Carosel>
         }
     }
 
@@ -138,6 +133,19 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
         return null // Return null if there are no platforms
     }
 
+    // return release date
+    const returnDate = () => {
+        if (Object.keys(gameData.gameDetails).length > 0) {
+            if (gameData.gameDetails.released) {
+                return gameData.gameDetails.released
+            } else {
+                return 'Not Found'
+            }
+        }
+
+        return null // Return null if there are no platforms
+    }
+
     // return the component for developers
     const returnDevelopers = () => {
         if (Object.keys(gameData.gameDetails).length > 0) {
@@ -149,7 +157,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
 
             return developerNames.length > 0
                 ? developerNames.join(', ')
-                : 'No developer information available'
+                : 'Not Found'
         }
 
         return null // Return null if there are no genres
@@ -210,7 +218,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                 id="gameContentMain"
                 className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8 mt-4"
             >
-                <div className="imageDiv h-56 sm:h-auto mb-6 lg:mb-0 col-span-2 w-full">
+                <div className="imageDiv h-56 sm:h-auto lg:h-[inherit] mb-6 lg:mb-0 col-span-2 w-full">
                     {returnImages()}
                 </div>
 
@@ -242,45 +250,53 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                         </button>
                     </div>
 
-                    <div className="extraGameInfo flex flex-col mb-6 mt-2 lg:mb-2 duration-150 overflow-y-scroll no-scrollbar overflow-x-hidden">
-                        <div className="grid grid-cols-2">
-                            <div>
-                                <p className="font-bold mt-4">Genres:</p>
-                                <div>{returnGenres()}</div>
-                            </div>
-                            <div>
-                                <p className="font-bold mt-4 text-right">
-                                    Price:
-                                </p>
-                                <p className="text-right">
-                                    £{generateRandomPrice()}
-                                </p>
-                            </div>
-                            <div>
-                                <p className="font-bold mt-4">Metacritic:</p>
-                                <p className="">
-                                    {gameData.gameDetails.rating}
-                                </p>
-                            </div>
-                            <div>
-                                <p className="font-bold mt-4 text-right">
-                                    Age:
-                                </p>
-                                <p className="text-right">
-                                    {gameData.gameDetails.age}
-                                </p>
-                            </div>
-                            <div>
-                                <p className="font-bold mt-4">Platforms:</p>
-                                <div>{returnPlatforms()}</div>
-                            </div>
-                            <div>
-                                <p className="font-bold mt-4 text-right">
-                                    Developers:
-                                </p>
-                                <div className="text-right">
-                                    {returnDevelopers()}
+                    <div className="extraGameInfo flex flex-col my-6 lg:my-2 duration-150 overflow-y-scroll no-scrollbar overflow-x-hidden">
+                        <div className="flex flex-col">
+                            <div className="flex justify-between">
+                                <div>
+                                    <p className="font-bold  ">Age:</p>
+                                    <p>{gameData.gameDetails.age}</p>
                                 </div>
+                                <div>
+                                    <p className="font-bold text-right">
+                                        Price:
+                                    </p>
+                                    <p className="text-right">
+                                        £{generateRandomPrice()}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex justify-between mt-2">
+                                <div>
+                                    <p className="font-bold">Genres:</p>
+                                    <div>{returnGenres()}</div>
+                                </div>
+                                <div>
+                                    <p className="text-right font-bold">
+                                        Released:
+                                    </p>
+                                    <p className="text-right">{returnDate()}</p>
+                                </div>
+                            </div>
+
+                            <div className="flex justify-between mt-2">
+                                <div>
+                                    <p className="font-bold">Developers:</p>
+                                    <div>{returnDevelopers()}</div>
+                                </div>
+                                <div>
+                                    <p className="font-bold text-right ">
+                                        Metacritic:
+                                    </p>
+                                    <p className="text-right">
+                                        {gameData.gameDetails.rating}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-2">
+                                <p className="font-bold">Platforms:</p>
+                                <div>{returnPlatforms()}</div>
                             </div>
                         </div>
                     </div>
