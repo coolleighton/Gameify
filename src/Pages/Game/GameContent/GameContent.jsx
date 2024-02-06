@@ -218,7 +218,10 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                 id="gameContentMain"
                 className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-8 mt-4"
             >
-                <div className="imageDiv h-56 sm:h-auto lg:h-[inherit] mb-6 lg:mb-0 col-span-2 w-full">
+                <div
+                    id="imageDiv"
+                    className="imageDiv h-56 xs:h-auto lg:h-[inherit] mb-6 lg:mb-0 col-span-2 w-full"
+                >
                     {returnImages()}
                 </div>
 

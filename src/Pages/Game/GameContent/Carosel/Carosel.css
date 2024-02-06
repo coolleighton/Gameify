@@ -1,0 +1,34 @@
+.circle {
+    background-color: #5b5e6e;
+    border-radius: 50%;
+    width: 0.4rem;
+    height: 0.4rem;
+    margin: 0 0.2rem;
+}
+
+.white {
+    background-color: white;
+}
+
+#caroselImages {
+    display: flex;
+}
+
+.slider {
+    background-color: #04020b;
+    padding: 0.4rem 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .circle {
+        width: 0.6rem;
+        height: 0.6rem;
+        margin: 0 0.2rem;
+    }
+
+    .slider {
+        padding: 0.5rem 0.7rem;
+        margin-bottom: 1rem;
+    }
+}
