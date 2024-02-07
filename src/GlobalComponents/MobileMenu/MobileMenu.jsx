@@ -1,10 +1,10 @@
 import CloseImg from '../../Assets/GlobalImages/CloseImg.png'
 import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
-
 import ButtonData from '../../Assets/ButtonsData.js'
 import StandardCategoryButton from '../StandardCategoryButton/StandardCategoryButton.jsx'
 import './MobileMenu.css'
 import { useNavigate } from 'react-router-dom'
+import GlobalFunctions from '../../GlobalFunctions/GlobalFunctions.js'
 
 const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
     const navigate = useNavigate()
@@ -17,9 +17,8 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
 
     // close hamburger menu with transition
     const toggleHamburgerMenuOff = async () => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
         document.querySelector('#hamburgerMenu').style.opacity = '0'
-        await delay(500)
+        await GlobalFunctions.delay(500)
         document.querySelector('#hamburgerMenu').style.display = 'none'
     }
 
@@ -28,7 +27,6 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
         handleCategoryClick(text, categoryInfo, category)
         toggleHamburgerMenuOff()
         if (!window.location.href.includes('Library')) {
-            console.log('Not in library')
             navigateTo('/Library')
         }
     }
@@ -57,6 +55,7 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
                         handleCategoryClick={() => navigateTo('/Library')}
                         id="MobileMenuButton"
                     ></StandardCategoryButton>
+
                     <h1 className="text-3xl text-black font-bold mt-6 mb-2">
                         Platforms
                     </h1>

@@ -9,6 +9,7 @@ const Filters = ({
     handleFilterPlatformCategory,
     handleFilterGenreCategory,
 }) => {
+    // show filter list depending on which button is clicked
     document.addEventListener('click', (e) => {
         if ((e.target.id === 'special') === false) {
             hideFilterItems('special')
@@ -21,16 +22,19 @@ const Filters = ({
         }
     })
 
+    // show filter list
     const showFilterItems = (id) => {
         document.querySelector('#' + id).style.display = 'none'
         document.querySelector('#' + id + 'Items').style.display = 'flex'
     }
 
+    //hide filter list
     const hideFilterItems = (id) => {
         document.querySelector('#' + id).style.display = 'flex'
         document.querySelector('#' + id + 'Items').style.display = 'none'
     }
 
+    // depending which filter is clicked run that function
     const handleFilterClick = (categoryInfo, text, id) => {
         if (id === 'special') {
             handleFilterSpecialCategory(categoryInfo, text)
@@ -39,7 +43,6 @@ const Filters = ({
         } else if (id === 'genre') {
             handleFilterGenreCategory(categoryInfo, text)
         }
-
         hideFilterItems(id)
     }
 
@@ -50,7 +53,7 @@ const Filters = ({
         >
             <div className="lg:mr-8 absolute top-1 lg:relative lg:top-0 rounded-lg flex">
                 <button
-                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-[14rem]"
+                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center h-8 w-[14rem]"
                     id="genre"
                     onClick={() => showFilterItems('genre')}
                 >
@@ -67,7 +70,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
+                    className="hidden text-black relative flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
                     id="genreItems"
                 >
                     <button
@@ -100,7 +103,7 @@ const Filters = ({
             </div>
             <div className="lg:mr-8 top-14 absolute lg:relative lg:top-0 rounded-lg">
                 <button
-                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center bg-white rounded-lg h-8 w-[14rem]"
+                    className="flex bg-white text-black rounded-lg px-4 py-1 justify-center items-center h-8 w-[14rem]"
                     id="platform"
                     onClick={() => showFilterItems('platform')}
                 >
@@ -117,7 +120,7 @@ const Filters = ({
                     ></img>
                 </button>
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
+                    className="hidden text-black relative flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
                     id="platformItems"
                 >
                     <button
@@ -171,7 +174,7 @@ const Filters = ({
                 </button>
 
                 <div
-                    className="hidden text-black relative flex flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
+                    className="hidden text-black relative flex-col rounded-xl p-2 bg-white w-[14rem] z-10"
                     id="specialItems"
                 >
                     {ButtonData.Special.map((item) => {

@@ -29,6 +29,7 @@ const Carosel = ({ gameData }) => {
         }
     }, [imagesArray]) // Dependency array to ensure useEffect runs when imagesArray changes
 
+    // move image right
     const moveImageRight = () => {
         const totalWidth = (imagesArray.length + 1) * imageWidth
 
@@ -39,7 +40,7 @@ const Carosel = ({ gameData }) => {
             setCaroselPosition(0)
         }
     }
-
+    // move image Left
     const moveImageLeft = () => {
         const totalWidth = (imagesArray.length + 1) * imageWidth
 
@@ -66,8 +67,6 @@ const Carosel = ({ gameData }) => {
                 ></div>
             )
         }
-
-        // Return the array of JSX elements
         return circles
     }
 

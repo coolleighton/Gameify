@@ -1,32 +1,32 @@
 import CloseImgWhite from '../../Assets/GlobalImages/CloseImgWhite.png'
+import GlobalFunctions from '../../GlobalFunctions/GlobalFunctions'
 
 const Cart = ({ cart, setCart, removeItemFromCart }) => {
     // handle when a user wants to clear the cart
     const clearCart = ({ setCart }) => {
         const clearedCart = []
         setCart(clearedCart)
-        window.localStorage.setItem('storedCart', JSON.stringify(clearedCart))
+
+        window.localStorage.setItem('storedCart', JSON.stringify(clearedCart)) // add cart to local storage
     }
 
     // calculate the total of all game prices
     const CalculateTotal = (cart) => {
         let sum = 0
         cart.forEach((el) => (sum += Number(el.price)))
-        return parseFloat(sum).toFixed(2)
+        return parseFloat(sum).toFixed(2) // round to 2 decimals
     }
 
     // close Cart
     const toggleCartOff = async () => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
         // re-enable body scrolling
         document.querySelector('body').style.overflowY = 'auto'
 
         // hide cart
         document.querySelector('#Cart').style.opacity = '0'
 
-        // wait 0.5s then remove from Page
-        await delay(300)
+        // wait 0.3s for transition then remove from Page
+        GlobalFunctions.delay(300)
         document.querySelector('#Cart').style.display = 'none'
     }
 

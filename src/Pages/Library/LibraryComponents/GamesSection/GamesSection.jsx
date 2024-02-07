@@ -18,6 +18,7 @@ const GamesSection = ({
     loadingScreenPlayed,
     setIsFadingOut,
 }) => {
+    // display no games found modal
     useEffect(() => {
         if (loadingScreenPlayed) {
             if (gamesData.length < 1) {

@@ -12,14 +12,14 @@ const SearchList = ({
     useEffect(() => {
         const searchListElement = document.querySelector('#searchList')
 
+        // show or hide search list and apply styling depending on if the search field is active
         if (searchActive === true) {
             document.querySelector('#searchList').style.display = 'block'
             document.querySelector('#searchBar').style.borderBottomRightRadius =
                 '0'
             document.querySelector('#searchBar').style.borderBottomLeftRadius =
                 '0'
-            // Trigger reflow before applying the transition class
-            void searchListElement.offsetWidth
+            void searchListElement.offsetWidth // Trigger reflow before applying the transition class
             document.querySelector('#searchList').style.opacity = '1'
         } else {
             document.querySelector('#searchList').style.opacity = '0'
@@ -27,6 +27,8 @@ const SearchList = ({
                 '0.325rem'
             document.querySelector('#searchBar').style.borderBottomLeftRadius =
                 '0.325rem'
+
+            // remove search list from dom
             setTimeout(() => {
                 document.querySelector('#searchList').style.display = 'none'
             }, 300)
@@ -44,18 +46,21 @@ const SearchList = ({
         }
     }, [searchData])
 
-    // naigate to game screen when clicked
+    // naigate to game screen when an item form list is clicked
     const navigate = useNavigate()
     const NavigateToGame = (GameId) => {
+        // fill library with the games from that search query
         handleCategoryClick(
             'search',
             document.querySelector('.searchBarInput').value,
             document.querySelector('.searchBarInput').value
         )
-        setIsFadingOut(true)
 
-        navigate('/Game/' + GameId, { state: { id: GameId } })
+        setIsFadingOut(true) // start transition
 
+        navigate('/Game/' + GameId, { state: { id: GameId } }) // go to game screen and pass in game data
+
+        // end transition
         setTimeout(() => {
             setIsFadingOut(false)
         }, 300)

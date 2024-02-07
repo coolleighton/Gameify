@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import GlobalFunctions from '../../../../../GlobalFunctions/GlobalFunctions'
 import PlatformImg from './PlatformImg/PlatformImg'
 import OrangeTick from '../../../../../Assets/GlobalImages/OrangeTick.png'
 import ImageNotFound from '../../../../../Assets/GlobalImages/ImageNotFound.png'
@@ -61,14 +62,13 @@ const GameCard = ({ cardData, handleAddToCart, cart, setIsFadingOut }) => {
 
     // naigate to game screen when clicked
     const navigate = useNavigate()
-    const NavigateToGame = (GameId) => {
+    const NavigateToGame = async (GameId) => {
         setIsFadingOut(true)
 
         navigate('/Game/' + GameId, { state: { id: GameId } })
 
-        setTimeout(() => {
-            setIsFadingOut(false)
-        }, 300)
+        await GlobalFunctions.delay(300)
+        setIsFadingOut(false)
     }
 
     return (
@@ -99,6 +99,7 @@ const GameCard = ({ cardData, handleAddToCart, cart, setIsFadingOut }) => {
                         £{cardData.price}
                     </p>
                 </div>
+
                 <div className="flex justify-between items-center">
                     {RenderRating(cardData.rating)}
                     <div className="flex mt-4 mb-3 mr-1">

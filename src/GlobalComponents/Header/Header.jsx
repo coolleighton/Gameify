@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { toggleCartOn } from '../Cart/CartFunctions'
+import GlobalFunctions from '../../GlobalFunctions/GlobalFunctions'
 import SearchList from './SearchBar/SearchList'
 import './Header.css'
 import Logo from '../../Assets/GlobalImages/GameifyLogo.png'
@@ -27,33 +27,6 @@ const Header = ({
     const [searchActive, setSearchActive] = useState(false)
     const [searchData, setSearchData] = useState({})
 
-    // aply exit transition, navigate, conditionally resetResearchCritera reshow screen
-    const navigate = useNavigate()
-    const handleNavigate = (location, boolean) => {
-        setIsFadingOut(true)
-
-        navigate(location)
-
-        setTimeout(() => {
-            if (boolean === true) {
-                resetSearchCriteria()
-            }
-        }, 300)
-
-        setTimeout(() => {
-            setIsFadingOut(false)
-        }, 300)
-    }
-
-    // check if cart has items in it
-    useEffect(() => {
-        if (cart.length > 0) {
-            setCartActive(true)
-        } else {
-            setCartActive(false)
-        }
-    }, [cart])
-
     // determine if user is scrolling up or down and display header accordingly
     const doc = document.documentElement
     const w = window
@@ -78,6 +51,7 @@ const Header = ({
         prevScroll = curScroll
     }
 
+    // hide or show header depending ons croll direction
     const toggleHeader = function (direction, curScroll) {
         if (direction === 2 && curScroll > 50) {
             document.querySelector('#header').classList.add('hide')
@@ -96,13 +70,37 @@ const Header = ({
         }
     }
 
-    window.addEventListener('scroll', checkScroll)
+    window.addEventListener('scroll', checkScroll) // run check scroll function when scrolling
+
+    // apply exit transition, navigate, conditionally resetResearchCritera, reshow screen
+    const navigate = useNavigate()
+    const handleNavigate = async (location, boolean) => {
+        setIsFadingOut(true)
+
+        navigate(location)
+
+        if (boolean === true) {
+            await GlobalFunctions.delay(300)
+            resetSearchCriteria()
+        }
+
+        await GlobalFunctions.delay(300)
+        setIsFadingOut(false)
+    }
+
+    // check if cart has items in it and show the orange circle on cart buttton is cart has item
+    useEffect(() => {
+        if (cart.length > 0) {
+            setCartActive(true)
+        } else {
+            setCartActive(false)
+        }
+    }, [cart])
 
     // toggle the mobile menu on
     const toggleHamburgerMenuOn = async () => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
         document.querySelector('#hamburgerMenu').style.display = 'block'
-        await delay(50)
+        await GlobalFunctions.delay(1)
         document.querySelector('#hamburgerMenu').style.opacity = '1'
     }
 
@@ -129,11 +127,9 @@ const Header = ({
     }
 
     // hide search list
-
     const hideSearchList = async () => {
-        const delay = (ms) => new Promise((res) => setTimeout(res, ms))
         document.querySelector('#searchListInnerDiv').style.opacity = '0'
-        await delay(300)
+        GlobalFunctions.delay(300)
         document.querySelector('#searchListInnerDiv').style.display = 'none'
     }
 
@@ -159,8 +155,6 @@ const Header = ({
         try {
             // function that will fetch data, keep what we need and set 'ApiData' with that data
             const fetchData = async () => {
-                const delay = (ms) => new Promise((res) => setTimeout(res, ms))
-
                 const response = await fetch(ApiUrl)
                 const data = await response.json()
                 const dataResult = data.results
@@ -177,7 +171,7 @@ const Header = ({
 
                 setSearchData(displayData)
 
-                await delay(500)
+                await GlobalFunctions.delay(500)
 
                 // hide loading animation when list has been loaded
                 document.querySelector('#searchLoader').style.display = 'none'
@@ -325,7 +319,7 @@ const Header = ({
                     </button>
                     <button
                         className="relative hover:scale-125 duration-200"
-                        onClick={() => toggleCartOn()}
+                        onClick={() => GlobalFunctions.toggleCartOn()}
                     >
                         <img
                             className="w-7 sm:w-8 mx-1 cursor-pointer  ease-in-out sm:mx-2"
