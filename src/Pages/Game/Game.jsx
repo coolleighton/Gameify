@@ -2,6 +2,8 @@ import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
 import Cart from '../../GlobalComponents/Cart/Cart.jsx'
 import Header from '../../GlobalComponents/Header/Header.jsx'
 import GameContent from './GameContent/GameContent.jsx'
+import GlobalFunctions from '../../GlobalFunctions/GlobalFunctions.js'
+import UserMessageModal from '../../GlobalComponents/UserMessageModal/UserMessageModal.jsx'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -62,6 +64,7 @@ const Game = ({
 
                     // create a new array with only the data we need
                     let displayData = {
+                        price: GlobalFunctions.generateRandomPrice(data.name),
                         released: data.released,
                         age: getAge(),
                         name: data.name,
@@ -156,7 +159,15 @@ const Game = ({
                 cart={cart}
                 setCart={setCart}
                 removeItemFromCart={removeItemFromCart}
+                setIsFadingOut={setIsFadingOut}
             ></Cart>
+            <UserMessageModal
+                title={'Thank you for using Gameify'}
+                message={
+                    "This is only a dummy website and you can't actually purchase games here. To purchase the games or see more about the RawgAPI that was used on this site visit https://rawg.io/. "
+                }
+                classID={'checkoutMessage'}
+            ></UserMessageModal>
         </div>
     )
 }

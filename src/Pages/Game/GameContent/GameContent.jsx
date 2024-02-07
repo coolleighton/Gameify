@@ -6,71 +6,12 @@ import ImageNotFound from '../../../Assets/GlobalImages/ImageNotFound.png'
 import Carosel from './Carosel/Carosel'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import GlobalFunctions from '../../../GlobalFunctions/GlobalFunctions'
 import './GameContent.css'
 
 const GameContent = ({ gameData, cart, handleAddToCart }) => {
     const [descriptionActive, setDescriptionActive] = useState(false)
     const [active, setActive] = useState(false)
-
-    // return a price based on what the first letter of game name (doing random prices each time changes price on re render)
-    const generateRandomPrice = () => {
-        if (Object.keys(gameData.gameDetails).length > 0) {
-            const myArray = [
-                '4.99',
-                '9.99',
-                '14.99',
-                '19.98',
-                '24.50',
-                '29.97',
-                '35',
-                '40',
-                '45',
-                '59.99',
-            ]
-
-            const firstLetter = gameData.gameDetails.name
-                .charAt(0)
-                .toLowerCase()
-
-            if (['a', 'b', 'c'].includes(firstLetter)) {
-                return myArray[0]
-            }
-
-            if (['d', 'e', 'f'].includes(firstLetter)) {
-                return myArray[1]
-            }
-
-            if (['g', 'h', 'i'].includes(firstLetter)) {
-                return myArray[2]
-            }
-
-            if (['j', 'k', 'l'].includes(firstLetter)) {
-                return myArray[3]
-            }
-
-            if (['m', 'n', 'o'].includes(firstLetter)) {
-                return myArray[4]
-            }
-
-            if (['p', 'q', 'r'].includes(firstLetter)) {
-                return myArray[5]
-            }
-
-            if (['s', 't', 'u'].includes(firstLetter)) {
-                return myArray[6]
-            }
-
-            if (['v', 'w', 'x'].includes(firstLetter)) {
-                return myArray[7]
-            }
-
-            if (['y', 'z'].includes(firstLetter)) {
-                return myArray[8]
-            } else {
-                return myArray[9]
-            }
-        }
-    }
 
     // Check if the current card is in the cart and set active accordingly
     useEffect(() => {
@@ -257,7 +198,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                         <div className="flex flex-col">
                             <div className="flex justify-between">
                                 <div>
-                                    <p className="font-bold  ">Age:</p>
+                                    <p className="font-bold">Age:</p>
                                     <p>{gameData.gameDetails.age}</p>
                                 </div>
                                 <div>
@@ -265,10 +206,11 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                                         Price:
                                     </p>
                                     <p className="text-right">
-                                        £{generateRandomPrice()}
+                                        £{gameData.gameDetails.price}
                                     </p>
                                 </div>
                             </div>
+
                             <div className="flex justify-between mt-2">
                                 <div>
                                     <p className="font-bold">Genres:</p>
@@ -303,6 +245,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                             </div>
                         </div>
                     </div>
+
                     <button
                         id="addToCartButton"
                         onClick={() => {

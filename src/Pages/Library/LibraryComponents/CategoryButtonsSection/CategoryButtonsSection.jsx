@@ -6,7 +6,7 @@ const CategoryButtonsSection = ({ handleCategoryClick }) => {
     return (
         <div
             id="categoryButtonsWrapper"
-            className="categoryButtonsWrapper hidden w-72 sm:mr-2 sm:flex fixed duration-300 flex"
+            className="categoryButtonsWrapper hidden w-72 sm:mr-2 sm:flex fixed duration-300"
         >
             <div className="categoryButtons hidden sm:block bg-gray-500 bg-opacity-20 w-56 px-4 py-2 rounded-2xl overflow-auto no-scrollbar">
                 <h1 className="text-3xl font-bold mt-1 mb-2">Trending</h1>

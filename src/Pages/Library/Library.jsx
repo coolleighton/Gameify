@@ -77,6 +77,7 @@ const Library = ({
                 cart={cart}
                 setCart={setCart}
                 removeItemFromCart={removeItemFromCart}
+                setIsFadingOut={setIsFadingOut}
             ></Cart>
         </div>
     )

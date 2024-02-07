@@ -6,22 +6,24 @@ import MacWhiteImg from '../../../../../../Assets/PlatformImages/MacWhiteImg.png
 import NintendoWhiteImg from '../../../../../../Assets/PlatformImages/NintendoWhiteImg.png'
 
 const PlatformImg = (platform) => {
-    let imageSrc = ''
+    let image = ''
     if (platform.platform === 'pc') {
-        imageSrc = WindowsWhiteImg
+        image = <img className="h-4 xs:h-5 ml-1" src={WindowsWhiteImg}></img>
     } else if (platform.platform === 'xbox') {
-        imageSrc = XboxWhiteImg
+        image = <img className="h-4 xs:h-5 ml-1" src={XboxWhiteImg}></img>
     } else if (platform.platform === 'playstation') {
-        imageSrc = PlaystationWhiteImg
+        image = (
+            <img className="h-4 xs:h-5 ml-1" src={PlaystationWhiteImg}></img>
+        )
     } else if (platform.platform === 'mac') {
-        imageSrc = MacWhiteImg
+        image = <img className="h-4 xs:h-5 ml-1" src={MacWhiteImg}></img>
     } else if (platform.platform === 'linux') {
-        imageSrc = LinuxWhiteImg
+        image = <img className="h-4 xs:h-5 ml-1" src={LinuxWhiteImg}></img>
     } else if (platform.platform === 'nintendo') {
-        imageSrc = NintendoWhiteImg
+        image = <img className="h-4 xs:h-5 ml-1" src={NintendoWhiteImg}></img>
     }
 
-    return <img className="h-4 xs:h-5 ml-1" src={imageSrc}></img>
+    return image
 }
 
 export default PlatformImg

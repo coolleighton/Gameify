@@ -1,5 +1,7 @@
 import CloseImg from '../../Assets/GlobalImages/CloseImg.png'
 import GridWhiteImg from '../../Assets/GlobalImages/GridWhiteImg.png'
+import HomeWhiteImg from '../../Assets/GlobalImages/HomeWhiteImg.png'
+import LibraryWhiteImg from '../../Assets/GlobalImages/LibraryWhiteImg.png'
 import ButtonData from '../../Assets/ButtonsData.js'
 import StandardCategoryButton from '../StandardCategoryButton/StandardCategoryButton.jsx'
 import './MobileMenu.css'
@@ -43,18 +45,35 @@ const MobileMenu = ({ handleCategoryClick, setSearchAmount }) => {
                     </h1>
                     <StandardCategoryButton
                         key="Home"
-                        whiteIcon={GridWhiteImg}
+                        whiteIcon={HomeWhiteImg}
                         text="Home"
                         handleCategoryClick={() => navigateTo('/')}
                         id="MobileMenuButton"
                     ></StandardCategoryButton>
                     <StandardCategoryButton
                         key="Library"
-                        whiteIcon={GridWhiteImg}
+                        whiteIcon={LibraryWhiteImg}
                         text="Library"
                         handleCategoryClick={() => navigateTo('/Library')}
                         id="MobileMenuButton"
                     ></StandardCategoryButton>
+
+                    <h1 className="text-3xl text-black font-bold mt-6 mb-2">
+                        Trending
+                    </h1>
+                    {ButtonData.Special.map((item) => {
+                        return (
+                            <StandardCategoryButton
+                                key={item.text}
+                                whiteIcon={item.whiteIcon}
+                                text={item.text}
+                                category="special"
+                                categoryInfo={item.categoryInfo}
+                                handleCategoryClick={MobileHandleCategoryClick}
+                                id="MobileMenuButton"
+                            ></StandardCategoryButton>
+                        )
+                    })}
 
                     <h1 className="text-3xl text-black font-bold mt-6 mb-2">
                         Platforms

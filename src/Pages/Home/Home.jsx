@@ -3,7 +3,7 @@ import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
 import Cart from '../../GlobalComponents/Cart/Cart.jsx'
 import ButtonData from '../../Assets/ButtonsData.js'
 import { useNavigate } from 'react-router-dom'
-
+import UserMessageModal from '../../GlobalComponents/UserMessageModal/UserMessageModal.jsx'
 import Background from '../../Assets/Background.mp4'
 import GithubImg from '../../Assets/GlobalImages/GithubImg.png'
 import PortfolioImg from '../../Assets/GlobalImages/PortfolioImg.png'
@@ -182,7 +182,15 @@ const Home = ({
                 cart={cart}
                 setCart={setCart}
                 removeItemFromCart={removeItemFromCart}
+                setIsFadingOut={setIsFadingOut}
             ></Cart>
+            <UserMessageModal
+                title={'Thank you for using Gameify'}
+                message={
+                    "This is only a dummy website and you can't actually purchase games here. To purchase the games or see more about the RawgAPI that was used on this site visit https://rawg.io/. "
+                }
+                classID={'checkoutMessage'}
+            ></UserMessageModal>
         </div>
     )
 }

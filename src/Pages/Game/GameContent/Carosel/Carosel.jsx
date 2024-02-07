@@ -70,8 +70,6 @@ const Carosel = ({ gameData }) => {
         return circles
     }
 
-    console.log(gameData)
-
     return (
         <div className="relative w-full h-full flex overflow-hidden rounded-2xl">
             <div

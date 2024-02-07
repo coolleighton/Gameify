@@ -1,8 +1,9 @@
 import GameCard from './GameCard/GameCard'
 import Loading from './Loading/Loading'
 import Filters from './Filters/Filters'
-import IncorrectSearchMessage from '../../../../GlobalComponents/IncorrectSearchMessage/IncorrectSearchMessage.jsx'
 import { useEffect } from 'react'
+import GlobalFunctions from '../../../../GlobalFunctions/GlobalFunctions.js'
+import UserMessageModal from '../../../../GlobalComponents/UserMessageModal/UserMessageModal.jsx'
 
 const GamesSection = ({
     gamesData,
@@ -22,7 +23,16 @@ const GamesSection = ({
     useEffect(() => {
         if (loadingScreenPlayed) {
             if (gamesData.length < 1) {
-                document.querySelector('#modal').style.display = 'block'
+                const displayMessage = async () => {
+                    document.querySelector(
+                        '.emptySearchMessage'
+                    ).style.display = 'block'
+                    await GlobalFunctions.delay(50)
+                    document.querySelector(
+                        '.emptySearchMessage'
+                    ).style.opacity = '1'
+                }
+                displayMessage()
             }
         }
     }, [gamesData])
@@ -58,7 +68,20 @@ const GamesSection = ({
             </div>
 
             <Loading></Loading>
-            <IncorrectSearchMessage></IncorrectSearchMessage>
+            <UserMessageModal
+                title={'No games found'}
+                message={
+                    'Sorry, but no games were found with this set of search criteria. Please try searching for something else or try removing filters.'
+                }
+                classID={'emptySearchMessage'}
+            ></UserMessageModal>
+            <UserMessageModal
+                title={'Thank you for using Gameify'}
+                message={
+                    "This is only a dummy website and you can't actually purchase games here. To purchase the games or see more about the RawgAPI that was used on this site visit https://rawg.io/. "
+                }
+                classID={'checkoutMessage'}
+            ></UserMessageModal>
         </div>
     )
 }
