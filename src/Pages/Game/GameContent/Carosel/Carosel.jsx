@@ -11,10 +11,8 @@ const Carosel = ({ gameData }) => {
 
     useEffect(() => {
         const calculateImageWidth = () => {
-            const imageElement = document.querySelector('#caroselImage')
-            if (imageElement) {
-                setImageWidth(imageElement.offsetWidth)
-            }
+            const imageElement = document.querySelector('#imageDiv')
+            setImageWidth(imageElement.offsetWidth)
         }
 
         // Call the function to calculate image width when component mounts or imagesArray changes
@@ -82,15 +80,17 @@ const Carosel = ({ gameData }) => {
                 <img
                     key={gameData.gameDetails.name}
                     id="caroselImage"
-                    className="rounded-lg lg:rounded-2xl"
+                    className="rounded-lg lg:rounded-2xl object-cover"
                     src={gameData.gameDetails.mainImage}
+                    style={{ width: imageWidth }}
                 ></img>
                 {imagesArray.map((item) => {
                     return (
                         <img
                             key={item.id}
                             id="caroselImage"
-                            className="rounded-lg lg:rounded-2xl"
+                            className="rounded-lg lg:rounded-2xl object-cover"
+                            style={{ width: imageWidth }}
                             src={item.image}
                         ></img>
                     )

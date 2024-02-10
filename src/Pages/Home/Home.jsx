@@ -2,12 +2,12 @@ import Header from '../../GlobalComponents/Header/Header.jsx'
 import MobileMenu from '../../GlobalComponents/MobileMenu/MobileMenu.jsx'
 import Cart from '../../GlobalComponents/Cart/Cart.jsx'
 import ButtonData from '../../Assets/ButtonsData.js'
+import ImFeelingLuckyButton from './ImFeelingLuckyButton.jsx/ImFeelingLuckyButton.jsx'
 import { useNavigate } from 'react-router-dom'
 import UserMessageModal from '../../GlobalComponents/UserMessageModal/UserMessageModal.jsx'
 import Background from '../../Assets/Background.mp4'
 import GithubImg from '../../Assets/GlobalImages/GithubImg.png'
 import PortfolioImg from '../../Assets/GlobalImages/PortfolioImg.png'
-import LibraryImg from '../../Assets/GlobalImages/DarkLibraryImg.png'
 import RawgWhiteImg from '../../Assets/GlobalImages/RawgWhiteImg.png'
 import './Home.css'
 
@@ -27,6 +27,7 @@ const Home = ({
     resetSearchCriteria,
     isFadingOut,
     setIsFadingOut,
+    ApiData,
 }) => {
     const navigate = useNavigate()
 
@@ -158,12 +159,10 @@ const Home = ({
                                     </button>
                                 )
                             })}
-                            <button className="flex py-2 items-center justify-center bg-white rounded-lg hover:scale-105 hover:bg-blue-100 duration-200">
-                                <img className="w-6 h-6" src={LibraryImg}></img>
-                                <p className="text-black pl-2 font-semibold">
-                                    I'm Feeling Lucky
-                                </p>
-                            </button>
+                            <ImFeelingLuckyButton
+                                ApiData={ApiData}
+                                setSearchAmount={setSearchAmount}
+                            ></ImFeelingLuckyButton>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import GlobalFunctions from '../../GlobalFunctions/GlobalFunctions'
 import ImageNotFound from '../../Assets/GlobalImages/ImageNotFound.png'
 import { useNavigate } from 'react-router-dom'
 
-const Cart = ({ cart, setCart, removeItemFromCart, setIsFadingOut }) => {
+const Cart = ({ cart, setCart, removeItemFromCart }) => {
     // naigate to game screen when clicked
     const navigate = useNavigate()
     const NavigateToGame = async (GameId) => {

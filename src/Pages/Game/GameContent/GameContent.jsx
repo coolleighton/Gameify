@@ -34,7 +34,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
                 return (
                     <div className="rounded-lg lg:rounded-2xl h-full w-full object-cover flex justify-center items-center relative">
                         <img
-                            className="w-full h-full"
+                            className="w-full h-full rounded-lg lg:rounded-2xl"
                             src={ImageNotFound}
                         ></img>
                         <p className="text-xl absolute">Image not found</p>

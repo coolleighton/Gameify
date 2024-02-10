@@ -5,7 +5,7 @@ import GlobalFunctions from './GlobalFunctions/GlobalFunctions.js'
 import Home from './Pages/Home/Home.jsx'
 import Library from './Pages/Library/Library.jsx'
 import Game from './Pages/Game/Game.jsx'
-import ErrorPage from './GlobalComponents/ErrorPage/ErrorPage.jsx'
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx'
 
 const App = () => {
     const [isFadingOut, setIsFadingOut] = useState(false)
@@ -320,6 +320,8 @@ const App = () => {
                     }
                 })
 
+                console.log(displayData)
+
                 setApiData(displayData)
                 if (document.querySelector('#GamesGrid')) {
                     document.querySelector('#GamesGrid').style.opacity = '1'
@@ -355,6 +357,7 @@ const App = () => {
                     setInputValue={setInputValue}
                     setSearchValue={setSearchValue}
                     resetSearchCriteria={resetSearchCriteria}
+                    ApiData={ApiData}
                 />
             ),
             errorElement: <ErrorPage />,

@@ -81,7 +81,7 @@ const SearchList = ({
                             onClick={() => NavigateToGame(item.id)}
                         >
                             <img
-                                className=" sm:w-4/12 rounded-xl h-20 xs:h-28 object-cover mb-1 sm:h-32"
+                                className="w-11/12 sm:w-4/12 rounded-xl h-20 xs:h-28 object-cover mb-1 sm:h-32"
                                 src={item.image}
                                 alt={item.name}
                             ></img>
