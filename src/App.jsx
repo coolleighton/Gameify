@@ -68,10 +68,14 @@ const App = () => {
 
     // handle when a user adds an item to the cart
     const handleAddToCart = (id, active) => {
+        console.log(ApiData)
+        console.log(id)
+
         if (!active) {
             const object = ApiData.find((obj) => obj.name === id) // find the game within current api call
             const newCart = [...cart, object]
             setCart(newCart)
+
             window.localStorage.setItem('storedCart', JSON.stringify(newCart))
         }
     }
@@ -320,8 +324,6 @@ const App = () => {
                     }
                 })
 
-                console.log(displayData)
-
                 setApiData(displayData)
                 if (document.querySelector('#GamesGrid')) {
                     document.querySelector('#GamesGrid').style.opacity = '1'
@@ -417,12 +419,7 @@ const App = () => {
         },
     ])
 
-    return (
-        <RouterProvider
-            className={`screen ${isFadingOut ? 'fade-out' : ''}`}
-            router={router}
-        ></RouterProvider>
-    )
+    return <RouterProvider router={router}></RouterProvider>
 }
 
 export default App

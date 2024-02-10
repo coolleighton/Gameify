@@ -23,7 +23,9 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
 
     // navigate to library
     const naviagte = useNavigate()
-    const navigateToLibrary = () => {
+    const navigateToLibrary = async () => {
+        document.querySelector('body').style.opacity = '0'
+        await GlobalFunctions.delay(300)
         naviagte('/Library')
     }
 
@@ -168,7 +170,7 @@ const GameContent = ({ gameData, cart, handleAddToCart }) => {
 
                 <div className="relative flex flex-col-reverse lg:flex-col justify-between overflow-hidden col-span-1 lg:rounded-2xl bg-gray-500 bg-opacity-0 lg:bg-opacity-20 lg:p-6 lg:h-full">
                     <div>
-                        <div className="bg-gray-500 bg-opacity-20 rounded-xl lg:rounded-t-xl lg:rounded-b-none lg:overflow-y-scroll mb-6 lg:mb-0">
+                        <div className="bg-gray-500 bg-opacity-20 rounded-xl lg:rounded-t-xl lg:rounded-b-none lg:overflow-y-scroll mb-6 lg:mb-0 overflow-x-clip">
                             <h2 className="px-4 pt-4 text-2xl font-bold mb-2">
                                 Description
                             </h2>

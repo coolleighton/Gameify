@@ -75,7 +75,8 @@ const Header = ({
     // apply exit transition, navigate, conditionally resetResearchCritera, reshow screen
     const navigate = useNavigate()
     const handleNavigate = async (location, boolean) => {
-        setIsFadingOut(true)
+        document.querySelector('body').style.opacity = '0'
+        await GlobalFunctions.delay(300)
 
         navigate(location)
 
@@ -83,9 +84,6 @@ const Header = ({
             await GlobalFunctions.delay(300)
             resetSearchCriteria()
         }
-
-        await GlobalFunctions.delay(300)
-        setIsFadingOut(false)
     }
 
     // check if cart has items in it and show the orange circle on cart buttton is cart has item
@@ -247,7 +245,11 @@ const Header = ({
             style={{ backgroundColor: headerBgColour }}
         >
             <div className="flex justify-between items-center w-11/12 sm:w-full mx-auto">
-                <button onClick={() => handleNavigate('/', true)}>
+                <button
+                    onClick={() => {
+                        handleNavigate('/', true)
+                    }}
+                >
                     <div className="mr-2 flex flex-row items-center cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out">
                         <img className="w-12 sm:mr-4" src={Logo}></img>
                         <h1 className="hidden font-semibold text-3xl sm:block">
@@ -300,7 +302,9 @@ const Header = ({
 
                 <div className="flex flex-row justify-between items-center ml-1">
                     <button
-                        onClick={() => handleNavigate('/', true)}
+                        onClick={() => {
+                            handleNavigate('/', true)
+                        }}
                         className="hidden sm:block"
                     >
                         <img

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SearchList.css'
+import GlobalFunctions from '../../../GlobalFunctions/GlobalFunctions'
 
 const SearchList = ({
     searchData,
@@ -48,7 +49,7 @@ const SearchList = ({
 
     // naigate to game screen when an item form list is clicked
     const navigate = useNavigate()
-    const NavigateToGame = (GameId) => {
+    const NavigateToGame = async (GameId) => {
         // fill library with the games from that search query
         handleCategoryClick(
             'search',
@@ -56,14 +57,9 @@ const SearchList = ({
             document.querySelector('.searchBarInput').value
         )
 
-        setIsFadingOut(true) // start transition
-
+        document.querySelector('body').style.opacity = '0'
+        await GlobalFunctions.delay(300)
         navigate('/Game/' + GameId, { state: { id: GameId } }) // go to game screen and pass in game data
-
-        // end transition
-        setTimeout(() => {
-            setIsFadingOut(false)
-        }, 300)
     }
 
     return (

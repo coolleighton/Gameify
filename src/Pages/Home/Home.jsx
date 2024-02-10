@@ -160,8 +160,7 @@ const Home = ({
                                 )
                             })}
                             <ImFeelingLuckyButton
-                                ApiData={ApiData}
-                                setSearchAmount={setSearchAmount}
+                                handleCategoryClick={handleCategoryClick}
                             ></ImFeelingLuckyButton>
                         </div>
                     </div>

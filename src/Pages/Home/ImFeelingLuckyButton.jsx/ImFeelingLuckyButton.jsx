@@ -1,14 +1,50 @@
 import LuckyImg from '../../../Assets/GlobalImages/LuckyBlackImg.png'
+import GlobalFunctions from '../../../GlobalFunctions/GlobalFunctions'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
-const ImFeelingLuckyButton = () => {
-    const generateRandomId = () => {
-        return Math.floor(Math.random() * 20000) + 1
-    }
+const ImFeelingLuckyButton = ({ handleCategoryClick }) => {
+    const [GameName, setGameName] = useState('')
+    const [randomId, setGameId] = useState(
+        Math.floor(Math.random() * 20000) + 1
+    )
+
+    // get request for game data on page mount
+    useEffect(() => {
+        // API call for game details
+        let detailsApiUrl =
+            'https://api.rawg.io/api/games/' +
+            randomId +
+            '?key=561d4b7435f64843bd5c65f0b931d7bf'
+
+        console.log(randomId)
+        const fetchData = async () => {
+            try {
+                const fetchGameName = async () => {
+                    const response = await fetch(detailsApiUrl)
+                    const data = await response.json()
+
+                    let name = data.name
+                    setGameName(name)
+                }
+                fetchGameName()
+            } catch (error) {
+                console.error('Error fetching data from Rawg:', error)
+            }
+        }
+
+        fetchData()
+    }, [])
 
     const navigate = useNavigate()
     const handleLuckyClick = async () => {
-        const randomId = generateRandomId()
+        handleCategoryClick('search', GameName, GameName)
+
+        document.querySelector('body').style.opacity = '0'
+        await GlobalFunctions.delay(300)
+
+        console.log(randomId)
+
         navigate('/Game/' + randomId, { state: { id: randomId } })
     }
 

@@ -28,6 +28,10 @@ const Library = ({
     isFadingOut,
     setIsFadingOut,
 }) => {
+    setTimeout(() => {
+        document.querySelector('body').style.opacity = '1'
+    }, 300)
+
     return (
         <div
             id="Library"

@@ -7,8 +7,9 @@ const Cart = ({ cart, setCart, removeItemFromCart }) => {
     // naigate to game screen when clicked
     const navigate = useNavigate()
     const NavigateToGame = async (GameId) => {
-        toggleCartOff()
+        document.querySelector('body').style.opacity = '0'
         await GlobalFunctions.delay(300)
+        toggleCartOff()
         navigate('/Game/' + GameId, { state: { id: GameId } })
     }
 

@@ -30,6 +30,10 @@ const Game = ({
     const location = useLocation()
     const gameId = location.state.id
 
+    setTimeout(() => {
+        document.querySelector('body').style.opacity = '1'
+    }, 300)
+
     // get request for game data on page mount
     useEffect(() => {
         // API call for game details

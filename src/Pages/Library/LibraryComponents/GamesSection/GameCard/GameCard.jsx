@@ -6,7 +6,7 @@ import OrangeTick from '../../../../../Assets/GlobalImages/OrangeTick.png'
 import ImageNotFound from '../../../../../Assets/GlobalImages/ImageNotFound.png'
 import RatingWhiteImage from '../../../../../Assets/GlobalImages/RatingWhiteImg.png'
 
-const GameCard = ({ cardData, handleAddToCart, cart, setIsFadingOut }) => {
+const GameCard = ({ cardData, handleAddToCart, cart }) => {
     const [active, setActive] = useState(false)
 
     // render image not found if no images available
@@ -63,12 +63,9 @@ const GameCard = ({ cardData, handleAddToCart, cart, setIsFadingOut }) => {
     // naigate to game screen when clicked
     const navigate = useNavigate()
     const NavigateToGame = async (GameId) => {
-        setIsFadingOut(true)
-
-        navigate('/Game/' + GameId, { state: { id: GameId } })
-
+        document.querySelector('body').style.opacity = '0'
         await GlobalFunctions.delay(300)
-        setIsFadingOut(false)
+        navigate('/Game/' + GameId, { state: { id: GameId } })
     }
 
     return (
